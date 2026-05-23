@@ -1,0 +1,1640 @@
+<!doctype html>
+<!-- BunManage.com | Bains Fund Management LLC | Built 2026 -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="BunManage is the operating platform for fund managers, capital allocators, and asset operators. Built by Bains Fund Management LLC.">
+<meta property="og:title" content="BunManage — Fund operations, unified">
+<meta property="og:description" content="Capital, talent, cloud, and ops on one audit-grade ledger. Built by Bains Fund Management LLC.">
+<meta name="author" content="Bains Fund Management LLC">
+<link rel="canonical" href="https://www.bunmanage.com/">
+<meta property="og:url" content="https://www.bunmanage.com/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.bunmanage.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BunManage — Fund operations, unified">
+<meta name="twitter:description" content="Capital, talent, cloud, and ops on one audit-grade ledger. Built by Bains Fund Management LLC.">
+<meta name="theme-color" content="#07070a">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='3.5' fill='%238b5cf6'/><circle cx='12' cy='12' r='6.5' fill='none' stroke='%238b5cf6' stroke-width='1.5'/></svg>" type="image/svg+xml">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BunManage — Fund operations, unified | Bains Fund Management LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#07070a; --bg-1:#0b0b0f; --bg-2:#101015;
+  --s:#13131a; --s2:#1a1a24; --s3:#202030;
+  --ln:rgba(255,255,255,.055); --ln2:rgba(255,255,255,.09); --ln3:rgba(255,255,255,.15);
+  --ink:#eeeef3; --ink1:#c2c2cc; --ink2:#86868f; --ink3:#54545e; --ink4:#363640;
+  --v:#8b5cf6; --v1:#a78bfa; --v2:#c4b5fd; --vs:rgba(139,92,246,.1); --vr:rgba(139,92,246,.28);
+  --capital:#2dd4bf; --capital-s:rgba(45,212,191,.1); --capital-r:rgba(45,212,191,.25);
+  --talent:#f59e0b; --talent-s:rgba(245,158,11,.1); --talent-r:rgba(245,158,11,.25);
+  --cloud:#3b82f6; --cloud-s:rgba(59,130,246,.1); --cloud-r:rgba(59,130,246,.25);
+  --ops:#ef4444; --ops-s:rgba(239,68,68,.1); --ops-r:rgba(239,68,68,.25);
+  --pos:#22c55e; --neg:#ef4444; --warn:#f59e0b;
+  --f:'Geist',system-ui,sans-serif;
+  --mono:'Geist Mono',monospace;
+  --serif:'Instrument Serif',Georgia,serif;
+  --r4:4px; --r6:6px; --r8:8px; --r12:12px; --r16:16px; --r24:24px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:15px}
+body{background:var(--bg);color:var(--ink);font-family:var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:var(--f)}
+ul{list-style:none}
+input,select,textarea{font-family:var(--f)}
+
+/* ─────────────── PAGE ROUTER ─────────────── */
+.page{display:none;opacity:0;transition:opacity .25s ease}
+.page.active{display:block;opacity:1}
+
+/* ─────────────── NAV ─────────────── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;display:flex;align-items:center;padding:0 32px;transition:background .2s,border-color .2s,backdrop-filter .2s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(7,7,10,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-color:var(--ln)}
+.nav-inner{display:flex;align-items:center;width:100%;max-width:1180px;margin:0 auto;gap:0}
+.nav-logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15.5px;letter-spacing:-.02em;color:var(--ink)}
+.nav-logo svg{color:var(--v)}
+.nav-links{display:flex;gap:4px;margin-left:32px}
+.nav-links a{padding:5px 10px;border-radius:var(--r6);color:var(--ink2);font-size:13.5px;font-weight:500;transition:color .15s,background .15s}
+.nav-links a:hover{color:var(--ink);background:rgba(255,255,255,.04)}
+.nav-links a.active-link{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto}
+.nav-status{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink3);font-family:var(--mono);padding:4px 10px;border-radius:var(--r4);border:1px solid var(--ln);margin-right:6px}
+.status-dot{width:6px;height:6px;border-radius:50%;background:var(--pos);box-shadow:0 0 0 3px rgba(34,197,94,.15);animation:pulse-green 2s ease infinite}
+@keyframes pulse-green{0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,.15)}50%{box-shadow:0 0 0 5px rgba(34,197,94,.05)}}
+
+/* ─────────────── BUTTONS ─────────────── */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:0 14px;height:34px;border-radius:var(--r8);font-size:13.5px;font-weight:500;border:1px solid var(--ln2);background:var(--s);color:var(--ink1);transition:all .15s;white-space:nowrap}
+.btn:hover{background:var(--s2);border-color:var(--ln3);color:var(--ink)}
+.btn-ghost{background:transparent;border-color:transparent;color:var(--ink2)}
+.btn-ghost:hover{background:rgba(255,255,255,.04);border-color:transparent;color:var(--ink)}
+.btn-primary{background:var(--v);border-color:var(--v);color:#fff;box-shadow:0 0 0 0 rgba(139,92,246,0),0 1px 0 rgba(255,255,255,.15) inset;font-weight:600}
+.btn-primary:hover{background:#7c3aed;border-color:#7c3aed;box-shadow:0 0 24px rgba(139,92,246,.35),0 1px 0 rgba(255,255,255,.15) inset}
+.btn-lg{height:44px;padding:0 22px;font-size:14.5px;border-radius:var(--r12)}
+.btn-xl{height:52px;padding:0 28px;font-size:15px;border-radius:var(--r12)}
+.btn-outline{background:transparent;border-color:var(--ln3);color:var(--ink1)}
+.btn-outline:hover{background:rgba(255,255,255,.04);color:var(--ink)}
+
+/* ─────────────── HERO ─────────────── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 32px 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none}
+.hero-radial{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -5%,rgba(139,92,246,.18) 0%,transparent 65%)}
+.hero-grid-wrap{position:absolute;inset:0;overflow:hidden}
+.hero-grid-svg{width:100%;height:100%;opacity:.4}
+.hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 100%,var(--bg) 0%,transparent 70%)}
+.hero-inner{position:relative;z-index:1;max-width:980px;margin:0 auto}
+
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:4px 12px 4px 5px;border-radius:999px;background:rgba(255,255,255,.035);border:1px solid var(--ln2);font-size:12.5px;color:var(--ink2);margin-bottom:32px;cursor:pointer;transition:border-color .2s}
+.hero-badge:hover{border-color:var(--ln3)}
+.badge-pill{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;background:var(--vs);color:var(--v1);font-size:11.5px;font-weight:600;border:1px solid var(--vr)}
+
+.hero-h1{font-size:clamp(48px,8vw,96px);font-weight:700;line-height:.98;letter-spacing:-.04em;margin-bottom:24px}
+.hero-h1 .serif{font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:-.02em}
+.hero-h1 .dim{color:var(--ink3)}
+
+.hero-sub{font-size:clamp(15px,2vw,18px);color:var(--ink2);line-height:1.6;max-width:600px;margin:0 auto 36px}
+
+.hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.hero-proof{font-size:12px;color:var(--ink3);font-family:var(--mono);letter-spacing:.04em;display:flex;align-items:center;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:72px}
+.hero-proof span{display:flex;align-items:center;gap:5px}
+
+/* Animated word cycle */
+.word-cycle{position:relative;display:inline-block;color:var(--v1)}
+.word-cycle .word{position:absolute;top:0;left:50%;transform:translateX(-50%);white-space:nowrap;opacity:0;transition:opacity .4s}
+.word-cycle .word.active{position:relative;left:auto;transform:none;opacity:1}
+
+/* ─────────────── TICKER ─────────────── */
+.ticker-wrap{overflow:hidden;border-top:1px solid var(--ln);border-bottom:1px solid var(--ln);padding:12px 0;margin-bottom:0;background:var(--bg-1)}
+.ticker-track{display:flex;gap:48px;animation:ticker 30s linear infinite;width:max-content}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{display:flex;align-items:center;gap:9px;white-space:nowrap;font-size:12.5px;font-family:var(--mono);color:var(--ink3)}
+.ticker-pill{display:inline-flex;align-items:center;height:18px;padding:0 6px;border-radius:999px;font-size:10.5px;font-weight:600}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ─────────────── SECTION COMMONS ─────────────── */
+section{padding:100px 32px}
+.s-inner{max-width:1180px;margin:0 auto}
+.eyebrow{font-size:11px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;color:var(--v1);margin-bottom:14px}
+.s-title{font-size:clamp(28px,4vw,52px);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-bottom:16px}
+.s-sub{font-size:16px;color:var(--ink2);line-height:1.6;max-width:560px}
+
+/* ─────────────── PILLAR TABS ─────────────── */
+.pillar-tabs-wrap{background:var(--bg-1);border-top:1px solid var(--ln);border-bottom:1px solid var(--ln)}
+.pillar-tabs{display:flex;max-width:1180px;margin:0 auto;border-bottom:1px solid var(--ln)}
+.pillar-tab{flex:1;display:flex;align-items:center;justify-content:center;gap:9px;padding:18px 20px;font-size:13.5px;font-weight:500;color:var(--ink3);border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;border:none;background:none;font-family:var(--f)}
+.pillar-tab:hover{color:var(--ink2);background:rgba(255,255,255,.02)}
+.pillar-tab.active{color:var(--ink);border-bottom-color:var(--pc)}
+.pillar-tab .tab-dot{width:8px;height:8px;border-radius:50%;background:var(--pc);opacity:.5;transition:opacity .2s}
+.pillar-tab.active .tab-dot{opacity:1}
+.pillar-panels{max-width:1180px;margin:0 auto;padding:0 32px}
+.pillar-panel{display:none;padding:56px 0;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.pillar-panel.active{display:grid}
+.pillar-panel-left .pill-eyebrow{display:inline-flex;align-items:center;gap:7px;padding:4px 10px;border-radius:999px;border:1px solid var(--pc-r,var(--vr));background:var(--pc-s,var(--vs));color:var(--pc);font-size:11.5px;font-weight:500;margin-bottom:20px}
+.pillar-panel-left h3{font-size:clamp(24px,3.5vw,42px);font-weight:700;letter-spacing:-.028em;line-height:1.06;margin-bottom:14px}
+.pillar-panel-left p{font-size:15px;color:var(--ink2);line-height:1.65;margin-bottom:28px}
+.pillar-feats{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.pillar-feat{display:flex;gap:12px;align-items:flex-start}
+.pillar-feat-icon{width:28px;height:28px;border-radius:var(--r6);border:1px solid var(--pc-r,var(--vr));background:var(--pc-s,var(--vs));display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.pillar-feat-icon svg{color:var(--pc)}
+.pillar-feat h4{font-size:13.5px;font-weight:600;margin-bottom:3px}
+.pillar-feat p{font-size:12.5px;color:var(--ink2);line-height:1.55}
+.pillar-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid var(--ln);border-radius:var(--r12);overflow:hidden;background:var(--ln)}
+.pillar-stat{background:var(--s);padding:16px 18px}
+.pillar-stat-val{font-size:24px;font-weight:700;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.pillar-stat-label{font-size:11.5px;color:var(--ink3);margin-top:3px}
+
+/* Pillar visual mock */
+.pillar-visual{background:var(--s);border:1px solid var(--ln);border-radius:var(--r16);overflow:hidden}
+.pv-bar{padding:11px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--ln);background:var(--bg-2)}
+.pv-bar-dots{display:flex;gap:5px}
+.pv-bar-dots span{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.07)}
+.pv-bar-title{font-size:11.5px;color:var(--ink3);font-family:var(--mono);margin:0 auto}
+.pv-body{padding:18px}
+
+/* ─────────────── HOW IT WORKS ─────────────── */
+.spine{position:relative;display:grid;grid-template-columns:1fr 56px 1fr;gap:0;max-width:900px;margin:60px auto 0}
+.spine-line{grid-column:2;display:flex;flex-direction:column;align-items:center;gap:0}
+.spine-node{width:36px;height:36px;border-radius:50%;border:2px solid var(--v);background:var(--bg);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:600;color:var(--v1);flex-shrink:0;z-index:1}
+.spine-seg{flex:1;width:2px;background:linear-gradient(var(--v),rgba(139,92,246,.1));min-height:80px}
+.spine-seg-last{background:rgba(139,92,246,.1)}
+.spine-card{padding:20px 0 56px}
+.spine-card.right{padding-left:28px}
+.spine-card.left{padding-right:28px;text-align:right}
+.spine-card h3{font-size:18px;font-weight:700;letter-spacing:-.012em;margin-bottom:8px}
+.spine-card p{font-size:14px;color:var(--ink2);line-height:1.65}
+.spine-num{font-family:var(--mono);font-size:11px;color:var(--v1);margin-bottom:10px}
+
+/* ─────────────── METRICS ─────────────── */
+.metrics-band{background:var(--bg-1);border-top:1px solid var(--ln);border-bottom:1px solid var(--ln)}
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--ln)}
+.metric-card{background:var(--bg-1);padding:36px 32px;text-align:center;position:relative;overflow:hidden}
+.metric-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 130%,var(--mc,var(--vs)),transparent 60%);opacity:.5}
+.metric-num{font-size:clamp(36px,4vw,52px);font-weight:700;letter-spacing:-.04em;font-variant-numeric:tabular-nums;color:var(--mc-ink,var(--v1));position:relative;display:flex;align-items:baseline;gap:3px;justify-content:center}
+.metric-num sup{font-size:.45em;font-weight:600;margin-top:6px}
+.metric-num sub{font-size:.45em;font-weight:600}
+.metric-label{font-size:13.5px;color:var(--ink2);margin-top:6px;position:relative}
+.metric-sub{font-size:11.5px;color:var(--ink3);margin-top:4px;position:relative;font-family:var(--mono)}
+
+/* ─────────────── INTEGRATIONS ─────────────── */
+.integ-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;border:1px solid var(--ln);border-radius:var(--r16);overflow:hidden;background:var(--ln);margin-top:48px}
+.integ-card{background:var(--s);padding:20px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:default;transition:background .15s}
+.integ-card:hover{background:var(--s2)}
+.integ-logo{width:36px;height:36px;border-radius:var(--r8);background:var(--bg-2);display:flex;align-items:center;justify-content:center;border:1px solid var(--ln);font-size:18px}
+.integ-name{font-size:11.5px;font-weight:600;color:var(--ink2);text-align:center}
+.integ-cat{font-size:10px;color:var(--ink3);font-family:var(--mono)}
+
+/* ─────────────── COMPARISON TABLE ─────────────── */
+.comp-table{width:100%;border-collapse:collapse;margin-top:48px}
+.comp-table th{padding:12px 16px;text-align:center;font-size:12px;font-weight:600;color:var(--ink3);font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--ln)}
+.comp-table th:first-child{text-align:left}
+.comp-table th.featured{color:var(--v1);background:var(--vs);border-radius:var(--r8) var(--r8) 0 0}
+.comp-table td{padding:13px 16px;font-size:13.5px;border-bottom:1px solid rgba(255,255,255,.035);vertical-align:middle}
+.comp-table td:first-child{color:var(--ink2)}
+.comp-table td:not(:first-child){text-align:center}
+.comp-table tr:last-child td{border-bottom:none}
+.comp-table tr:hover td{background:rgba(255,255,255,.018)}
+.chk-yes{color:var(--pos);font-size:16px}
+.chk-no{color:var(--ink4);font-size:16px}
+.chk-part{color:var(--warn);font-size:13px}
+.comp-wrap{background:var(--s);border:1px solid var(--ln);border-radius:var(--r16);overflow:hidden}
+
+/* ─────────────── TESTIMONIALS ─────────────── */
+.testi-scroll{display:flex;gap:16px;overflow-x:auto;padding:4px 0 16px;scrollbar-width:none;margin-top:40px}
+.testi-scroll::-webkit-scrollbar{display:none}
+.testi-card{background:var(--s);border:1px solid var(--ln);border-radius:var(--r16);padding:28px;min-width:360px;max-width:380px;flex-shrink:0;display:flex;flex-direction:column;gap:0;transition:border-color .2s}
+.testi-card:hover{border-color:var(--ln3)}
+.testi-stars{color:var(--talent);font-size:14px;letter-spacing:3px;margin-bottom:16px}
+.testi-q{font-size:14px;color:var(--ink1);line-height:1.72;margin-bottom:20px;flex:1}
+.testi-q em{color:var(--ink);font-style:normal;font-weight:500}
+.testi-author{display:flex;align-items:center;gap:10px;padding-top:16px;border-top:1px solid var(--ln)}
+.testi-av{width:36px;height:36px;border-radius:50%;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--ln2)}
+.testi-info .name{font-size:13.5px;font-weight:600}
+.testi-info .role{font-size:12px;color:var(--ink3)}
+.testi-tier{margin-left:auto;display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;font-size:10.5px;font-weight:600;flex-shrink:0}
+
+/* ─────────────── PRICING ─────────────── */
+.price-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;align-items:start}
+.price-card{background:var(--s);border:1px solid var(--ln);border-radius:var(--r16);padding:28px;display:flex;flex-direction:column;gap:0;position:relative;transition:border-color .2s}
+.price-card:hover{border-color:var(--ln3)}
+.price-card.popular{border-color:var(--vr);background:linear-gradient(160deg,rgba(139,92,246,.07) 0%,var(--s) 40%)}
+.popular-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;height:22px;padding:0 10px;border-radius:999px;background:var(--v);color:#fff;font-size:11px;font-weight:700;letter-spacing:.04em;white-space:nowrap}
+.price-tier{font-size:11px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-bottom:8px}
+.price-name{font-size:22px;font-weight:700;letter-spacing:-.015em;margin-bottom:6px}
+.price-desc{font-size:13px;color:var(--ink2);line-height:1.55;margin-bottom:24px;min-height:42px}
+.price-amount-row{display:flex;align-items:baseline;gap:4px;margin-bottom:4px}
+.price-amount{font-size:48px;font-weight:700;letter-spacing:-.04em;font-variant-numeric:tabular-nums;line-height:1}
+.price-mo{font-size:15px;color:var(--ink3)}
+.price-billed{font-size:12px;color:var(--ink3);margin-bottom:24px;font-family:var(--mono)}
+.price-cta-btn{display:flex;align-items:center;justify-content:center;height:42px;border-radius:var(--r12);font-size:14px;font-weight:600;margin-bottom:24px;transition:all .15s;cursor:pointer;border:1px solid var(--ln2);background:var(--s2);color:var(--ink)}
+.price-cta-btn:hover{background:var(--s3);border-color:var(--ln3)}
+.price-cta-btn.primary-cta{background:var(--v);border-color:var(--v);color:#fff;box-shadow:0 4px 20px rgba(139,92,246,.3)}
+.price-cta-btn.primary-cta:hover{background:#7c3aed;box-shadow:0 6px 28px rgba(139,92,246,.4)}
+.price-cta-btn.outline-cta{border-color:var(--vr);color:var(--v1);background:var(--vs)}
+.price-cta-btn.outline-cta:hover{background:rgba(139,92,246,.18)}
+.price-divider{height:1px;background:var(--ln);margin-bottom:20px}
+.price-features{display:flex;flex-direction:column;gap:10px}
+.price-feature{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--ink2);line-height:1.45}
+.price-feature svg{flex-shrink:0;margin-top:1px}
+.billing-toggle-row{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:32px}
+.toggle-label{font-size:13.5px;color:var(--ink2)}
+.toggle-label.active-label{color:var(--ink);font-weight:500}
+.toggle-switch{width:44px;height:24px;border-radius:999px;background:var(--s2);border:1px solid var(--ln2);position:relative;cursor:pointer;transition:background .2s}
+.toggle-switch.on{background:var(--v)}
+.toggle-knob{position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.toggle-switch.on .toggle-knob{transform:translateX(20px)}
+.save-badge{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:var(--vs);border:1px solid var(--vr);color:var(--v1);font-size:11px;font-weight:600}
+
+/* ─────────────── FAQ ─────────────── */
+.faq-list{display:flex;flex-direction:column;gap:0;margin-top:40px;border:1px solid var(--ln);border-radius:var(--r16);overflow:hidden}
+.faq-item{border-bottom:1px solid var(--ln);background:var(--s)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;cursor:pointer;font-size:15px;font-weight:500;gap:16px;transition:background .15s}
+.faq-q:hover{background:var(--s2)}
+.faq-icon{flex-shrink:0;width:20px;height:20px;border-radius:999px;border:1px solid var(--ln2);display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--vs);border-color:var(--vr)}
+.faq-icon svg{color:var(--ink2);transition:color .2s}
+.faq-item.open .faq-icon svg{color:var(--v1)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .32s cubic-bezier(.4,0,.2,1)}
+.faq-a-inner{padding:0 24px 20px;font-size:14px;color:var(--ink2);line-height:1.7}
+
+/* ─────────────── FINAL CTA ─────────────── */
+.final{position:relative;overflow:hidden;text-align:center;padding:120px 32px}
+.final-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(139,92,246,.09) 0%,transparent 70%)}
+.final-inner{position:relative;z-index:1;max-width:720px;margin:0 auto}
+.final h2{font-size:clamp(36px,5.5vw,68px);font-weight:700;letter-spacing:-.038em;line-height:1.02;margin-bottom:18px}
+.final h2 .serif{font-family:var(--serif);font-style:italic;font-weight:400}
+.final p{font-size:17px;color:var(--ink2);margin-bottom:36px;line-height:1.6}
+.final-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ─────────────── FOOTER ─────────────── */
+footer{border-top:1px solid var(--ln);padding:64px 32px 40px;background:var(--bg-1)}
+.footer-inner{max-width:1180px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr 1fr;gap:48px;margin-bottom:52px}
+.footer-brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15.5px;letter-spacing:-.02em;margin-bottom:12px}
+.footer-brand svg{color:var(--v)}
+.footer-tagline{font-size:13px;color:var(--ink3);line-height:1.6;max-width:220px;margin-bottom:20px}
+.footer-socials{display:flex;gap:10px}
+.footer-social{width:32px;height:32px;border-radius:var(--r6);border:1px solid var(--ln2);background:var(--s);display:flex;align-items:center;justify-content:center;color:var(--ink3);transition:all .15s}
+.footer-social:hover{border-color:var(--ln3);color:var(--ink);background:var(--s2)}
+.footer-col-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ink3);margin-bottom:14px}
+.footer-links{display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:13.5px;color:var(--ink2);transition:color .15s}
+.footer-links a:hover{color:var(--ink)}
+.footer-bottom{display:flex;align-items:center;flex-wrap:wrap;gap:16px;padding-top:24px;border-top:1px solid var(--ln);font-size:12px;color:var(--ink3)}
+.footer-compliance{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap}
+.comp-tag{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:999px;font-size:10.5px;font-weight:500}
+
+/* ─────────────── INTAKE PAGE ─────────────── */
+.intake-page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 32px}
+.intake-shell{width:100%;max-width:580px;margin:0 auto}
+.intake-progress{display:flex;gap:4px;margin-bottom:40px}
+.intake-prog-bar{flex:1;height:3px;border-radius:999px;background:var(--ln2);transition:background .3s}
+.intake-prog-bar.filled{background:var(--v)}
+.intake-step{display:none}
+.intake-step.active{display:block}
+.intake-step-num{font-family:var(--mono);font-size:11px;color:var(--ink3);margin-bottom:8px}
+.intake-q{font-size:clamp(22px,4vw,32px);font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:8px}
+.intake-hint{font-size:14px;color:var(--ink2);margin-bottom:32px;line-height:1.5}
+.intake-opts{display:flex;flex-direction:column;gap:10px}
+.intake-opt{display:flex;align-items:center;gap:14px;padding:16px 18px;border:1px solid var(--ln2);border-radius:var(--r12);cursor:pointer;transition:all .15s;font-size:14px;font-weight:500;background:var(--s)}
+.intake-opt:hover{border-color:var(--ln3);background:var(--s2)}
+.intake-opt.selected{border-color:var(--vr);background:var(--vs);color:var(--v1)}
+.intake-opt-icon{width:34px;height:34px;border-radius:var(--r8);display:flex;align-items:center;justify-content:center;background:var(--bg-2);border:1px solid var(--ln);flex-shrink:0;font-size:16px}
+.intake-opt.selected .intake-opt-icon{background:var(--vs);border-color:var(--vr)}
+.intake-opt-check{width:18px;height:18px;border-radius:50%;border:1px solid var(--ln2);margin-left:auto;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.intake-opt.selected .intake-opt-check{background:var(--v);border-color:var(--v)}
+.intake-actions{display:flex;align-items:center;gap:12px;margin-top:28px}
+.intake-back{font-size:13.5px;color:var(--ink3);cursor:pointer;transition:color .15s;background:none;border:none;font-family:var(--f)}
+.intake-back:hover{color:var(--ink2)}
+
+/* intake result */
+.intake-result{text-align:center}
+.result-icon{width:64px;height:64px;border-radius:50%;background:var(--vs);border:1px solid var(--vr);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.result-rec{display:flex;flex-direction:column;gap:8px;border:1px solid var(--vr);background:var(--vs);border-radius:var(--r12);padding:20px;margin:20px 0 28px;text-align:left}
+.result-rec-label{font-size:11px;font-family:var(--mono);color:var(--v1);text-transform:uppercase;letter-spacing:.1em}
+.result-rec-val{font-size:18px;font-weight:700}
+.result-pillars{display:flex;gap:6px;flex-wrap:wrap}
+.result-pillar-tag{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:600;border:1px solid transparent}
+
+/* ─────────────── DOCS PAGE ─────────────── */
+.docs-page{padding-top:58px;display:flex;min-height:100vh}
+.docs-sidebar{width:240px;min-width:240px;border-right:1px solid var(--ln);padding:24px 0;position:sticky;top:58px;height:calc(100vh - 58px);overflow-y:auto;flex-shrink:0;background:var(--bg-1)}
+.docs-sidebar-section{margin-bottom:24px}
+.docs-sidebar-title{font-size:10px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;color:var(--ink3);padding:0 20px 8px}
+.docs-sidebar-link{display:flex;align-items:center;gap:9px;padding:7px 20px;font-size:13.5px;color:var(--ink2);transition:color .15s,background .15s;cursor:pointer;border-left:2px solid transparent}
+.docs-sidebar-link:hover{color:var(--ink);background:rgba(255,255,255,.02)}
+.docs-sidebar-link.active{color:var(--v1);border-left-color:var(--v);background:var(--vs)}
+.docs-main{flex:1;padding:40px 56px;max-width:800px}
+.docs-right{width:220px;min-width:220px;padding:40px 24px;position:sticky;top:58px;height:calc(100vh - 58px);overflow-y:auto;border-left:1px solid var(--ln)}
+.docs-h1{font-size:36px;font-weight:700;letter-spacing:-.025em;margin-bottom:8px}
+.docs-lead{font-size:16px;color:var(--ink2);line-height:1.65;margin-bottom:32px}
+.docs-breadcrumb{font-size:12px;color:var(--ink3);font-family:var(--mono);margin-bottom:16px;display:flex;align-items:center;gap:6px}
+.docs-code{background:var(--s);border:1px solid var(--ln);border-radius:var(--r8);padding:16px 20px;font-family:var(--mono);font-size:13px;color:var(--ink1);line-height:1.7;margin:16px 0;overflow-x:auto}
+.docs-code .kw{color:var(--v1)} .docs-code .str{color:var(--capital)} .docs-code .cmt{color:var(--ink3)} .docs-code .fn{color:var(--talent)} .docs-code .num{color:var(--cloud)}
+.docs-h2{font-size:22px;font-weight:700;letter-spacing:-.015em;margin:36px 0 12px}
+.docs-p{font-size:14px;color:var(--ink2);line-height:1.75;margin-bottom:14px}
+.docs-callout{background:var(--vs);border:1px solid var(--vr);border-radius:var(--r8);padding:14px 18px;font-size:13.5px;color:var(--ink1);line-height:1.6;margin:16px 0;display:flex;gap:10px}
+.docs-callout svg{flex-shrink:0;margin-top:1px;color:var(--v1)}
+.docs-toc-title{font-size:11px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--ink3);margin-bottom:12px}
+.docs-toc-link{display:block;font-size:12.5px;color:var(--ink3);padding:4px 0;transition:color .15s;cursor:pointer}
+.docs-toc-link:hover{color:var(--ink2)}
+.docs-endpoint-row{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--s);border:1px solid var(--ln);border-radius:var(--r8);margin:8px 0;font-family:var(--mono);font-size:12.5px}
+.method-badge{display:inline-flex;align-items:center;height:20px;padding:0 7px;border-radius:var(--r4);font-size:10.5px;font-weight:700}
+.method-get{background:rgba(34,197,94,.12);color:var(--pos)}
+.method-post{background:rgba(59,130,246,.12);color:var(--cloud)}
+.method-del{background:rgba(239,68,68,.12);color:var(--neg)}
+
+/* ─────────────── REVEAL ANIMATIONS ─────────────── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-24px);transition:opacity .6s ease,transform .6s ease}
+.reveal-left.in{opacity:1;transform:none}
+.reveal-right{opacity:0;transform:translateX(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal-right.in{opacity:1;transform:none}
+.stagger-1{transition-delay:.05s}.stagger-2{transition-delay:.12s}.stagger-3{transition-delay:.19s}
+.stagger-4{transition-delay:.26s}.stagger-5{transition-delay:.33s}.stagger-6{transition-delay:.4s}
+
+/* ─────────────── FADE IN HERO ─────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.hero-anim-1{animation:fadeUp .7s ease .1s both}
+.hero-anim-2{animation:fadeUp .7s ease .22s both}
+.hero-anim-3{animation:fadeUp .7s ease .36s both}
+.hero-anim-4{animation:fadeUp .7s ease .5s both}
+.hero-anim-5{animation:fadeUp .7s ease .64s both}
+.hero-anim-6{animation:fadeUp .9s ease .78s both}
+
+/* ─────────────── RESPONSIVE ─────────────── */
+@media(max-width:1040px){.footer-top{grid-template-columns:1fr 1fr 1fr}.footer-top>:first-child{grid-column:1/-1}.metrics-grid{grid-template-columns:1fr 1fr}.pillar-panel{grid-template-columns:1fr}.pillar-panels{padding:0 20px}.docs-right{display:none}.integ-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:768px){.price-wrap{grid-template-columns:1fr}.pillar-tabs{overflow-x:auto}.pillar-tab{min-width:140px}.nav-links{display:none}.spine{grid-template-columns:1fr;gap:16px}.spine-line{display:none}.spine-card.left{text-align:left}.footer-top{grid-template-columns:1fr 1fr}.docs-sidebar{display:none}.docs-page{display:block}.docs-main{padding:24px 20px}.integ-grid{grid-template-columns:repeat(3,1fr)}.metrics-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.integ-grid{grid-template-columns:repeat(2,1fr)}.metrics-grid{grid-template-columns:1fr 1fr}}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "BunManage",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "description": "Fund operations platform for capital allocators. Capital, talent, cloud, and ops on one audit-grade ledger.",
+  "url": "https://www.bunmanage.com",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bains Fund Management LLC",
+    "url": "https://www.bunmanage.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "299",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#" onclick="showPage('home')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10.5" stroke="currentColor" stroke-opacity=".3" stroke-width="1"/>
+        <path d="M12 1.5v21M1.5 12h21M4.39 4.39l15.22 15.22M19.61 4.39L4.39 19.61" stroke="currentColor" stroke-opacity=".25" stroke-width=".75"/>
+        <circle cx="12" cy="12" r="3.5" fill="currentColor"/>
+        <circle cx="12" cy="12" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      BunManage
+    </a>
+    <div class="nav-links">
+      <a href="#" onclick="showPage('home');scrollTo('#pillars')" class="active-link">Platform</a>
+      <a href="#" onclick="showPage('home');scrollTo('#how')">How it works</a>
+      <a href="#" onclick="showPage('home');scrollTo('#customers')">Customers</a>
+      <a href="#" onclick="showPage('home');scrollTo('#pricing')">Pricing</a>
+      <a href="#" onclick="showPage('docs')">Docs</a>
+    </div>
+    <div class="nav-right">
+      <div class="nav-status"><span class="status-dot"></span> All systems operational</div>
+      <a href="#" class="btn btn-ghost" onclick="return false">Sign in</a>
+      <a href="#" class="btn btn-primary" onclick="showPage('intake');return false">Get started →</a>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-nav-drawer" id="mobileDrawer">
+  <a href="#" onclick="closeMobileMenu();showPage('home')">Home</a>
+  <a href="#" onclick="closeMobileMenu();showPage('home');scrollTo('#pillars')">Platform</a>
+  <a href="#" onclick="closeMobileMenu();showPage('home');scrollTo('#how')">How it works</a>
+  <a href="#" onclick="closeMobileMenu();showPage('home');scrollTo('#customers')">Customers</a>
+  <a href="#" onclick="closeMobileMenu();showPage('home');scrollTo('#pricing')">Pricing</a>
+  <a href="#" onclick="closeMobileMenu();showPage('docs')">Docs</a>
+  <a href="#" class="mobile-cta" onclick="closeMobileMenu();showPage('intake')">Get started →</a>
+</div>
+
+<!-- ═══════════════ HOME PAGE ═══════════════ -->
+<div class="page active" id="page-home">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-radial"></div>
+    <div class="hero-grid-wrap">
+      <svg class="hero-grid-svg" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="heroGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+            <path d="M 32 0 L 0 0 0 32" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#heroGrid)"/>
+      </svg>
+    </div>
+    <div class="hero-vignette"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge hero-anim-1" onclick="showPage('home');scrollTo('#metrics')">
+      <span class="badge-pill">$2.4B</span>
+      routed through BunManage last quarter →
+    </div>
+    <h1 class="hero-h1 hero-anim-2">
+      Fund operations,<br>
+      <span class="serif">capital, talent,</span><br>
+      <span class="serif">cloud &amp; ops.</span>
+    </h1>
+    <p class="hero-sub hero-anim-3">
+      Fund managers and capital operators outgrow spreadsheets, McLeod, and QuickBooks. BunManage unifies your capital flows, talent, infrastructure, and operations on one audit-grade ledger.
+    </p>
+    <div class="hero-btns hero-anim-4">
+      <button class="btn btn-primary btn-xl" onclick="showPage('intake')">Start the 4-question intake →</button>
+      <button class="btn btn-ghost btn-lg" onclick="scrollTo('#how')">Watch 90-sec tour</button>
+    </div>
+    <div class="hero-proof hero-anim-5">
+      <span>● SOC 2 Type II</span>
+      <span>● GDPR compliant</span>
+      <span>● HIPAA-ready</span>
+      <span>● Postgres-native</span>
+      <span>● 99.99% uptime SLA</span>
+    </div>
+
+    <!-- MINI APP MOCK -->
+    <div class="hero-anim-6" style="border-radius:16px;overflow:hidden;border:1px solid var(--ln2);box-shadow:0 40px 120px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.05);max-width:1000px;margin:0 auto">
+      <div style="background:var(--bg-2);padding:10px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--ln)">
+        <div style="display:flex;gap:5px"><span style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.08)"></span><span style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.08)"></span><span style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.08)"></span></div>
+        <div style="flex:1;max-width:280px;margin:0 auto;height:22px;background:var(--bg);border:1px solid var(--ln);border-radius:999px;display:flex;align-items:center;justify-content:center;gap:6px;font-family:var(--mono);font-size:10.5px;color:var(--ink3)">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          app.bunmanage.io/atlas
+        </div>
+      </div>
+      <div style="display:flex;height:480px;background:var(--bg)">
+        <!-- sidebar -->
+        <div style="width:180px;min-width:180px;background:var(--bg-1);border-right:1px solid var(--ln);padding:12px 8px;display:flex;flex-direction:column;gap:2px">
+          <div style="display:flex;align-items:center;gap:8px;padding:6px 8px 12px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="color:var(--v)"><circle cx="12" cy="12" r="3.5" fill="currentColor"/><circle cx="12" cy="12" r="6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+            <span style="font-weight:700;font-size:13px">BunManage</span>
+            <span style="margin-left:auto;background:var(--vs);color:var(--v1);border:1px solid var(--vr);border-radius:999px;font-size:9px;font-weight:700;padding:1px 5px">Atlas</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;background:rgba(255,255,255,.05);color:var(--ink);font-size:12px;border-left:2px solid var(--v);margin-left:-8px;padding-left:14px">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l9 5-9 5-9-5 9-5zm-9 9l9 5 9-5M3 16l9 5 9-5"/></svg> Atlas
+          </div>
+          <div style="padding:8px 8px 4px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3)">Pillars</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;color:var(--ink2);font-size:12px">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--capital)" stroke-width="1.5"><path d="M3 12h18M7 7l-4 5 4 5M17 7l4 5-4 5"/></svg> Capital
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;color:var(--ink2);font-size:12px">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--talent)" stroke-width="1.5"><path d="M12 12a4 4 0 100-8 4 4 0 000 8zm-7 9a7 7 0 0114 0"/></svg> Talent
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;color:var(--ink2);font-size:12px">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--cloud)" stroke-width="1.5"><path d="M7 18a5 5 0 010-10 6 6 0 0111-2 4.5 4.5 0 011 8.9"/></svg> Cloud
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;color:var(--ink2);font-size:12px">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ops)" stroke-width="1.5"><path d="M3 7l9-4 9 4-9 4-9-4zm0 5l9 4 9-4M3 17l9 4 9-4"/></svg> Ops
+          </div>
+          <div style="margin-top:auto;display:flex;align-items:center;gap:6px;padding:6px 8px;font-size:11.5px;color:var(--ink3)">
+            <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#312e81,#1e1b4b);border:1px solid var(--ln2);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#a78bfa">GK</div>
+            Gee K.
+          </div>
+        </div>
+        <!-- main -->
+        <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+          <div style="height:42px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--ln)">
+            <span style="font-size:11px;color:var(--ink3)">Galleon AM</span>
+            <span style="color:var(--ink3);font-size:11px">/</span>
+            <span style="font-size:11px">Atlas</span>
+            <div style="flex:1;max-width:300px;margin-left:8px;height:24px;background:var(--bg-2);border:1px solid var(--ln);border-radius:6px;display:flex;align-items:center;padding:0 8px;gap:8px">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              <span style="font-size:10.5px;color:var(--ink3)">Search or run command…</span>
+              <span style="margin-left:auto;font-family:var(--mono);font-size:9px;color:var(--ink3);background:rgba(255,255,255,.04);padding:1px 4px;border-radius:3px;border:1px solid var(--ln2)">⌘K</span>
+            </div>
+            <div style="margin-left:auto;display:flex;gap:6px;align-items:center">
+              <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#312e81,#1e1b4b);border:1px solid var(--ln2);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#a78bfa;flex-shrink:0">GK</div>
+            </div>
+          </div>
+          <div style="flex:1;padding:14px 16px;display:flex;flex-direction:column;gap:12px;overflow:hidden">
+            <div style="font-size:11px;color:var(--ink3);font-family:var(--mono)">Today · Galleon AM · Atlas overview</div>
+            <!-- KPIs -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+              <div style="background:var(--s);border:1px solid var(--ln);border-radius:10px;padding:11px 13px">
+                <div style="font-size:9.5px;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Capital · 7d</div>
+                <div style="font-size:18px;font-weight:700;letter-spacing:-.02em;color:var(--capital)">$1.84M</div>
+                <div style="font-size:10px;color:var(--pos);margin-top:2px">+8.2% vs prior</div>
+              </div>
+              <div style="background:var(--s);border:1px solid var(--ln);border-radius:10px;padding:11px 13px">
+                <div style="font-size:9.5px;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">Engagements</div>
+                <div style="font-size:18px;font-weight:700;letter-spacing:-.02em;color:var(--talent)">42 open</div>
+                <div style="font-size:10px;color:var(--pos);margin-top:2px">+3 this week</div>
+              </div>
+              <div style="background:var(--s);border:1px solid var(--ln);border-radius:10px;padding:11px 13px">
+                <div style="font-size:9.5px;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">API reqs · 7d</div>
+                <div style="font-size:18px;font-weight:700;letter-spacing:-.02em;color:var(--cloud)">11.2M</div>
+                <div style="font-size:10px;color:var(--pos);margin-top:2px">+22% growth</div>
+              </div>
+              <div style="background:var(--s);border:1px solid var(--ln);border-radius:10px;padding:11px 13px">
+                <div style="font-size:9.5px;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">On-time · ops</div>
+                <div style="font-size:18px;font-weight:700;letter-spacing:-.02em;color:var(--ops)">96.4%</div>
+                <div style="font-size:10px;color:var(--warn);margin-top:2px">-0.6% vs last wk</div>
+              </div>
+            </div>
+            <!-- Charts row -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;flex:1">
+              <div style="background:var(--s);border:1px solid var(--ln);border-radius:10px;padding:10px;overflow:hidden">
+                <div style="font-size:10px;font-weight:600;color:var(--capital);margin-bottom:6px;display:flex;align-items:center;gap:5px"><span style="width:5px;height:5px;border-radius:50%;background:var(--capital)"></span>Capital</div>
+                <svg width="100%" height="60" viewBox="0 0 120 60" preserveAspectRatio="none"><defs><linearGradient id="cg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2dd4bf" stop-opacity=".3"/><stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/></linearGradient></defs><path d="M0 50 L15 42 L30 45 L45 32 L60 36 L75 22 L90 28 L105 15 L120 19" fill="none" stroke="var(--capital)" stroke-width="2"/><path d="M0 50 L15 42 L30 45 L45 32 L60 36 L75 22 L90 28 L105 15 L120 19 L120 60 L0 60Z" fill="url(#cg1)"/></svg>
+                <div style="font-size:9.5px;color:var(--ink3);margin-top:4px">INV-3041 settled · ACH batch sent</div>
+              </div>
+              <div style="background:var(--s);border:1px solid var(--ln);border-radius:10px;padding:10px;overflow:hidden">
+                <div style="font-size:10px;font-weight:600;color:var(--talent);margin-bottom:6px;display:flex;align-items:center;gap:5px"><span style="width:5px;height:5px;border-radius:50%;background:var(--talent)"></span>Talent</div>
+                <svg width="100%" height="60" viewBox="0 0 120 60" preserveAspectRatio="none"><defs><linearGradient id="cg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f59e0b" stop-opacity=".3"/><stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/></linearGradient></defs><path d="M0 40 L15 35 L30 38 L45 28 L60 32 L75 25 L90 30 L105 20 L120 24" fill="none" stroke="var(--talent)" stroke-width="2"/><path d="M0 40 L15 35 L30 38 L45 28 L60 32 L75 25 L90 30 L105 20 L120 24 L120 60 L0 60Z" fill="url(#cg2)"/></svg>
+                <div style="font-size:9.5px;color:var(--ink3);margin-top:4px">9 open briefs · Stratus M2 approved</div>
+              </div>
+              <div style="background:var(--s);border:1px solid var(--ln);border-radius:10px;padding:10px;overflow:hidden">
+                <div style="font-size:10px;font-weight:600;color:var(--cloud);margin-bottom:6px;display:flex;align-items:center;gap:5px"><span style="width:5px;height:5px;border-radius:50%;background:var(--cloud)"></span>Cloud</div>
+                <svg width="100%" height="60" viewBox="0 0 120 60" preserveAspectRatio="none"><defs><linearGradient id="cg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity=".3"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/></linearGradient></defs><path d="M0 55 L15 48 L30 50 L45 40 L60 42 L75 30 L90 33 L105 18 L120 22" fill="none" stroke="var(--cloud)" stroke-width="2"/><path d="M0 55 L15 48 L30 50 L45 40 L60 42 L75 30 L90 33 L105 18 L120 22 L120 60 L0 60Z" fill="url(#cg3)"/></svg>
+                <div style="font-size:9.5px;color:var(--ink3);margin-top:4px">184 tenants · Webhook backlog</div>
+              </div>
+              <div style="background:var(--s);border:1px solid var(--ln);border-radius:10px;padding:10px;overflow:hidden">
+                <div style="font-size:10px;font-weight:600;color:var(--ops);margin-bottom:6px;display:flex;align-items:center;gap:5px"><span style="width:5px;height:5px;border-radius:50%;background:var(--ops)"></span>Ops</div>
+                <svg width="100%" height="60" viewBox="0 0 120 60" preserveAspectRatio="none"><defs><linearGradient id="cg4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ef4444" stop-opacity=".3"/><stop offset="100%" stop-color="#ef4444" stop-opacity="0"/></linearGradient></defs><path d="M0 25 L15 28 L30 26 L45 30 L60 28 L75 34 L90 31 L105 36 L120 34" fill="none" stroke="var(--ops)" stroke-width="2"/><path d="M0 25 L15 28 L30 26 L45 30 L60 28 L75 34 L90 31 L105 36 L120 34 L120 60 L0 60Z" fill="url(#cg4)"/></svg>
+                <div style="font-size:9.5px;color:var(--neg);margin-top:4px">T-411 detained · 318 loads live</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="tickerTrack">
+    <div class="ticker-item"><span class="ticker-pill" style="background:var(--capital-s);color:var(--capital);border:1px solid var(--capital-r)">Capital</span> INV-3041 settled · $48,200</div>
+    <div class="ticker-item"><span class="ticker-pill" style="background:var(--talent-s);color:var(--talent);border:1px solid var(--talent-r)">Talent</span> Stratus M2 engagement approved</div>
+    <div class="ticker-item"><span class="ticker-pill" style="background:var(--cloud-s);color:var(--cloud);border:1px solid var(--cloud-r)">Cloud</span> Tenant Galleon provisioned — 19m</div>
+    <div class="ticker-item"><span class="ticker-pill" style="background:var(--ops-s);color:var(--ops);border:1px solid var(--ops-r)">Ops</span> PO-4198 delivered on time</div>
+    <div class="ticker-item"><span class="ticker-pill" style="background:var(--capital-s);color:var(--capital);border:1px solid var(--capital-r)">Capital</span> ACH batch processed · 12 vendors</div>
+    <div class="ticker-item"><span class="ticker-pill" style="background:var(--talent-s);color:var(--talent);border:1px solid var(--talent-r)">Talent</span> ELD audit matched 3 candidates</div>
+    <div class="ticker-item"><span class="ticker-pill" style="background:var(--cloud-s);color:var(--cloud);border:1px solid var(--cloud-r)">Cloud</span> Pipeline daily run · 91s avg</div>
+    <div class="ticker-item"><span class="ticker-pill" style="background:var(--ops-s);color:var(--ops);border:1px solid var(--ops-r)">Ops</span> Stratus Capital LLC vendor onboarded</div>
+    <div class="ticker-item"><span class="ticker-pill" style="background:var(--capital-s);color:var(--capital);border:1px solid var(--capital-r)">Capital</span> INV-3041 settled · $48,200</div>
+    <div class="ticker-item"><span class="ticker-pill" style="background:var(--talent-s);color:var(--talent);border:1px solid var(--talent-r)">Talent</span> Stratus M2 engagement approved</div>
+    <div class="ticker-item"><span class="ticker-pill" style="background:var(--cloud-s);color:var(--cloud);border:1px solid var(--cloud-r)">Cloud</span> Tenant Galleon provisioned — 19m</div>
+    <div class="ticker-item"><span class="ticker-pill" style="background:var(--ops-s);color:var(--ops);border:1px solid var(--ops-r)">Ops</span> PO-4198 delivered on time</div>
+    <div class="ticker-item"><span class="ticker-pill" style="background:var(--capital-s);color:var(--capital);border:1px solid var(--capital-r)">Capital</span> ACH batch processed · 12 vendors</div>
+    <div class="ticker-item"><span class="ticker-pill" style="background:var(--talent-s);color:var(--talent);border:1px solid var(--talent-r)">Talent</span> ELD audit matched 3 candidates</div>
+    <div class="ticker-item"><span class="ticker-pill" style="background:var(--cloud-s);color:var(--cloud);border:1px solid var(--cloud-r)">Cloud</span> Pipeline daily run · 91s avg</div>
+    <div class="ticker-item"><span class="ticker-pill" style="background:var(--ops-s);color:var(--ops);border:1px solid var(--ops-r)">Ops</span> Stratus Capital LLC vendor onboarded</div>
+  </div>
+</div>
+
+<!-- METRICS BAND -->
+<div class="metrics-band" id="metrics">
+  <div class="metrics-grid">
+    <div class="metric-card" style="--mc:var(--capital-s);--mc-ink:var(--capital)">
+      <div class="metric-num"><span class="counter" data-target="2.4" data-suffix="B" data-prefix="$">$0B</span></div>
+      <div class="metric-label">AUM routed last quarter</div>
+      <div class="metric-sub">across all fund vehicles</div>
+    </div>
+    <div class="metric-card" style="--mc:var(--talent-s);--mc-ink:var(--talent)">
+      <div class="metric-num"><span class="counter" data-target="2000" data-suffix="+" data-prefix="">0</span></div>
+      <div class="metric-label">Vetted specialists</div>
+      <div class="metric-sub">avg match 1.4 business days</div>
+    </div>
+    <div class="metric-card" style="--mc:var(--cloud-s);--mc-ink:var(--cloud)">
+      <div class="metric-num"><span class="counter" data-target="20" data-suffix=" min" data-prefix="<">0</span></div>
+      <div class="metric-label">Fund entity live</div>
+      <div class="metric-sub">new vehicle onboarding</div>
+    </div>
+    <div class="metric-card" style="--mc:var(--ops-s);--mc-ink:var(--ops)">
+      <div class="metric-num"><span class="counter" data-target="99.99" data-suffix="%" data-prefix="">0</span></div>
+      <div class="metric-label">Uptime SLA</div>
+      <div class="metric-sub">Atlas tier guarantee</div>
+    </div>
+  </div>
+</div>
+
+<!-- PILLAR SECTION -->
+<div id="pillars">
+  <div style="max-width:1180px;margin:0 auto;padding:80px 32px 32px">
+    <div class="eyebrow reveal">The platform</div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px">
+      <h2 class="s-title reveal" style="margin:0">Four pillars. One router.</h2>
+      <p class="reveal" style="font-size:14px;color:var(--ink2);max-width:400px;line-height:1.6;text-align:right">Pick one to start. Snap on the others when ready. Everything shares the same ledger, RBAC, and Cmd+K surface.</p>
+    </div>
+  </div>
+  <div class="pillar-tabs-wrap">
+    <div class="pillar-tabs s-inner" style="max-width:1180px;padding:0 32px">
+      <button class="pillar-tab active" style="--pc:var(--capital)" onclick="switchPillar('capital',this)">
+        <span class="tab-dot"></span> Capital
+      </button>
+      <button class="pillar-tab" style="--pc:var(--talent)" onclick="switchPillar('talent',this)">
+        <span class="tab-dot"></span> Talent
+      </button>
+      <button class="pillar-tab" style="--pc:var(--cloud)" onclick="switchPillar('cloud',this)">
+        <span class="tab-dot"></span> Cloud
+      </button>
+      <button class="pillar-tab" style="--pc:var(--ops)" onclick="switchPillar('ops',this)">
+        <span class="tab-dot"></span> Ops
+      </button>
+    </div>
+  </div>
+  <div class="pillar-panels">
+    <!-- CAPITAL -->
+    <div class="pillar-panel active" id="panel-capital">
+      <div class="pillar-panel-left" style="--pc:var(--capital);--pc-s:var(--capital-s);--pc-r:var(--capital-r)">
+        <div class="pill-eyebrow"><span style="width:7px;height:7px;border-radius:50%;background:var(--capital)"></span> Financial infrastructure</div>
+        <h3>Payment routing, reconciliation, and live liquidity — in one ledger.</h3>
+        <p>Stop stitching together QuickBooks, your bank portal, and a spreadsheet. BunManage Capital is the financial operating layer for mid-market operators who move serious money.</p>
+        <div class="pillar-feats">
+          <div class="pillar-feat">
+            <div class="pillar-feat-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 12h18M7 7l-4 5 4 5M17 7l4 5-4 5"/></svg></div>
+            <div><h4>Smart routing rules</h4><p>Route wire → ACH → batch automatically based on amount, vendor tier, country, and cut-off windows. No manual intervention.</p></div>
+          </div>
+          <div class="pillar-feat">
+            <div class="pillar-feat-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 14l-4-4 4-4M15 10l4 4-4 4M9 10h6"/></svg></div>
+            <div><h4>Auto-reconciliation</h4><p>Bank feeds matched daily across 12,400+ institutions via Plaid. Gap detection fires alerts before your accountant finds it.</p></div>
+          </div>
+          <div class="pillar-feat">
+            <div class="pillar-feat-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+            <div><h4>Multi-currency ledger</h4><p>FX hedging, live positions, and 1099-NEC automation built in. Close the books in hours, not days.</p></div>
+          </div>
+        </div>
+        <div class="pillar-stat-row">
+          <div class="pillar-stat"><div class="pillar-stat-val" style="color:var(--capital)">$2.4B</div><div class="pillar-stat-label">routed last Q</div></div>
+          <div class="pillar-stat"><div class="pillar-stat-val" style="color:var(--capital)">0d</div><div class="pillar-stat-label">recon gap avg</div></div>
+          <div class="pillar-stat"><div class="pillar-stat-val" style="color:var(--capital)">12.4k</div><div class="pillar-stat-label">institutions</div></div>
+        </div>
+      </div>
+      <div class="pillar-visual">
+        <div class="pv-bar"><div class="pv-bar-dots"><span></span><span></span><span></span></div><span class="pv-bar-title">Capital · Ledger view</span></div>
+        <div class="pv-body">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+            <div style="font-size:11px;color:var(--ink3);font-family:var(--mono)">RECENT ACTIVITY</div>
+            <div style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:6px;background:var(--capital-s);border:1px solid var(--capital-r);font-size:11px;color:var(--capital);font-weight:600">● Live feed</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg-2);border:1px solid var(--ln);border-radius:8px">
+              <div style="width:28px;height:28px;border-radius:6px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px">↓</div>
+              <div style="flex:1"><div style="font-size:12.5px;font-weight:500">INV-3041 settled</div><div style="font-size:10.5px;color:var(--ink3);font-family:var(--mono)">Chase Business · 2m ago</div></div>
+              <div style="font-size:14px;font-weight:700;color:var(--pos)">+$48,200</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg-2);border:1px solid var(--ln);border-radius:8px">
+              <div style="width:28px;height:28px;border-radius:6px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px">↑</div>
+              <div style="flex:1"><div style="font-size:12.5px;font-weight:500">ACH batch · 12 vendors</div><div style="font-size:10.5px;color:var(--ink3);font-family:var(--mono)">Routing engine · 14m ago</div></div>
+              <div style="font-size:14px;font-weight:700;color:var(--neg)">-$312,440</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg-2);border:1px solid var(--ln2);border-radius:8px;border-color:rgba(245,158,11,.25)">
+              <div style="width:28px;height:28px;border-radius:6px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px">⚠</div>
+              <div style="flex:1"><div style="font-size:12.5px;font-weight:500">Recon gap detected</div><div style="font-size:10.5px;color:var(--ink3);font-family:var(--mono)">Chase · $842 unexplained</div></div>
+              <div style="font-size:11px;color:var(--warn);font-weight:600">Review →</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg-2);border:1px solid var(--ln);border-radius:8px">
+              <div style="width:28px;height:28px;border-radius:6px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px">↓</div>
+              <div style="flex:1"><div style="font-size:12.5px;font-weight:500">FX conversion · EUR→USD</div><div style="font-size:10.5px;color:var(--ink3);font-family:var(--mono)">Rate: 1.0842 · 1h ago</div></div>
+              <div style="font-size:14px;font-weight:700;color:var(--pos)">+$22,884</div>
+            </div>
+          </div>
+          <div style="margin-top:14px;background:var(--bg-2);border:1px solid var(--ln);border-radius:8px;padding:12px">
+            <div style="font-size:10px;color:var(--ink3);font-family:var(--mono);margin-bottom:8px">LIVE POSITION</div>
+            <div style="display:flex;gap:10px">
+              <div style="flex:1;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--capital)">$1.84M</div><div style="font-size:10px;color:var(--ink3)">Total cash</div></div>
+              <div style="flex:1;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--ink)">$284k</div><div style="font-size:10px;color:var(--ink3)">AR pending</div></div>
+              <div style="flex:1;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--ink)">$96k</div><div style="font-size:10px;color:var(--ink3)">AP due</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- TALENT -->
+    <div class="pillar-panel" id="panel-talent">
+      <div class="pillar-panel-left" style="--pc:var(--talent);--pc-s:var(--talent-s);--pc-r:var(--talent-r)">
+        <div class="pill-eyebrow"><span style="width:7px;height:7px;border-radius:50%;background:var(--talent)"></span> Skilled workforce</div>
+        <h3>Expert matchmaking, milestone escrow, and 1099 automation — wired to your ledger.</h3>
+        <p>Stop managing contractors in spreadsheets. BunManage Talent handles the full engagement lifecycle: from brief to payout, with compliance baked in.</p>
+        <div class="pillar-feats">
+          <div class="pillar-feat">
+            <div class="pillar-feat-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 12a4 4 0 100-8 4 4 0 000 8zm-7 9a7 7 0 0114 0"/></svg></div>
+            <div><h4>AI-powered matching</h4><p>2,000+ vetted specialists. Describe the work; we surface the right expert in under 1.4 days on average.</p></div>
+          </div>
+          <div class="pillar-feat">
+            <div class="pillar-feat-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22V12m0 0L8 8m4 4l4-4M4 4h16"/></svg></div>
+            <div><h4>Milestone escrow</h4><p>Milestone-gated escrow tied directly to your Capital ledger. Funds move only when gates are met — zero manual wires.</p></div>
+          </div>
+          <div class="pillar-feat">
+            <div class="pillar-feat-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+            <div><h4>Compliance bundle</h4><p>SOC 2, DOT, NDA, W-9, and 1099-NEC generation — all in one place, auto-generated at engagement close.</p></div>
+          </div>
+        </div>
+        <div class="pillar-stat-row">
+          <div class="pillar-stat"><div class="pillar-stat-val" style="color:var(--talent)">1.4d</div><div class="pillar-stat-label">avg match time</div></div>
+          <div class="pillar-stat"><div class="pillar-stat-val" style="color:var(--talent)">9.3</div><div class="pillar-stat-label">engagement NPS</div></div>
+          <div class="pillar-stat"><div class="pillar-stat-val" style="color:var(--talent)">2k+</div><div class="pillar-stat-label">vetted experts</div></div>
+        </div>
+      </div>
+      <div class="pillar-visual">
+        <div class="pv-bar"><div class="pv-bar-dots"><span></span><span></span><span></span></div><span class="pv-bar-title">Talent · Sprint board</span></div>
+        <div class="pv-body">
+          <div style="display:flex;gap:10px;font-size:11px;color:var(--ink3);font-family:var(--mono);margin-bottom:12px">
+            <span>Galleon AM · Sprint 14</span><span style="margin-left:auto">9 open briefs</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+            <div>
+              <div style="font-size:10.5px;font-weight:600;color:var(--ink3);margin-bottom:8px;display:flex;align-items:center;gap:4px"><span style="width:6px;height:6px;border-radius:50%;background:var(--ink3)"></span>Open</div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div style="padding:10px;background:var(--bg-2);border:1px solid var(--ln);border-radius:6px;font-size:11.5px"><div style="font-weight:600;margin-bottom:3px">ELD Auditor</div><div style="color:var(--ink3);font-size:10.5px">3 candidates in review</div></div>
+                <div style="padding:10px;background:var(--bg-2);border:1px solid var(--ln);border-radius:6px;font-size:11.5px"><div style="font-weight:600;margin-bottom:3px">Tax Specialist</div><div style="color:var(--ink3);font-size:10.5px">Brief posted · 2h ago</div></div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:10.5px;font-weight:600;color:var(--talent);margin-bottom:8px;display:flex;align-items:center;gap:4px"><span style="width:6px;height:6px;border-radius:50%;background:var(--talent)"></span>In flight</div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div style="padding:10px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:6px;font-size:11.5px"><div style="font-weight:600;margin-bottom:3px">Stratus M2</div><div style="color:var(--talent);font-size:10.5px">Milestone 2 / 4 ✓</div></div>
+                <div style="padding:10px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:6px;font-size:11.5px"><div style="font-weight:600;margin-bottom:3px">Route Analyst</div><div style="color:var(--talent);font-size:10.5px">Week 3 · on track</div></div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:10.5px;font-weight:600;color:var(--pos);margin-bottom:8px;display:flex;align-items:center;gap:4px"><span style="width:6px;height:6px;border-radius:50%;background:var(--pos)"></span>Complete</div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div style="padding:10px;background:rgba(34,197,94,.05);border:1px solid rgba(34,197,94,.15);border-radius:6px;font-size:11.5px"><div style="font-weight:600;margin-bottom:3px">IFTA Filing</div><div style="color:var(--pos);font-size:10.5px">1099 generated ✓</div></div>
+                <div style="padding:10px;background:rgba(34,197,94,.05);border:1px solid rgba(34,197,94,.15);border-radius:6px;font-size:11.5px"><div style="font-weight:600;margin-bottom:3px">Safety Audit</div><div style="color:var(--pos);font-size:10.5px">NPS 9.4 · closed ✓</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- CLOUD -->
+    <div class="pillar-panel" id="panel-cloud">
+      <div class="pillar-panel-left" style="--pc:var(--cloud);--pc-s:var(--cloud-s);--pc-r:var(--cloud-r)">
+        <div class="pill-eyebrow"><span style="width:7px;height:7px;border-radius:50%;background:var(--cloud)"></span> Digital architecture</div>
+        <h3>Multi-tenant scaffolding and data pipelines — without rebuilding the same plumbing twice.</h3>
+        <p>Your team ships tenants, integrations, and pipelines. BunManage Cloud handles the infrastructure so your engineers can focus on the product, not the plumbing.</p>
+        <div class="pillar-feats">
+          <div class="pillar-feat">
+            <div class="pillar-feat-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+            <div><h4>Postgres multi-tenancy</h4><p>Provision a new tenant in under 20 minutes. RLS, schema isolation, and connection pooling set up automatically.</p></div>
+          </div>
+          <div class="pillar-feat">
+            <div class="pillar-feat-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            <div><h4>Pipeline DAG editor</h4><p>Visual DAG builder with run history, backfill, and failure replay. No YAML sprawl. No Airflow cluster to maintain.</p></div>
+          </div>
+          <div class="pillar-feat">
+            <div class="pillar-feat-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M7 18a5 5 0 010-10 6 6 0 0111-2 4.5 4.5 0 011 8.9"/></svg></div>
+            <div><h4>API gateway + observability</h4><p>Key management, rate limiting, latency heatmaps, and webhook relay with auto-retry — out of the box.</p></div>
+          </div>
+        </div>
+        <div class="pillar-stat-row">
+          <div class="pillar-stat"><div class="pillar-stat-val" style="color:var(--cloud)">184</div><div class="pillar-stat-label">active tenants</div></div>
+          <div class="pillar-stat"><div class="pillar-stat-val" style="color:var(--cloud)">11.2M</div><div class="pillar-stat-label">API req/wk</div></div>
+          <div class="pillar-stat"><div class="pillar-stat-val" style="color:var(--cloud)">&lt;20m</div><div class="pillar-stat-label">tenant to live</div></div>
+        </div>
+      </div>
+      <div class="pillar-visual">
+        <div class="pv-bar"><div class="pv-bar-dots"><span></span><span></span><span></span></div><span class="pv-bar-title">Cloud · Pipeline DAG</span></div>
+        <div class="pv-body">
+          <svg width="100%" height="200" viewBox="0 0 400 200" style="overflow:visible">
+            <!-- nodes -->
+            <rect x="10" y="80" width="80" height="36" rx="6" fill="var(--s)" stroke="var(--cloud)" stroke-opacity=".5" stroke-width="1.5"/>
+            <text x="50" y="102" text-anchor="middle" font-size="11" font-family="var(--mono)" fill="var(--ink2)">Ingest</text>
+            <rect x="130" y="40" width="80" height="36" rx="6" fill="var(--s)" stroke="var(--cloud)" stroke-opacity=".5" stroke-width="1.5"/>
+            <text x="170" y="62" text-anchor="middle" font-size="11" font-family="var(--mono)" fill="var(--ink2)">Transform</text>
+            <rect x="130" y="120" width="80" height="36" rx="6" fill="var(--s)" stroke="var(--ln3)" stroke-width="1"/>
+            <text x="170" y="142" text-anchor="middle" font-size="11" font-family="var(--mono)" fill="var(--ink3)">Validate</text>
+            <rect x="255" y="80" width="80" height="36" rx="6" fill="rgba(59,130,246,.12)" stroke="var(--cloud)" stroke-width="1.5"/>
+            <text x="295" y="102" text-anchor="middle" font-size="11" font-family="var(--mono)" fill="var(--cloud)">Load ✓</text>
+            <rect x="355" y="30" width="36" height="36" rx="18" fill="rgba(34,197,94,.1)" stroke="rgba(34,197,94,.4)" stroke-width="1.5"/>
+            <text x="373" y="53" text-anchor="middle" font-size="12" fill="#22c55e">✓</text>
+            <!-- arrows -->
+            <path d="M90 98 L130 58" fill="none" stroke="var(--cloud)" stroke-opacity=".4" stroke-width="1.5" marker-end="url(#arr)"/>
+            <path d="M90 98 L130 138" fill="none" stroke="var(--ln3)" stroke-width="1.5" marker-end="url(#arr2)"/>
+            <path d="M210 58 L255 95" fill="none" stroke="var(--cloud)" stroke-opacity=".4" stroke-width="1.5" marker-end="url(#arr)"/>
+            <path d="M210 138 L255 105" fill="none" stroke="var(--ln3)" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arr2)"/>
+            <path d="M335 98 L355 48" fill="none" stroke="rgba(34,197,94,.5)" stroke-width="1.5" marker-end="url(#arr3)"/>
+            <defs>
+              <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6Z" fill="var(--cloud)" opacity=".5"/></marker>
+              <marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6Z" fill="var(--ink3)"/></marker>
+              <marker id="arr3" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6Z" fill="rgba(34,197,94,.6)"/></marker>
+            </defs>
+            <!-- run stats -->
+            <text x="10" y="175" font-size="10" font-family="var(--mono)" fill="var(--ink3)">Last run: 91s · 2.4M rows · 0 errors</text>
+            <text x="10" y="190" font-size="10" font-family="var(--mono)" fill="var(--pos)">● healthy · next run in 47m</text>
+          </svg>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:4px">
+            <div style="padding:8px;background:var(--bg-2);border:1px solid var(--ln);border-radius:6px;text-align:center"><div style="font-size:13px;font-weight:700;color:var(--cloud)">p95</div><div style="font-size:10px;color:var(--ink3)">91s</div></div>
+            <div style="padding:8px;background:var(--bg-2);border:1px solid var(--ln);border-radius:6px;text-align:center"><div style="font-size:13px;font-weight:700;color:var(--pos)">0</div><div style="font-size:10px;color:var(--ink3)">errors</div></div>
+            <div style="padding:8px;background:var(--bg-2);border:1px solid var(--ln);border-radius:6px;text-align:center"><div style="font-size:13px;font-weight:700;color:var(--ink)">2.4M</div><div style="font-size:10px;color:var(--ink3)">rows</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- OPS -->
+    <div class="pillar-panel" id="panel-ops">
+      <div class="pillar-panel-left" style="--pc:var(--ops);--pc-s:var(--ops-s);--pc-r:var(--ops-r)">
+        <div class="pill-eyebrow"><span style="width:7px;height:7px;border-radius:50%;background:var(--ops)"></span> Physical operations</div>
+        <h3>Command center for fleets, freight, and field-heavy businesses.</h3>
+        <p>Track assets, dispatch loads in real time, score vendors, and systematically reduce cost-per-mile — all from the same workspace where your money moves.</p>
+        <div class="pillar-feats">
+          <div class="pillar-feat">
+            <div class="pillar-feat-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+            <div><h4>Real-time dispatch board</h4><p>Live GPS, ETA tracking, and detention alerts. Know the second a load is at risk before it affects your SLA.</p></div>
+          </div>
+          <div class="pillar-feat">
+            <div class="pillar-feat-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
+            <div><h4>Asset tracker + maintenance</h4><p>Fleet maintenance scheduling, incident logging, and yard capacity management tied to your asset ledger.</p></div>
+          </div>
+          <div class="pillar-feat">
+            <div class="pillar-feat-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div>
+            <div><h4>Vendor scorecard</h4><p>On-time, margin, and incident tracking by vendor tier. AI-powered lane optimization suggestions weekly.</p></div>
+          </div>
+        </div>
+        <div class="pillar-stat-row">
+          <div class="pillar-stat"><div class="pillar-stat-val" style="color:var(--ops)">318</div><div class="pillar-stat-label">loads live</div></div>
+          <div class="pillar-stat"><div class="pillar-stat-val" style="color:var(--ops)">96.4%</div><div class="pillar-stat-label">on-time rate</div></div>
+          <div class="pillar-stat"><div class="pillar-stat-val" style="color:var(--ops)">-18%</div><div class="pillar-stat-label">cost per mile</div></div>
+        </div>
+      </div>
+      <div class="pillar-visual">
+        <div class="pv-bar"><div class="pv-bar-dots"><span></span><span></span><span></span></div><span class="pv-bar-title">Ops · Dispatch board</span></div>
+        <div class="pv-body">
+          <div style="font-size:10.5px;color:var(--ink3);font-family:var(--mono);margin-bottom:10px">318 loads · live</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg-2);border:1px solid rgba(239,68,68,.3);border-radius:8px">
+              <div style="width:7px;height:7px;border-radius:50%;background:var(--neg);flex-shrink:0"></div>
+              <div style="flex:1"><div style="font-size:12.5px;font-weight:500">T-411 · detained</div><div style="font-size:10.5px;color:var(--neg)">4h 22m · Chicago yard</div></div>
+              <div style="font-size:11px;font-weight:600;color:var(--neg)">⚠ Alert</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg-2);border:1px solid var(--ln);border-radius:8px">
+              <div style="width:7px;height:7px;border-radius:50%;background:var(--pos);flex-shrink:0"></div>
+              <div style="flex:1"><div style="font-size:12.5px;font-weight:500">PO-4198 · delivered</div><div style="font-size:10.5px;color:var(--ink3)">On time · 2h ago</div></div>
+              <div style="font-size:11px;color:var(--pos)">✓ Done</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg-2);border:1px solid var(--ln);border-radius:8px">
+              <div style="width:7px;height:7px;border-radius:50%;background:var(--cloud);animation:pulse-green 2s infinite;flex-shrink:0"></div>
+              <div style="flex:1"><div style="font-size:12.5px;font-weight:500">T-408 · in transit</div><div style="font-size:10.5px;color:var(--ink3)">ETA 3h · on schedule</div></div>
+              <div style="font-size:11px;color:var(--cloud)">Live</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg-2);border:1px solid var(--ln);border-radius:8px">
+              <div style="width:7px;height:7px;border-radius:50%;background:var(--warn);flex-shrink:0"></div>
+              <div style="flex:1"><div style="font-size:12.5px;font-weight:500">T-415 · weather delay</div><div style="font-size:10.5px;color:var(--warn)">+2h ETA · Dallas route</div></div>
+              <div style="font-size:11px;color:var(--warn)">Watch</div>
+            </div>
+          </div>
+          <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+            <div style="padding:8px;background:var(--bg-2);border:1px solid var(--ln);border-radius:6px;text-align:center"><div style="font-size:13px;font-weight:700;color:var(--pos)">96.4%</div><div style="font-size:10px;color:var(--ink3)">on-time</div></div>
+            <div style="padding:8px;background:var(--bg-2);border:1px solid var(--ln);border-radius:6px;text-align:center"><div style="font-size:13px;font-weight:700;color:var(--neg)">1</div><div style="font-size:10px;color:var(--ink3)">detained</div></div>
+            <div style="padding:8px;background:var(--bg-2);border:1px solid var(--ln);border-radius:6px;text-align:center"><div style="font-size:13px;font-weight:700;color:var(--ink)">318</div><div style="font-size:10px;color:var(--ink3)">in flight</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="s-inner">
+    <div class="eyebrow reveal">How it works</div>
+    <h2 class="s-title reveal">From intake to operational<br>in under five minutes.</h2>
+    <p class="s-sub reveal">No sales call to get started. No 6-month implementation. Answer 4 questions and your fund workspace goes live instantly.</p>
+    <div class="spine">
+      <div class="spine-card left reveal reveal-left">
+        <div class="spine-num">01 / intake</div>
+        <h3>Answer 4 questions.</h3>
+        <p>Our intake engine profiles your business — volume, integrations, compliance needs — and auto-recommends your tier. Most teams finish in under 3 minutes.</p>
+      </div>
+      <div class="spine-line">
+        <div class="spine-node">01</div>
+        <div class="spine-seg"></div>
+        <div class="spine-node">02</div>
+        <div class="spine-seg"></div>
+        <div class="spine-node">03</div>
+        <div class="spine-seg spine-seg-last"></div>
+      </div>
+      <div style="padding-top:0"></div>
+      <div style="padding-top:80px"></div>
+      <div style="display:none"></div>
+      <div class="spine-card right reveal reveal-right" style="padding-top:80px">
+        <div class="spine-num">02 / provisioning</div>
+        <h3>Your workspace goes live instantly.</h3>
+        <p>Tenant provisioned, RBAC seeded, routing template pre-loaded. Connect your bank, invite your team, wire your first webhook — each step is guided and takes under two minutes.</p>
+      </div>
+      <div class="spine-card left reveal reveal-left" style="padding-top:80px">
+        <div class="spine-num">03 / operations</div>
+        <h3>One screen. All four pillars.</h3>
+        <p>Cmd+K is the spine of BunManage — every invoice, load, engagement, and pipeline run is one query away. The Atlas router surfaces what matters across all four pillars in real time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section style="background:var(--bg-1);border-top:1px solid var(--ln);border-bottom:1px solid var(--ln);padding:80px 32px">
+  <div class="s-inner">
+    <div class="eyebrow reveal">Integrations</div>
+    <h2 class="s-title reveal">Connects to the tools<br>you already use.</h2>
+    <p class="s-sub reveal">Native connectors — not Zapier workflows. Direct API wiring with error handling, retry logic, and audit logs baked in.</p>
+    <div class="integ-grid reveal">
+      <div class="integ-card"><div class="integ-logo">🏦</div><div class="integ-name">Chase</div><div class="integ-cat">banking</div></div>
+      <div class="integ-card"><div class="integ-logo">💳</div><div class="integ-name">Plaid</div><div class="integ-cat">banking</div></div>
+      <div class="integ-card"><div class="integ-logo">💸</div><div class="integ-name">Stripe</div><div class="integ-cat">payments</div></div>
+      <div class="integ-card"><div class="integ-logo">📊</div><div class="integ-name">QuickBooks</div><div class="integ-cat">accounting</div></div>
+      <div class="integ-card"><div class="integ-logo">🚛</div><div class="integ-name">ELD HOS</div><div class="integ-cat">compliance</div></div>
+      <div class="integ-card"><div class="integ-logo">📍</div><div class="integ-name">Samsara</div><div class="integ-cat">fleet GPS</div></div>
+      <div class="integ-card"><div class="integ-logo">🗃</div><div class="integ-name">Postgres</div><div class="integ-cat">database</div></div>
+      <div class="integ-card"><div class="integ-logo">🔔</div><div class="integ-name">Slack</div><div class="integ-cat">alerts</div></div>
+      <div class="integ-card"><div class="integ-logo">📧</div><div class="integ-name">SendGrid</div><div class="integ-cat">email</div></div>
+      <div class="integ-card"><div class="integ-logo">🔑</div><div class="integ-name">Okta / SSO</div><div class="integ-cat">auth</div></div>
+      <div class="integ-card"><div class="integ-logo">🌐</div><div class="integ-name">MCP servers</div><div class="integ-cat">AI tooling</div></div>
+      <div class="integ-card"><div class="integ-logo">➕</div><div class="integ-name">+ 40 more</div><div class="integ-cat">see docs →</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section id="compare">
+  <div class="s-inner">
+    <div class="eyebrow reveal">Comparison</div>
+    <h2 class="s-title reveal">Why operators switch to BunManage.</h2>
+    <p class="s-sub reveal">Versus McLeod, QuickBooks + spreadsheets, and stitched-together point tools.</p>
+    <div class="comp-wrap reveal" style="margin-top:48px">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width:32%">Feature</th>
+            <th>McLeod</th>
+            <th>QB + sheets</th>
+            <th class="featured">BunManage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Real-time cross-pillar dashboard</td><td><span class="chk-no">✕</span></td><td><span class="chk-no">✕</span></td><td><span class="chk-yes">✓</span></td></tr>
+          <tr><td>Automated bank reconciliation</td><td><span class="chk-part">Partial</span></td><td><span class="chk-part">Manual</span></td><td><span class="chk-yes">✓</span></td></tr>
+          <tr><td>Talent matchmaking + escrow</td><td><span class="chk-no">✕</span></td><td><span class="chk-no">✕</span></td><td><span class="chk-yes">✓</span></td></tr>
+          <tr><td>Multi-tenant cloud scaffolding</td><td><span class="chk-no">✕</span></td><td><span class="chk-no">✕</span></td><td><span class="chk-yes">✓</span></td></tr>
+          <tr><td>Cmd+K natural language query</td><td><span class="chk-no">✕</span></td><td><span class="chk-no">✕</span></td><td><span class="chk-yes">✓</span></td></tr>
+          <tr><td>Audit-grade immutable ledger</td><td><span class="chk-part">Partial</span></td><td><span class="chk-no">✕</span></td><td><span class="chk-yes">✓</span></td></tr>
+          <tr><td>Setup time</td><td><span style="font-size:13px;color:var(--ink3)">6–12 months</span></td><td><span style="font-size:13px;color:var(--ink3)">Weeks</span></td><td><span style="font-size:13px;color:var(--pos);font-weight:600">&lt; 5 minutes</span></td></tr>
+          <tr><td>Per-seat pricing</td><td><span style="font-size:13px;color:var(--neg)">Yes</span></td><td><span style="font-size:13px;color:var(--neg)">Yes</span></td><td><span style="font-size:13px;color:var(--pos)">No — volume-based</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background:var(--bg-1);border-top:1px solid var(--ln)" id="customers">
+  <div class="s-inner">
+    <div class="eyebrow reveal">What operators say</div>
+    <h2 class="s-title reveal">Built for people who move things.</h2>
+    <p class="s-sub reveal">Mid-market operators who replaced McLeod, QuickBooks, and spreadsheets with a single ledger.</p>
+    <div class="testi-scroll">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-q">"We replaced McLeod, QuickBooks, and a custom Notion setup in one migration. Our reconciliation gap went from <em>3 days to zero</em> overnight. The routing rule builder alone saved us $40k in accounting fees."</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:linear-gradient(135deg,#2d2d45,#13131a)">CK</div>
+          <div class="testi-info"><div class="name">Cole Kerr</div><div class="role">CEO, Galleon Asset Management</div></div>
+          <span class="testi-tier" style="background:var(--vs);color:var(--v1);border:1px solid var(--vr)">Atlas</span>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-q">"I was skeptical about talent matchmaking and payments in the same product. But the <em>escrow → milestone → ledger flow</em> is the best thing we've deployed. Engagement NPS went from 7.8 to 9.3 in two quarters."</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:linear-gradient(135deg,#2a1a06,#140c04)">SO</div>
+          <div class="testi-info"><div class="name">Sandra Okafor</div><div class="role">Head of Ops, Northwind Equity Group</div></div>
+          <span class="testi-tier" style="background:var(--talent-s);color:var(--talent);border:1px solid var(--talent-r)">Talent + Capital</span>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-q">"Cloud pillar provision-to-production is insane. <em>14 new freight broker tenants onboarded last month</em> — each live in under 20 minutes. Our infra team calls it the last internal tool they'll ever build themselves."</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:linear-gradient(135deg,#0a1628,#060c1a)">MP</div>
+          <div class="testi-info"><div class="name">Marcus Patel</div><div class="role">CTO, Atlas Allocators</div></div>
+          <span class="testi-tier" style="background:var(--cloud-s);color:var(--cloud);border:1px solid var(--cloud-r)">Cloud + Ops</span>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-q">"Cmd+K alone was worth the switch. I used to spend 20 minutes pulling a vendor scorecard. Now I type it, hit enter, and have the answer in <em>four seconds</em>. Across all four pillars."</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:linear-gradient(135deg,#1a1228,#0c0814)">RJ</div>
+          <div class="testi-info"><div class="name">Rachel Jennings</div><div class="role">VP Operations, Helios Ventures</div></div>
+          <span class="testi-tier" style="background:var(--vs);color:var(--v1);border:1px solid var(--vr)">Atlas</span>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-q">"The vendor scorecard feature cut our carrier disputes by <em>60% in the first quarter</em>. Everything is timestamped, ledgered, and exportable. Our legal team loves it almost as much as our ops team."</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:linear-gradient(135deg,#1a2408,#0c1204)">DW</div>
+          <div class="testi-info"><div class="name">David Wu</div><div class="role">COO, Apex Fund Services</div></div>
+          <span class="testi-tier" style="background:var(--ops-s);color:var(--ops);border:1px solid var(--ops-r)">Ops + Capital</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="s-inner">
+    <div class="eyebrow reveal">Pricing</div>
+    <h2 class="s-title reveal">Start with one pillar.<br>Scale to all four.</h2>
+    <p class="s-sub reveal">No per-seat pricing. No usage caps below $5M/month. Volume tiers kick in automatically as you grow.</p>
+    <div class="billing-toggle-row reveal">
+      <span class="toggle-label active-label" id="month-label">Monthly</span>
+      <div class="toggle-switch" id="billToggle" onclick="toggleBilling()"><div class="toggle-knob"></div></div>
+      <span class="toggle-label" id="annual-label">Annual</span>
+      <span class="save-badge">Save 20%</span>
+    </div>
+    <div class="price-wrap">
+      <div class="price-card reveal stagger-1">
+        <div class="price-tier">Single pillar</div>
+        <div class="price-name">Starter</div>
+        <div class="price-desc">One pillar, full feature set, unlimited team members within that domain.</div>
+        <div class="price-amount-row"><span class="price-amount" id="p1">$299</span><span class="price-mo">/mo</span></div>
+        <div class="price-billed" id="p1-period">billed monthly · cancel anytime</div>
+        <div class="price-cta-btn" onclick="showPage('intake')">Get started →</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> 1 pillar of your choice</li>
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited team members + RBAC</li>
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Cmd+K command surface</li>
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Audit log + SOC 2 Type II</li>
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Up to $5M/mo volume</li>
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Community support</li>
+        </ul>
+      </div>
+      <div class="price-card popular reveal stagger-2">
+        <div class="popular-badge">MOST POPULAR</div>
+        <div class="price-tier">Any two pillars</div>
+        <div class="price-name">Growth</div>
+        <div class="price-desc">Cross-pillar Cmd+K search, unified inbox, and shared ledger across two pillars.</div>
+        <div class="price-amount-row"><span class="price-amount" id="p2">$799</span><span class="price-mo">/mo</span></div>
+        <div class="price-billed" id="p2-period">billed monthly · cancel anytime</div>
+        <div class="price-cta-btn primary-cta" onclick="showPage('intake')">Start 14-day free trial →</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Any 2 pillars — mix and match</li>
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Cross-pillar Cmd+K search</li>
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Unified inbox + cross-pillar alerts</li>
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Webhook relay (100k events/mo)</li>
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Up to $50M/mo volume</li>
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Priority email + Slack support</li>
+        </ul>
+      </div>
+      <div class="price-card reveal stagger-3">
+        <div class="price-tier">All pillars</div>
+        <div class="price-name">Atlas</div>
+        <div class="price-desc">Every pillar on one ledger. The unified workspace built for operators at scale.</div>
+        <div class="price-amount-row"><span class="price-amount" id="p3">$1,999</span><span class="price-mo">/mo</span></div>
+        <div class="price-billed" id="p3-period">billed monthly · cancel anytime</div>
+        <div class="price-cta-btn outline-cta">Talk to sales →</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> All 4 pillars on one ledger</li>
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Atlas AI — natural language Q&amp;A</li>
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited webhooks + event bus</li>
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> SSO / SAML / SCIM provisioning</li>
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Dedicated CSM + Slack channel</li>
+          <li class="price-feature"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7.2 5.3 10 11 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited volume · SLA 99.99%</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--bg-1);border-top:1px solid var(--ln)">
+  <div class="s-inner" style="max-width:760px">
+    <div class="eyebrow reveal">FAQ</div>
+    <h2 class="s-title reveal">Common questions.</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I really get started in under 5 minutes?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></div>
+        <div class="faq-a"><div class="faq-a-inner">Yes. The intake flow takes ~3 minutes, your workspace is provisioned instantly, and connecting your first bank account or integration takes another 2 minutes. There's no sales call, no implementation consultant, and no spreadsheet hand-off. You can start routing real transactions on day one.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do I have to use all four pillars?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></div>
+        <div class="faq-a"><div class="faq-a-inner">No. Start with one pillar and add others when you're ready. All four share the same ledger, RBAC, and Cmd+K surface — so adding a pillar means your data is already there, not in a new silo. Most teams start with Capital or Ops and add Talent and Cloud within 90 days.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What does "volume-based pricing" mean exactly?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></div>
+        <div class="faq-a"><div class="faq-a-inner">You pay a flat monthly rate with a volume cap included. Starter includes up to $5M/month routed through Capital. Growth includes up to $50M/month. Atlas is unlimited. There are no per-seat fees, no per-transaction fees, and no surprise overages — volume tiers just adjust your monthly rate automatically if you move up.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How does migration from McLeod or QuickBooks work?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></div>
+        <div class="faq-a"><div class="faq-a-inner">We have native import tools for QuickBooks exports and McLeod data packs. Most Capital migrations complete in one weekend — we import historical transactions, map your chart of accounts, and reconcile the opening position before you go live. Growth and Atlas tiers include a dedicated migration session with our onboarding team.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is my data auditable and exportable?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></div>
+        <div class="faq-a"><div class="faq-a-inner">Yes. The BunManage ledger is immutable — every event is timestamped, actor-stamped, and cryptographically hashed. You can export your full ledger at any time in CSV, JSON, or directly to your Postgres schema. SOC 2 Type II audit reports are available on request for all tiers.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="final-bg"></div>
+  <div class="final-inner reveal">
+    <div class="hero-badge" style="display:inline-flex;margin-bottom:24px">
+      <span class="badge-pill">5 min</span>
+      From zero to your first routed invoice
+    </div>
+    <h2>Stop running a fund on spreadsheets.<br><span class="serif">One router. Everything.</span></h2>
+    <p>One intake. One workspace. One ledger that sees your AUM, your team, your infrastructure, and your operations — all at once, in real time. Backed by Bains Fund Management LLC.</p>
+    <div class="final-btns">
+      <button class="btn btn-primary btn-xl" onclick="showPage('intake')">Start the intake →</button>
+      <button class="btn btn-outline btn-lg">Book a walkthrough</button>
+    </div>
+    <p style="margin-top:22px;font-size:12px;color:var(--ink3);font-family:var(--mono)">No credit card required · 14-day trial · cancel anytime</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.5" fill="currentColor"/><circle cx="12" cy="12" r="6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+          BunManage
+        </div>
+        <p class="footer-tagline">The operating platform for fund managers and capital allocators. A product of <strong style="color:var(--ink2)">Bains Fund Management LLC</strong>.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+          <a href="#" class="footer-social"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" class="footer-social" onclick="showPage('docs');return false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></a>
+        </div>
+      </div>
+      <div><div class="footer-col-title">Platform</div><ul class="footer-links"><li><a href="#" onclick="switchPillar('capital',document.querySelector('.pillar-tab'))">Capital</a></li><li><a href="#">Talent</a></li><li><a href="#">Cloud</a></li><li><a href="#">Ops</a></li><li><a href="#">Atlas</a></li><li><a href="#">Cmd+K</a></li></ul></div>
+      <div><div class="footer-col-title">Company</div><ul class="footer-links"><li><a href="#">About</a></li><li><a href="#">Customers</a></li><li><a href="#">Changelog</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul></div>
+      <div><div class="footer-col-title">Resources</div><ul class="footer-links"><li><a href="#" onclick="showPage('docs');return false">Documentation</a></li><li><a href="#">API reference</a></li><li><a href="#">Integrations</a></li><li><a href="#">Status</a></li><li><a href="#">Security</a></li><li><a href="#">Privacy</a></li></ul></div>
+      <div><div class="footer-col-title">Legal</div><ul class="footer-links"><li><a href="#">Terms of service</a></li><li><a href="#">Privacy policy</a></li><li><a href="#">Data processing</a></li><li><a href="#">Cookie settings</a></li><li><a href="#">SOC 2 report</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Bains Fund Management LLC All rights reserved.</span>
+      <div class="footer-compliance">
+        <span class="comp-tag" style="background:rgba(34,197,94,.08);color:var(--pos);border:1px solid rgba(34,197,94,.2)">● SOC 2 Type II</span>
+        <span class="comp-tag" style="background:rgba(59,130,246,.08);color:var(--cloud);border:1px solid rgba(59,130,246,.2)">GDPR</span>
+        <span class="comp-tag" style="background:var(--vs);color:var(--v1);border:1px solid var(--vr)">HIPAA-ready</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</div><!-- /page-home -->
+
+<!-- ═══════════════ INTAKE PAGE ═══════════════ -->
+<div class="page" id="page-intake">
+<div class="intake-page">
+  <div class="intake-shell">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:32px;cursor:pointer" onclick="showPage('home')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color:var(--v)"><circle cx="12" cy="12" r="3.5" fill="currentColor"/><circle cx="12" cy="12" r="6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+      <span style="font-weight:700;font-size:14px">BunManage</span>
+    </div>
+    <div class="intake-progress" id="intakeProgress">
+      <div class="intake-prog-bar filled" id="bar1"></div>
+      <div class="intake-prog-bar" id="bar2"></div>
+      <div class="intake-prog-bar" id="bar3"></div>
+      <div class="intake-prog-bar" id="bar4"></div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="intake-step active" id="step1">
+      <div class="intake-step-num">Question 1 of 4</div>
+      <h2 class="intake-q">What does your fund or business primarily manage?</h2>
+      <p class="intake-hint">This shapes which pillar we recommend first.</p>
+      <div class="intake-opts">
+        <div class="intake-opt" onclick="selectOpt(this,'q1')"><div class="intake-opt-icon">💸</div><div><div style="font-weight:600">Money — payments, invoices, AR/AP</div><div style="font-size:12.5px;color:var(--ink3);margin-top:2px">Wire transfers, ACH, reconciliation</div></div><div class="intake-opt-check"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+        <div class="intake-opt" onclick="selectOpt(this,'q1')"><div class="intake-opt-icon">🚛</div><div><div style="font-weight:600">Physical goods — freight, loads, inventory</div><div style="font-size:12.5px;color:var(--ink3);margin-top:2px">Logistics, dispatch, vendor management</div></div><div class="intake-opt-check"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+        <div class="intake-opt" onclick="selectOpt(this,'q1')"><div class="intake-opt-icon">🧠</div><div><div style="font-weight:600">Expertise — specialized contractors, engagements</div><div style="font-size:12.5px;color:var(--ink3);margin-top:2px">Talent matching, milestones, 1099s</div></div><div class="intake-opt-check"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+        <div class="intake-opt" onclick="selectOpt(this,'q1')"><div class="intake-opt-icon">⚙️</div><div><div style="font-weight:600">Data — pipelines, tenants, integrations</div><div style="font-size:12.5px;color:var(--ink3);margin-top:2px">Multi-tenant SaaS, cloud infrastructure</div></div><div class="intake-opt-check"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+        <div class="intake-opt" onclick="selectOpt(this,'q1')"><div class="intake-opt-icon">🔀</div><div><div style="font-weight:600">All of the above — we're an operator</div><div style="font-size:12.5px;color:var(--ink3);margin-top:2px">Capital + Ops + Talent + Cloud</div></div><div class="intake-opt-check"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+      </div>
+      <div class="intake-actions">
+        <button class="btn btn-primary btn-lg" onclick="nextStep(2)" style="flex:1">Continue →</button>
+        <button class="intake-back" onclick="showPage('home')">← Back to site</button>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="intake-step" id="step2">
+      <div class="intake-step-num">Question 2 of 4</div>
+      <h2 class="intake-q">How much do you move monthly?</h2>
+      <p class="intake-hint">This determines your tier and volume pricing.</p>
+      <div class="intake-opts">
+        <div class="intake-opt" onclick="selectOpt(this,'q2')"><div class="intake-opt-icon">🌱</div><div><div style="font-weight:600">Under $1M / month</div><div style="font-size:12.5px;color:var(--ink3);margin-top:2px">Early stage or regional operator</div></div><div class="intake-opt-check"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+        <div class="intake-opt" onclick="selectOpt(this,'q2')"><div class="intake-opt-icon">📈</div><div><div style="font-weight:600">$1M – $10M / month</div><div style="font-size:12.5px;color:var(--ink3);margin-top:2px">Mid-market, growing fast</div></div><div class="intake-opt-check"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+        <div class="intake-opt" onclick="selectOpt(this,'q2')"><div class="intake-opt-icon">🏢</div><div><div style="font-weight:600">$10M – $100M / month</div><div style="font-size:12.5px;color:var(--ink3);margin-top:2px">Established operator at scale</div></div><div class="intake-opt-check"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+        <div class="intake-opt" onclick="selectOpt(this,'q2')"><div class="intake-opt-icon">🏦</div><div><div style="font-weight:600">$100M+ / month</div><div style="font-size:12.5px;color:var(--ink3);margin-top:2px">Enterprise or multi-entity group</div></div><div class="intake-opt-check"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+      </div>
+      <div class="intake-actions">
+        <button class="btn btn-primary btn-lg" onclick="nextStep(3)" style="flex:1">Continue →</button>
+        <button class="intake-back" onclick="nextStep(1)">← Back</button>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="intake-step" id="step3">
+      <div class="intake-step-num">Question 3 of 4</div>
+      <h2 class="intake-q">What's your biggest operational headache right now?</h2>
+      <p class="intake-hint">Be honest — this shapes your workspace defaults.</p>
+      <div class="intake-opts">
+        <div class="intake-opt" onclick="selectOpt(this,'q3')"><div class="intake-opt-icon">🔍</div><div><div style="font-weight:600">I can't see what's happening across the business</div><div style="font-size:12.5px;color:var(--ink3);margin-top:2px">Too many tabs, no single source of truth</div></div><div class="intake-opt-check"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+        <div class="intake-opt" onclick="selectOpt(this,'q3')"><div class="intake-opt-icon">💰</div><div><div style="font-weight:600">Money moves slowly and I'm always chasing payments</div><div style="font-size:12.5px;color:var(--ink3);margin-top:2px">AR/AP, reconciliation gaps, slow ACH</div></div><div class="intake-opt-check"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+        <div class="intake-opt" onclick="selectOpt(this,'q3')"><div class="intake-opt-icon">👥</div><div><div style="font-weight:600">Contractor management is a mess</div><div style="font-size:12.5px;color:var(--ink3);margin-top:2px">Finding, paying, and tracking specialist work</div></div><div class="intake-opt-check"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+        <div class="intake-opt" onclick="selectOpt(this,'q3')"><div class="intake-opt-icon">🛻</div><div><div style="font-weight:600">I can't track what's in the field in real time</div><div style="font-size:12.5px;color:var(--ink3);margin-top:2px">Loads, assets, vendor performance</div></div><div class="intake-opt-check"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+      </div>
+      <div class="intake-actions">
+        <button class="btn btn-primary btn-lg" onclick="nextStep(4)" style="flex:1">Continue →</button>
+        <button class="intake-back" onclick="nextStep(2)">← Back</button>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="intake-step" id="step4">
+      <div class="intake-step-num">Question 4 of 4</div>
+      <h2 class="intake-q">What matters most to you right now?</h2>
+      <p class="intake-hint">Pick one — this determines your onboarding path.</p>
+      <div class="intake-opts">
+        <div class="intake-opt" onclick="selectOpt(this,'q4')"><div class="intake-opt-icon">⚡</div><div><div style="font-weight:600">Speed — I want to be live today</div><div style="font-size:12.5px;color:var(--ink3);margin-top:2px">Get one thing working fast, expand later</div></div><div class="intake-opt-check"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+        <div class="intake-opt" onclick="selectOpt(this,'q4')"><div class="intake-opt-icon">🔒</div><div><div style="font-weight:600">Compliance — I need audit-grade from day one</div><div style="font-size:12.5px;color:var(--ink3);margin-top:2px">SOC 2, HIPAA, DOT, immutable logs</div></div><div class="intake-opt-check"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+        <div class="intake-opt" onclick="selectOpt(this,'q4')"><div class="intake-opt-icon">🔗</div><div><div style="font-weight:600">Integration — replace my current tools cleanly</div><div style="font-size:12.5px;color:var(--ink3);margin-top:2px">Migration from McLeod, QB, spreadsheets</div></div><div class="intake-opt-check"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+        <div class="intake-opt" onclick="selectOpt(this,'q4')"><div class="intake-opt-icon">📊</div><div><div style="font-weight:600">Visibility — I need one dashboard for everything</div><div style="font-size:12.5px;color:var(--ink3);margin-top:2px">Atlas tier, cross-pillar, real-time</div></div><div class="intake-opt-check"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M2.5 7 5.5 10 11.5 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+      </div>
+      <div class="intake-actions">
+        <button class="btn btn-primary btn-lg" onclick="showResult()" style="flex:1">See my recommendation →</button>
+        <button class="intake-back" onclick="nextStep(3)">← Back</button>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div class="intake-step" id="step-result">
+      <div class="intake-result">
+        <div class="result-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--v1)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="3.5" fill="var(--v)"/><circle cx="12" cy="12" r="6.5" stroke="var(--v)" stroke-width="1.5"/><path d="M12 1.5v21M1.5 12h21" stroke="var(--v1)" stroke-opacity=".3" stroke-width=".75"/></svg></div>
+        <h2 style="font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px">Your workspace is ready.</h2>
+        <p style="color:var(--ink2);margin-bottom:0">Based on your answers, here's what we recommend:</p>
+        <div class="result-rec">
+          <div class="result-rec-label">Recommended tier</div>
+          <div class="result-rec-val">BunManage Growth — Capital + Cloud</div>
+          <div class="result-pillars">
+            <span class="result-pillar-tag" style="background:var(--capital-s);color:var(--capital);border-color:var(--capital-r)">● Capital</span>
+            <span class="result-pillar-tag" style="background:var(--ops-s);color:var(--ops);border-color:var(--ops-r)">● Ops</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;text-align:left">
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ink2)">
+            <svg width="16" height="16" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:1px"><path d="M2.5 7 5.5 10 11.5 4" stroke="var(--pos)" stroke-width="1.8" stroke-linecap="round"/></svg>
+            Smart payment routing pre-configured for your volume band
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ink2)">
+            <svg width="16" height="16" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:1px"><path d="M2.5 7 5.5 10 11.5 4" stroke="var(--pos)" stroke-width="1.8" stroke-linecap="round"/></svg>
+            Real-time dispatch board with GPS and detention alerts
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ink2)">
+            <svg width="16" height="16" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:1px"><path d="M2.5 7 5.5 10 11.5 4" stroke="var(--pos)" stroke-width="1.8" stroke-linecap="round"/></svg>
+            Cross-pillar Cmd+K — query your ledger and your loads in one place
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ink2)">
+            <svg width="16" height="16" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:1px"><path d="M2.5 7 5.5 10 11.5 4" stroke="var(--pos)" stroke-width="1.8" stroke-linecap="round"/></svg>
+            14-day free trial included — no credit card required
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <button class="btn btn-primary btn-lg" style="width:100%;justify-content:center">Create my workspace →</button>
+          <button class="btn btn-ghost" style="width:100%;justify-content:center" onclick="showPage('home');scrollTo('#pricing')">Compare all plans</button>
+        </div>
+        <p style="margin-top:16px;font-size:12px;color:var(--ink3);text-align:center;font-family:var(--mono)">No credit card · 14-day trial · cancel anytime</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- /page-intake -->
+
+<!-- ═══════════════ DOCS PAGE ═══════════════ -->
+<div class="page" id="page-docs">
+<div class="docs-page">
+  <div class="docs-sidebar">
+    <div style="padding:20px 20px 8px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;cursor:pointer" onclick="showPage('home')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="color:var(--v)"><circle cx="12" cy="12" r="3.5" fill="currentColor"/><circle cx="12" cy="12" r="6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+      BunManage Docs
+    </div>
+    <div style="padding:8px 20px 16px;"><div style="height:28px;background:var(--s);border:1px solid var(--ln);border-radius:var(--r6);display:flex;align-items:center;padding:0 10px;gap:7px;font-size:12px;color:var(--ink3);cursor:text"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Search docs…</div></div>
+    <div class="docs-sidebar-section">
+      <div class="docs-sidebar-title">Getting started</div>
+      <div class="docs-sidebar-link active">Quick start</div>
+      <div class="docs-sidebar-link">Intake &amp; provisioning</div>
+      <div class="docs-sidebar-link">Authentication</div>
+      <div class="docs-sidebar-link">Team &amp; RBAC</div>
+    </div>
+    <div class="docs-sidebar-section">
+      <div class="docs-sidebar-title">Capital</div>
+      <div class="docs-sidebar-link">Routing rules</div>
+      <div class="docs-sidebar-link">Reconciliation</div>
+      <div class="docs-sidebar-link">Ledger API</div>
+      <div class="docs-sidebar-link">Webhooks</div>
+    </div>
+    <div class="docs-sidebar-section">
+      <div class="docs-sidebar-title">Talent</div>
+      <div class="docs-sidebar-link">Creating briefs</div>
+      <div class="docs-sidebar-link">Milestone escrow</div>
+      <div class="docs-sidebar-link">Compliance bundle</div>
+    </div>
+    <div class="docs-sidebar-section">
+      <div class="docs-sidebar-title">Cloud</div>
+      <div class="docs-sidebar-link">Tenant provisioning</div>
+      <div class="docs-sidebar-link">Pipeline DAG API</div>
+      <div class="docs-sidebar-link">API gateway</div>
+    </div>
+    <div class="docs-sidebar-section">
+      <div class="docs-sidebar-title">Ops</div>
+      <div class="docs-sidebar-link">Dispatch board</div>
+      <div class="docs-sidebar-link">Asset tracker</div>
+      <div class="docs-sidebar-link">Vendor scorecard</div>
+    </div>
+    <div class="docs-sidebar-section">
+      <div class="docs-sidebar-title">Reference</div>
+      <div class="docs-sidebar-link">REST API</div>
+      <div class="docs-sidebar-link">Webhooks</div>
+      <div class="docs-sidebar-link">Changelog</div>
+      <div class="docs-sidebar-link">Status</div>
+    </div>
+  </div>
+  <div class="docs-main">
+    <div class="docs-breadcrumb"><span>Docs</span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg><span>Getting started</span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg><span style="color:var(--ink)">Quick start</span></div>
+    <h1 class="docs-h1">Quick start</h1>
+    <p class="docs-lead">Get from zero to your first routed fund transaction in under 5 minutes. No sales call. The intake flow provisions your workspace automatically. No sales call required. The intake flow provisions your workspace automatically.</p>
+    <div class="docs-callout">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      BunManage by Bains Fund Management LLC is currently in private beta. Complete the <span style="color:var(--v1);cursor:pointer" onclick="showPage('intake')">4-question intake →</span> to get early access. Most workspaces go live within minutes of completing intake.
+    </div>
+    <h2 class="docs-h2">1. Complete intake</h2>
+    <p class="docs-p">The intake flow asks 4 questions about your business: what you move, your monthly volume, your primary pain point, and what matters most right now. It takes under 3 minutes.</p>
+    <p class="docs-p">Based on your answers, we provision a workspace with sensible defaults — routing rule templates, RBAC roles, and integration suggestions pre-loaded.</p>
+    <h2 class="docs-h2">2. Connect your first integration</h2>
+    <p class="docs-p">For Capital: connect your bank account via Plaid or enter your Chase Business credentials directly. For Ops: connect your ELD provider or Samsara fleet API. All connections use OAuth or API key — no custom code required.</p>
+    <div class="docs-code"><span class="cmt"># Install the BunManage CLI (optional)</span>
+npm install -g @bunmanage/cli  # or: pip install bunmanage
+
+<span class="cmt"># Authenticate</span>
+bunmanage auth login
+
+<span class="cmt"># List your workspace pillars</span>
+bunmanage pillars list
+
+<span class="cmt"># Trigger your first routing rule test</span>
+bunmanage capital route <span class="str">--amount</span> <span class="num">50000</span> <span class="str">--vendor</span> chase <span class="str">--dry-run</span></div>
+    <h2 class="docs-h2">3. Invite your team</h2>
+    <p class="docs-p">Add team members from Settings → Team. RBAC roles are pre-seeded based on your intake answers:</p>
+    <div class="docs-code"><span class="kw">POST</span> /api/v1/workspace/members
+<span class="str">Content-Type: application/json</span>
+Authorization: Bearer <span class="num">{your_api_key}</span>
+
+{
+  <span class="str">"email"</span>: <span class="str">"ops-lead@yourcompany.com"</span>,
+  <span class="str">"role"</span>: <span class="str">"ops_manager"</span>,
+  <span class="str">"pillars"</span>: [<span class="str">"capital"</span>, <span class="str">"ops"</span>]
+}</div>
+    <h2 class="docs-h2">API endpoints</h2>
+    <div class="docs-endpoint-row"><span class="method-badge method-get">GET</span> /api/v1/atlas/overview</div>
+    <div class="docs-endpoint-row"><span class="method-badge method-get">GET</span> /api/v1/capital/ledger</div>
+    <div class="docs-endpoint-row"><span class="method-badge method-post">POST</span> /api/v1/capital/route</div>
+    <div class="docs-endpoint-row"><span class="method-badge method-get">GET</span> /api/v1/talent/engagements</div>
+    <div class="docs-endpoint-row"><span class="method-badge method-post">POST</span> /api/v1/talent/briefs</div>
+    <div class="docs-endpoint-row"><span class="method-badge method-post">POST</span> /api/v1/cloud/tenants</div>
+    <div class="docs-endpoint-row"><span class="method-badge method-get">GET</span> /api/v1/ops/loads</div>
+    <div class="docs-endpoint-row"><span class="method-badge method-del">DEL</span> /api/v1/workspace/members/{id}</div>
+    <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--ln);display:flex;gap:16px">
+      <div style="flex:1;background:var(--s);border:1px solid var(--ln);border-radius:var(--r8);padding:16px;cursor:pointer">
+        <div style="font-size:11px;color:var(--ink3);font-family:var(--mono);margin-bottom:6px">NEXT →</div>
+        <div style="font-size:13.5px;font-weight:600">Intake &amp; provisioning</div>
+        <div style="font-size:12px;color:var(--ink3)">How workspace auto-setup works</div>
+      </div>
+    </div>
+  </div>
+  <div class="docs-right">
+    <div class="docs-toc-title">On this page</div>
+    <div class="docs-toc-link">Quick start</div>
+    <div class="docs-toc-link">1. Complete intake</div>
+    <div class="docs-toc-link">2. Connect integration</div>
+    <div class="docs-toc-link">3. Invite your team</div>
+    <div class="docs-toc-link">API endpoints</div>
+    <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--ln)">
+      <div class="docs-toc-title">Resources</div>
+      <div class="docs-toc-link">API reference ↗</div>
+      <div class="docs-toc-link">Changelog ↗</div>
+      <div class="docs-toc-link">Status page ↗</div>
+    </div>
+    <div style="margin-top:24px;padding:12px;background:var(--vs);border:1px solid var(--vr);border-radius:var(--r8)">
+      <div style="font-size:12px;font-weight:600;color:var(--v1);margin-bottom:6px">Need help?</div>
+      <div style="font-size:12px;color:var(--ink2);line-height:1.5">Ask on Slack or email <span style="color:var(--v1)">support@bunmanage.io</span></div>
+    </div>
+  </div>
+</div>
+</div><!-- /page-docs -->
+
+<script>
+
+// ─── MOBILE MENU ───
+function toggleMobileMenu() {
+  const btn = document.getElementById('mobileMenuBtn');
+  const drawer = document.getElementById('mobileDrawer');
+  btn.classList.toggle('open');
+  drawer.classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenuBtn').classList.remove('open');
+  document.getElementById('mobileDrawer').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+  const btn = document.getElementById('mobileMenuBtn');
+  const drawer = document.getElementById('mobileDrawer');
+  if (drawer && drawer.classList.contains('open') && !btn.contains(e.target) && !drawer.contains(e.target)) {
+    closeMobileMenu();
+  }
+});
+
+// ─── PAGE ROUTER ───
+let currentPage = 'home';
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById('page-' + id);
+  if (el) { el.classList.add('active'); currentPage = id; }
+  window.scrollTo(0, 0);
+  // reset intake when navigating to it
+  if (id === 'intake') { resetIntake(); }
+}
+function scrollTo(sel) {
+  setTimeout(() => {
+    const el = document.querySelector(sel);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 80);
+}
+
+// ─── NAV SCROLL ───
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
+
+// ─── PILLAR TABS ───
+function switchPillar(id, btn) {
+  document.querySelectorAll('.pillar-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.pillar-panel').forEach(p => p.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  const panel = document.getElementById('panel-' + id);
+  if (panel) panel.classList.add('active');
+}
+
+// ─── BILLING TOGGLE ───
+let annualBilling = false;
+const prices = { mo: ['$299','$799','$1,999'], ann: ['$239','$639','$1,599'] };
+function toggleBilling() {
+  annualBilling = !annualBilling;
+  const t = document.getElementById('billToggle');
+  t.classList.toggle('on', annualBilling);
+  document.getElementById('month-label').classList.toggle('active-label', !annualBilling);
+  document.getElementById('annual-label').classList.toggle('active-label', annualBilling);
+  const k = annualBilling ? 'ann' : 'mo';
+  const period = annualBilling ? 'billed annually · save 20%' : 'billed monthly · cancel anytime';
+  ['p1','p2','p3'].forEach((id, i) => {
+    document.getElementById(id).textContent = prices[k][i];
+    document.getElementById(id + '-period').textContent = period;
+  });
+}
+
+// ─── FAQ ───
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(f => {
+    f.classList.remove('open');
+    f.querySelector('.faq-a').style.maxHeight = '0';
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    const a = item.querySelector('.faq-a');
+    a.style.maxHeight = a.scrollHeight + 'px';
+  }
+}
+
+// ─── INTAKE ───
+let intakeAnswers = {};
+function selectOpt(el, q) {
+  const parent = el.parentElement;
+  parent.querySelectorAll('.intake-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  intakeAnswers[q] = el.querySelector('div div:first-child').textContent;
+}
+function nextStep(n) {
+  document.querySelectorAll('.intake-step').forEach(s => s.classList.remove('active'));
+  const step = document.getElementById('step' + n) || document.getElementById('step-result');
+  if (step) step.classList.add('active');
+  // progress bars
+  for (let i = 1; i <= 4; i++) {
+    const bar = document.getElementById('bar' + i);
+    if (bar) bar.classList.toggle('filled', i < n || (n === 'result' && i <= 4));
+  }
+}
+function showResult() {
+  document.querySelectorAll('.intake-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-result').classList.add('active');
+  for (let i = 1; i <= 4; i++) {
+    const bar = document.getElementById('bar' + i);
+    if (bar) bar.classList.add('filled');
+  }
+}
+function resetIntake() {
+  intakeAnswers = {};
+  document.querySelectorAll('.intake-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step1').classList.add('active');
+  document.querySelectorAll('.intake-opt').forEach(o => o.classList.remove('selected'));
+  for (let i = 1; i <= 4; i++) {
+    const bar = document.getElementById('bar' + i);
+    if (bar) bar.classList.toggle('filled', i === 1);
+  }
+}
+
+// ─── COUNTER ANIMATION ───
+function animateCounter(el) {
+  const target = parseFloat(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const prefix = el.dataset.prefix || '';
+  const isDecimal = target % 1 !== 0 || target > 99;
+  const duration = 1800;
+  const start = performance.now();
+  function step(now) {
+    const t = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - t, 3);
+    const val = target * ease;
+    let display;
+    if (target === 99.99) { display = val.toFixed(2); }
+    else if (target < 10) { display = val.toFixed(1); }
+    else if (target > 1000) { display = Math.round(val).toLocaleString() + '+'; }
+    else { display = Math.round(val); }
+    el.textContent = prefix + display + suffix;
+    if (t < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// ─── SCROLL REVEAL ───
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      // trigger counter if applicable
+      const counter = e.target.querySelector ? e.target.querySelector('.counter') : null;
+      if (counter && !counter.dataset.animated) {
+        counter.dataset.animated = '1';
+        animateCounter(counter);
+      }
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.animated) {
+      e.target.dataset.animated = '1';
+      animateCounter(e.target);
+      counterObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.4 });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el, i) => {
+  el.style.transitionDelay = (el.dataset.delay || (i % 4) * 0.06) + 's';
+  revealObserver.observe(el);
+});
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+// ─── TICKER CLONE ───
+const track = document.getElementById('tickerTrack');
+if (track) {
+  // already doubled in HTML for seamless loop
+}
+</script>
+</body>
+</html>
