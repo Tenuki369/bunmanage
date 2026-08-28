@@ -3,25 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>BunManage - Agentic wrapper for finance, freight & consulting</title>
-<meta name="description" content="BunManage is a private-beta agentic operations wrapper where finance, freight, and consulting services run between orchestration, policy, memory, and audit layers.">
+<title>BunManage - Wrap the work</title>
+<meta name="description" content="BunManage is the agentic wrapper for finance, freight, and consulting flows: orchestration above, policy and memory below, every operating handoff managed in between.">
 <meta name="theme-color" content="#f5efe3">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="BunManage - Agentic wrapper for finance, freight & consulting">
-<meta property="og:description" content="Finance, freight, and consulting flows wrapped by orchestration, policy, memory, and audit.">
+<meta property="og:title" content="BunManage - Wrap the work">
+<meta property="og:description" content="The agentic wrapper for finance, freight, and consulting flows.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.bunmanage.com">
 <meta property="og:site_name" content="BunManage">
 <meta property="og:image" content="https://www.bunmanage.com/og.svg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="BunManage - Agentic wrapper for finance, freight & consulting">
-<meta name="twitter:description" content="Finance, freight, and consulting flows wrapped by orchestration, policy, memory, and audit.">
+<meta name="twitter:title" content="BunManage - Wrap the work">
+<meta name="twitter:description" content="The agentic wrapper for finance, freight, and consulting flows.">
 <meta name="twitter:image" content="https://www.bunmanage.com/og.svg">
 <link rel="canonical" href="https://www.bunmanage.com">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23f5efe3'/><text x='4' y='25' font-family='Georgia,serif' font-size='24' font-style='italic' fill='%23141411'>B</text></svg>" type="image/svg+xml">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23f5efe3'/><circle cx='16' cy='16' r='15' fill='%23141411'/><circle cx='16' cy='16' r='11' fill='none' stroke='%23ffe0a4' stroke-width='2'/><text x='10' y='23' font-family='Georgia,serif' font-size='19' font-style='italic' fill='%23ffe0a4'>B</text></svg>" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bun:#d69a4d;--bun-dark:#a86120;--bun-light:#ffe0a4;--paper:#f5efe3;--cream:#fff8ea;--ink:#141411;--ink-2:#373630;--ink-3:#686257;--line:#d9ccba;--finance:#74c7b8;--freight:#e0883e;--consult:#a891d6;--compute:#f7c860;--manage:#1b1a17;--surface:rgba(255,248,234,.78);--surface-strong:rgba(255,248,234,.94);--shadow:0 28px 80px rgba(64,42,20,.16);--serif:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(.22,1,.36,1)}
@@ -33,9 +33,14 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,te
 ::selection{background:var(--ink);color:var(--paper)}
 .app{min-height:100vh;min-height:100dvh;display:grid;grid-template-rows:auto 1fr}
 .nav{position:relative;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px clamp(16px,3vw,36px)}
-.brand{display:flex;align-items:center;gap:11px;min-height:44px}
-.brand-mark{width:34px;height:34px;display:grid;place-items:center;background:var(--ink);color:var(--bun-light);font-family:var(--serif);font-size:21px;font-style:italic;line-height:1}
-.brand-name{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:0}
+.brand{display:flex;align-items:center;gap:12px;min-height:48px}
+.brand-mark{position:relative;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--bun-light);font-family:var(--serif);font-size:23px;font-style:italic;line-height:1;border:2px solid var(--bun-dark);box-shadow:inset 0 0 0 4px var(--ink),inset 0 0 0 5px rgba(255,224,164,.75),0 12px 28px rgba(20,20,17,.16)}
+.brand-mark::before,.brand-mark::after{content:'';position:absolute;left:10px;right:10px;height:3px;border-radius:999px;background:var(--bun-light)}
+.brand-mark::before{top:10px}
+.brand-mark::after{bottom:10px;background:var(--compute)}
+.brand-copy{display:grid;gap:1px}
+.brand-name{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:0;line-height:1}
+.brand-motto{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--bun-dark)}
 .flow-tabs{display:none;align-items:center;gap:4px;padding:5px;background:rgba(255,248,234,.62);border:1px solid var(--line);box-shadow:0 10px 34px rgba(64,42,20,.08)}
 .flow-tab{min-height:38px;padding:0 13px;font-size:13px;font-weight:600;color:var(--ink-3);transition:background .18s var(--ease),color .18s var(--ease)}
 .flow-tab.active{background:var(--ink);color:var(--paper)}
@@ -57,10 +62,13 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,te
 .eyebrow{display:inline-flex;align-items:center;gap:11px;margin-bottom:18px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--bun-dark)}
 .eyebrow::before{content:'';width:28px;height:2px;background:var(--bun-dark)}
 h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:0;line-height:.98;color:var(--ink)}
-h1{font-size:clamp(48px,8.5vw,118px)}
+h1{font-family:var(--sans);font-size:clamp(58px,10vw,144px);font-weight:800;line-height:.86;text-transform:uppercase}
 h2{font-size:clamp(38px,6vw,78px)}
-h1 em,h2 em{font-style:italic;font-weight:300;color:var(--bun-dark)}
+h1 em{font-family:var(--serif);font-weight:400;text-transform:none}
+h1 em,h2 em{font-style:italic;color:var(--bun-dark)}
 .lede{margin-top:24px;max-width:54ch;color:var(--ink-2);font-size:clamp(17px,1.8vw,21px);line-height:1.55}
+.campaign-line{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.campaign-line span{display:inline-flex;align-items:center;min-height:32px;padding:0 10px;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .micro-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:32px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
 .micro-proof div{padding:16px 14px 16px 0;border-right:1px solid var(--line)}
@@ -68,21 +76,28 @@ h1 em,h2 em{font-style:italic;font-weight:300;color:var(--bun-dark)}
 .micro-proof strong{display:block;font-family:var(--serif);font-size:clamp(24px,3vw,38px);font-weight:500;line-height:1}
 .micro-proof span{display:block;margin-top:6px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3)}
 .bun-stage{min-height:560px;position:relative;display:grid;place-items:center}
-.agent-wrapper{width:min(620px,94vw);min-height:540px;position:relative;display:grid;place-items:center}
-.agent-field{position:absolute;inset:10px;border:1px solid rgba(20,20,17,.12);border-radius:34px;background:linear-gradient(145deg,rgba(255,248,234,.52),rgba(255,248,234,.18));box-shadow:var(--shadow)}
-.agent-field::before,.agent-field::after{content:'';position:absolute;border:1px solid rgba(168,97,32,.28);border-radius:50%;animation:slowspin 22s linear infinite}
+.agent-wrapper{width:min(650px,94vw);min-height:560px;position:relative;display:grid;place-items:center}
+.agent-field{position:absolute;inset:10px;border:1px solid rgba(20,20,17,.12);border-radius:34px;background:linear-gradient(145deg,rgba(20,20,17,.98),rgba(55,54,48,.94));box-shadow:0 34px 94px rgba(20,20,17,.28);overflow:hidden}
+.agent-field::before,.agent-field::after{content:'';position:absolute;border:1px solid rgba(247,200,96,.35);border-radius:50%;animation:slowspin 22s linear infinite}
 .agent-field::before{inset:42px}
 .agent-field::after{inset:88px;animation-direction:reverse}
-.agent-bun{position:absolute;left:7%;right:7%;height:118px;border:1.5px solid rgba(20,20,17,.78);background:linear-gradient(135deg,rgba(255,224,164,.94),rgba(214,154,77,.88));box-shadow:0 24px 70px rgba(64,42,20,.16),inset 0 1px 0 rgba(255,255,255,.45);overflow:hidden}
+.agent-field b{position:absolute;left:-12%;right:-12%;height:1px;background:rgba(255,248,234,.12);transform:rotate(-15deg)}
+.agent-field b:nth-child(1){top:24%}
+.agent-field b:nth-child(2){top:49%}
+.agent-field b:nth-child(3){top:74%}
+.agent-bun{position:absolute;left:7%;right:7%;height:118px;border:1.5px solid rgba(20,20,17,.88);background:linear-gradient(135deg,rgba(255,224,164,.98),rgba(214,154,77,.9));box-shadow:0 24px 70px rgba(20,20,17,.22),inset 0 1px 0 rgba(255,255,255,.45);overflow:hidden}
 .agent-bun::before{content:'';position:absolute;inset:18px 26px;border:1px solid rgba(20,20,17,.16);border-left:0;border-right:0}
 .agent-bun::after{content:attr(data-label);position:absolute;left:28px;bottom:18px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(20,20,17,.72)}
 .agent-bun.top{top:26px;border-radius:54px 54px 18px 18px;animation:wrapTop 5s var(--ease) infinite}
 .agent-bun.bottom{bottom:26px;border-radius:18px 18px 54px 54px;animation:wrapBottom 5s var(--ease) infinite;background:linear-gradient(135deg,rgba(255,224,164,.84),rgba(168,97,32,.92))}
 .agent-rail{position:absolute;top:164px;bottom:164px;left:50%;width:2px;background:linear-gradient(transparent,var(--ink),transparent);opacity:.22}
-.agent-core{position:absolute;z-index:4;width:154px;height:154px;display:grid;place-items:center;text-align:center;border-radius:28px;background:var(--ink);color:var(--cream);border:1px solid rgba(247,200,96,.86);box-shadow:0 0 0 12px rgba(247,200,96,.16),0 28px 70px rgba(20,20,17,.32);animation:coreBeat 3.2s var(--ease) infinite}
-.agent-core span{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;line-height:1.45}
+.agent-core{position:absolute;z-index:4;width:168px;height:168px;display:grid;place-items:center;text-align:center;border-radius:50%;background:var(--ink);color:var(--cream);border:2px solid var(--bun-dark);box-shadow:inset 0 0 0 9px var(--ink),inset 0 0 0 11px rgba(255,224,164,.75),0 0 0 14px rgba(247,200,96,.18),0 30px 76px rgba(20,20,17,.38);animation:coreBeat 3.2s var(--ease) infinite}
+.agent-core span{font-family:var(--serif);font-size:58px;font-weight:500;font-style:italic;line-height:1}
+.agent-core small{position:absolute;font-family:var(--mono);font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--compute)}
+.agent-core .seal-top{top:24px}
+.agent-core .seal-bottom{bottom:24px}
 .service-stack{position:absolute;z-index:3;left:3%;right:3%;top:172px;bottom:172px;display:grid;grid-template-rows:1fr 1fr 1fr;gap:14px}
-.service-layer{display:grid;grid-template-columns:118px 1fr auto;align-items:center;gap:12px;padding:13px 16px;background:rgba(255,248,234,.96);border:1.5px solid var(--ink);box-shadow:0 16px 42px rgba(64,42,20,.12);transform-origin:center;animation:layerPulse 4.4s var(--ease) infinite}
+.service-layer{display:grid;grid-template-columns:118px 1fr auto;align-items:center;gap:12px;padding:13px 16px;background:rgba(255,248,234,.97);border:1.5px solid var(--ink);box-shadow:0 16px 42px rgba(20,20,17,.18);transform-origin:center;animation:layerPulse 4.4s var(--ease) infinite}
 .service-layer:nth-child(1){margin-right:76px}
 .service-layer:nth-child(2){margin-left:76px;animation-delay:.18s}
 .service-layer:nth-child(3){margin-right:76px;animation-delay:.36s}
@@ -97,7 +112,7 @@ h1 em,h2 em{font-style:italic;font-weight:300;color:var(--bun-dark)}
 .agent-chip::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--compute);box-shadow:0 0 0 5px rgba(247,200,96,.18)}
 .agent-chip.policy{top:132px;left:28px}
 .agent-chip.memory{right:22px;bottom:128px}
-.manage-band{position:absolute;z-index:6;left:50%;bottom:8px;transform:translateX(-50%);min-width:300px;text-align:center;background:var(--manage);color:var(--cream);padding:13px 18px;border-top:3px solid var(--compute);font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;box-shadow:var(--shadow)}
+.manage-band{position:absolute;z-index:6;left:50%;bottom:8px;transform:translateX(-50%);min-width:300px;text-align:center;background:var(--compute);color:var(--ink);padding:13px 18px;border-top:3px solid var(--bun-dark);font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;box-shadow:var(--shadow)}
 .flow-panel{align-self:stretch;min-height:520px;background:var(--surface-strong);border:1.5px solid var(--ink);box-shadow:var(--shadow);display:grid;grid-template-rows:auto 1fr auto}
 .panel-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;border-bottom:1px solid var(--line)}
 .panel-label{font-family:var(--mono);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-3)}
@@ -159,14 +174,14 @@ h1 em,h2 em{font-style:italic;font-weight:300;color:var(--bun-dark)}
 @keyframes coreBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
 @keyframes meter{0%,100%{width:58%}50%{width:86%}}
 @media(max-width:979px){body{overflow:auto}.screen{position:relative;display:none;inset:auto;padding-bottom:42px}.screen.active{display:block}.screen-inner{min-height:auto;padding-top:18px}.bun-stage{min-height:460px}.agent-wrapper{min-height:440px}.flow-panel{min-height:auto;margin-top:22px}.footer-strip{position:relative;left:auto;right:auto;bottom:auto;padding:0 16px 16px}}
-@media(max-width:620px){.nav{align-items:flex-start}.nav-actions{flex-direction:column;align-items:flex-end}.btn{padding:0 13px}.micro-proof{grid-template-columns:1fr}.micro-proof div{border-right:0;border-bottom:1px solid var(--line)}.micro-proof div:last-child{border-bottom:0}.agent-wrapper{min-height:420px}.agent-field{inset:0;border-radius:24px}.agent-bun{left:2%;right:2%;height:96px}.agent-bun::after{left:18px;bottom:14px;font-size:9px}.agent-rail{top:132px;bottom:132px}.service-layer{grid-template-columns:88px 1fr auto;gap:9px;padding:12px}.service-layer:nth-child(1),.service-layer:nth-child(2),.service-layer:nth-child(3){margin-left:0;margin-right:0}.service-stack{left:3%;right:3%;top:132px;bottom:132px;gap:10px}.agent-core{width:116px;height:116px;border-radius:22px}.agent-core span{font-size:8.5px}.agent-chip{display:none}.manage-band{min-width:min(280px,90vw);font-size:9px;padding:11px 13px}}
+@media(max-width:620px){.nav{align-items:flex-start}.nav-actions{flex-direction:column;align-items:flex-end}.brand-mark{width:42px;height:42px}.brand-motto{display:none}.btn{padding:0 13px}h1{font-size:clamp(54px,18vw,76px)}.campaign-line span{font-size:9px}.micro-proof{grid-template-columns:1fr}.micro-proof div{border-right:0;border-bottom:1px solid var(--line)}.micro-proof div:last-child{border-bottom:0}.agent-wrapper{min-height:420px}.agent-field{inset:0;border-radius:24px}.agent-bun{left:2%;right:2%;height:96px}.agent-bun::after{left:18px;bottom:14px;font-size:9px}.agent-rail{top:132px;bottom:132px}.service-layer{grid-template-columns:88px 1fr auto;gap:9px;padding:12px}.service-layer:nth-child(1),.service-layer:nth-child(2),.service-layer:nth-child(3){margin-left:0;margin-right:0}.service-stack{left:3%;right:3%;top:132px;bottom:132px;gap:10px}.agent-core{width:124px;height:124px}.agent-core span{font-size:42px}.agent-core small{font-size:6.5px}.agent-core .seal-top{top:18px}.agent-core .seal-bottom{bottom:18px}.agent-chip{display:none}.manage-band{min-width:min(280px,90vw);font-size:9px;padding:11px 13px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
 <div class="app">
   <nav class="nav" aria-label="Primary">
-    <a class="brand" href="#home" data-flow-link="home" aria-label="BunManage home"><span class="brand-mark">B</span><span class="brand-name">BunManage</span></a>
+    <a class="brand" href="#home" data-flow-link="home" aria-label="BunManage home"><span class="brand-mark">B</span><span class="brand-copy"><span class="brand-name">BunManage</span><span class="brand-motto">Wrap the work</span></span></a>
     <div class="flow-tabs" role="tablist" aria-label="BunManage flows">
       <button class="flow-tab active" data-flow-link="home">Origin</button>
       <button class="flow-tab" data-flow-link="finance">Finance</button>
@@ -186,15 +201,16 @@ h1 em,h2 em{font-style:italic;font-weight:300;color:var(--bun-dark)}
     <section class="screen active" id="home" data-flow="home" aria-labelledby="home-title">
       <div class="screen-inner">
         <div class="copy-block">
-          <div class="eyebrow">Agentic wrapper buns</div>
-          <h1 id="home-title">The wrapper around every <em>operating flow.</em></h1>
-          <p class="lede">The buns are the agentic wrapper: orchestration above, policy and memory below. Finance, freight, and consulting move inside as managed flows instead of scattered tools.</p>
+          <div class="eyebrow">BunManage private beta</div>
+          <h1 id="home-title">Wrap the <em>work.</em></h1>
+          <p class="lede">BunManage is the agentic wrapper for operators who need finance, freight, and consulting to move with one memory, one policy layer, and one accountable trail.</p>
+          <div class="campaign-line" aria-label="BunManage motto"><span>Run the middle</span><span>Hold the flow</span><span>Own the handoff</span></div>
           <div class="actions"><button class="btn warm" data-flow-link="finance">Enter a flow</button><button class="btn ghost" data-flow-link="pricing">See founding pricing</button></div>
           <div class="micro-proof" aria-label="BunManage model"><div><strong>2</strong><span>Wrapper layers</span></div><div><strong>3</strong><span>Managed flows</span></div><div><strong>1</strong><span>Operating memory</span></div></div>
         </div>
         <div class="bun-stage" aria-label="Animated BunManage agentic wrapper model">
           <div class="agent-wrapper">
-            <div class="agent-field"></div>
+            <div class="agent-field"><b></b><b></b><b></b></div>
             <div class="agent-bun top" data-label="Agentic orchestration"></div>
             <div class="agent-bun bottom" data-label="Policy, memory, audit"></div>
             <div class="agent-rail"></div>
@@ -203,7 +219,7 @@ h1 em,h2 em{font-style:italic;font-weight:300;color:var(--bun-dark)}
               <button class="service-layer freight-color" data-flow-link="freight"><span class="service-name">Freight</span><span class="service-line"></span><span class="service-pill"></span></button>
               <button class="service-layer consult-color" data-flow-link="consulting"><span class="service-name">Consulting</span><span class="service-line"></span><span class="service-pill"></span></button>
             </div>
-            <div class="agent-core"><span>BunManage<br>agentic<br>wrapper</span></div>
+            <div class="agent-core" aria-label="BunManage seal"><small class="seal-top">BunManage</small><span>B</span><small class="seal-bottom">Wrap the work</small></div>
             <div class="agent-chip policy">Policy agent</div>
             <div class="agent-chip memory">Memory agent</div>
             <div class="manage-band">Services move inside the wrapper</div>
@@ -244,7 +260,7 @@ function showFlow(flow,push=true){
   navTabs.forEach(tab=>tab.classList.toggle('active',tab.dataset.flowLink===next));
   dots.forEach((dot,index)=>dot.classList.toggle('active',flows[index]===next));
   if(mobileFlow) mobileFlow.value=next;
-  document.title=next==='home'?'BunManage - Agentic wrapper for operating flows':'BunManage - '+label(next)+' flow';
+  document.title=next==='home'?'BunManage - Wrap the work':'BunManage - '+label(next)+' flow';
   if(push) history.pushState({flow:next},'','#'+next);
 }
 links.forEach(item=>item.addEventListener('click',event=>{const flow=item.dataset.flowLink;if(!flow)return;event.preventDefault();showFlow(flow)}));

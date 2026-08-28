@@ -1,29 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">BunManage</title>
-  <desc id="desc">Agentic wrapper for finance, freight, and consulting flows</desc>
-  <rect width="1200" height="630" fill="#f5efe3"/>
-  <rect x="670" y="76" width="412" height="478" rx="34" fill="#fff8ea" stroke="#d9ccba" stroke-width="2"/>
-  <circle cx="876" cy="315" r="174" fill="none" stroke="#d9ccba" stroke-width="2"/>
-  <circle cx="876" cy="315" r="114" fill="none" stroke="#a86120" stroke-width="2" opacity=".45"/>
-  <path d="M720 128 H1032 C1059 128 1081 150 1081 177 V222 C1081 235 1070 246 1057 246 H695 C682 246 671 235 671 222 V177 C671 150 693 128 720 128Z" fill="#d69a4d" stroke="#141411" stroke-width="3"/>
-  <path d="M671 409 H1081 V453 C1081 480 1059 502 1032 502 H720 C693 502 671 480 671 453Z" fill="#a86120" stroke="#141411" stroke-width="3"/>
-  <text x="708" y="215" fill="#141411" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3">AGENTIC ORCHESTRATION</text>
-  <text x="708" y="463" fill="#fff8ea" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3">POLICY / MEMORY / AUDIT</text>
-  <rect x="708" y="273" width="336" height="34" fill="#fff8ea" stroke="#141411" stroke-width="3"/>
-  <rect x="708" y="318" width="336" height="34" fill="#fff8ea" stroke="#141411" stroke-width="3"/>
-  <rect x="708" y="363" width="336" height="34" fill="#fff8ea" stroke="#141411" stroke-width="3"/>
-  <rect x="738" y="285" width="95" height="10" fill="#74c7b8"/>
-  <rect x="738" y="330" width="132" height="10" fill="#e0883e"/>
-  <rect x="738" y="375" width="112" height="10" fill="#a891d6"/>
-  <rect x="800" y="244" width="154" height="154" rx="28" fill="#141411" stroke="#f7c860" stroke-width="12"/>
-  <text x="877" y="306" text-anchor="middle" fill="#fff8ea" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">BUNMANAGE</text>
-  <text x="877" y="334" text-anchor="middle" fill="#fff8ea" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">AGENTIC</text>
-  <text x="877" y="362" text-anchor="middle" fill="#fff8ea" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">WRAPPER</text>
-  <rect x="86" y="108" width="162" height="40" fill="#141411"/>
-  <text x="108" y="135" fill="#f7c860" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="3">PRIVATE BETA</text>
-  <text x="86" y="272" fill="#141411" font-family="Georgia, serif" font-size="92" font-weight="500">BunManage</text>
-  <text x="86" y="352" fill="#141411" font-family="Georgia, serif" font-size="50">Agentic wrapper</text>
-  <text x="86" y="414" fill="#a86120" font-family="Georgia, serif" font-size="56" font-style="italic">for operating flows.</text>
-  <line x1="86" y1="468" x2="496" y2="468" stroke="#a86120" stroke-width="5"/>
-  <text x="86" y="522" fill="#373630" font-family="Inter, Arial, sans-serif" font-size="24">Finance, freight, and consulting inside one managed workspace.</text>
+  <title id="title">BunManage - Wrap the work</title>
+  <desc id="desc">The agentic wrapper for finance, freight, and consulting flows</desc>
+  <rect width="1200" height="630" fill="#141411"/>
+  <path d="M-40 518 L1240 192" stroke="#373630" stroke-width="2" opacity=".5"/>
+  <path d="M-40 426 L1240 100" stroke="#373630" stroke-width="2" opacity=".35"/>
+  <path d="M-40 610 L1240 284" stroke="#373630" stroke-width="2" opacity=".35"/>
+  <circle cx="910" cy="315" r="196" fill="#f5efe3"/>
+  <circle cx="910" cy="315" r="174" fill="#141411"/>
+  <circle cx="910" cy="315" r="150" fill="none" stroke="#ffe0a4" stroke-width="5"/>
+  <path d="M780 205 H1040 C1062 205 1080 223 1080 245 V270 H740 V245 C740 223 758 205 780 205Z" fill="#d69a4d"/>
+  <path d="M740 360 H1080 V385 C1080 407 1062 425 1040 425 H780 C758 425 740 407 740 385Z" fill="#a86120"/>
+  <rect x="774" y="287" width="272" height="22" fill="#fff8ea"/>
+  <rect x="774" y="321" width="272" height="22" fill="#fff8ea"/>
+  <rect x="794" y="294" width="84" height="8" fill="#74c7b8"/>
+  <rect x="794" y="328" width="122" height="8" fill="#e0883e"/>
+  <circle cx="910" cy="315" r="72" fill="#141411" stroke="#f7c860" stroke-width="10"/>
+  <text x="910" y="334" text-anchor="middle" fill="#ffe0a4" font-family="Georgia, serif" font-size="76" font-style="italic">B</text>
+  <text x="910" y="178" text-anchor="middle" fill="#f7c860" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="5">BUNMANAGE</text>
+  <text x="910" y="470" text-anchor="middle" fill="#f7c860" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="5">WRAP THE WORK</text>
+  <text x="82" y="128" fill="#f7c860" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="4">PRIVATE BETA</text>
+  <text x="78" y="296" fill="#fff8ea" font-family="Inter, Arial, sans-serif" font-size="112" font-weight="800">WRAP</text>
+  <text x="78" y="410" fill="#fff8ea" font-family="Inter, Arial, sans-serif" font-size="112" font-weight="800">THE WORK.</text>
+  <rect x="82" y="462" width="430" height="5" fill="#f7c860"/>
+  <text x="82" y="526" fill="#d9ccba" font-family="Inter, Arial, sans-serif" font-size="25">The agentic wrapper for finance, freight, and consulting flows.</text>
 </svg>
