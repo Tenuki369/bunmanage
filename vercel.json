@@ -2,7 +2,10 @@
   "version": 2,
   "name": "bunmanage",
   "builds": [
-    { "src": "index.html", "use": "@vercel/static" }
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "robots.txt", "use": "@vercel/static" },
+    { "src": "sitemap.xml", "use": "@vercel/static" },
+    { "src": "og.svg", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/robots.txt", "dest": "/robots.txt" },
