@@ -17,10 +17,10 @@
   <circle cx="905" cy="315" r="76" fill="#11100d" stroke="#f1c15b" stroke-width="10"/>
   <text x="905" y="337" text-anchor="middle" fill="#f8eedc" font-family="Georgia, serif" font-size="82" font-style="italic" font-weight="700">B</text>
   <text x="905" y="174" text-anchor="middle" fill="#f8eedc" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" letter-spacing="5">SERVICE BUNS</text>
-  <text x="905" y="476" text-anchor="middle" fill="#f8eedc" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" letter-spacing="5">COMPLETE STACK</text>
+  <text x="905" y="476" text-anchor="middle" fill="#f8eedc" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" letter-spacing="5">BURGER SERVED</text>
   <text x="82" y="126" fill="#f1c15b" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" letter-spacing="4">BUNMANAGE PRIVATE BETA</text>
   <text x="78" y="282" fill="#f8eedc" font-family="Inter, Arial, sans-serif" font-size="99" font-weight="900">THE MIDDLE,</text>
   <text x="78" y="394" fill="#f8eedc" font-family="Inter, Arial, sans-serif" font-size="99" font-weight="900">MANAGED.</text>
   <rect x="82" y="448" width="440" height="5" fill="#f1c15b"/>
-  <text x="82" y="512" fill="#efe2ca" font-family="Inter, Arial, sans-serif" font-size="24">Finance, freight, and consulting services around the messy work inside.</text>
+  <text x="82" y="512" fill="#efe2ca" font-family="Inter, Arial, sans-serif" font-size="24">The services come in. The middle gets solved. The burger is complete.</text>
 </svg>
