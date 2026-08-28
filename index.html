@@ -3,2096 +3,243 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>BunManage — Operations workspace for finance, freight & consulting</title>
-<meta name="description" content="BunManage is a private-beta operations workspace for firms that manage finance, freight, and consulting work across one ledger and one operating view. Built by Bains Fund Management LLC.">
-<meta name="theme-color" content="#f7f4ed">
+<title>BunManage - The operating layer between your services</title>
+<meta name="description" content="BunManage is a private-beta operations workspace where finance, freight, and consulting services run between one compute layer and one management layer.">
+<meta name="theme-color" content="#f5efe3">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="BunManage — Operations workspace for finance, freight & consulting">
-<meta property="og:description" content="Private-beta workspace for finance, freight, and consulting operations.">
+<meta property="og:title" content="BunManage - The operating layer between your services">
+<meta property="og:description" content="Finance, freight, and consulting flows managed in one private-beta workspace.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.bunmanage.com">
 <meta property="og:site_name" content="BunManage">
 <meta property="og:image" content="https://www.bunmanage.com/og.svg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="BunManage — Operations workspace for finance, freight & consulting">
-<meta name="twitter:description" content="Private-beta workspace for finance, freight, and consulting operations.">
+<meta name="twitter:title" content="BunManage - The operating layer between your services">
+<meta name="twitter:description" content="Finance, freight, and consulting flows managed in one private-beta workspace.">
 <meta name="twitter:image" content="https://www.bunmanage.com/og.svg">
 <link rel="canonical" href="https://www.bunmanage.com">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23f7f4ed'/><text x='4' y='25' font-family='Georgia,serif' font-size='24' font-style='italic' fill='%23111'>B</text></svg>" type="image/svg+xml">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23f5efe3'/><text x='4' y='25' font-family='Georgia,serif' font-size='24' font-style='italic' fill='%23141411'>B</text></svg>" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ════════════════════════════════════════════════════════════
-   BUNMANAGE v3 — Mobile-first Scandinavian
-   Decisions:
-   - Body text 17px minimum (never below 15px)
-   - 4.5:1+ contrast on all body copy
-   - Hero panel inline on mobile (not hidden)
-   - Subtle paper warmth & ochre accents for liveliness
-   ════════════════════════════════════════════════════════════ */
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
-:root{
-  /* Warmer paper — feels alive, not sterile */
-  --paper:#f7f4ed;
-  --paper-2:#ede9dd;
-  --paper-3:#e2ddcd;
-
-  /* Darker ink for stronger contrast */
-  --ink:#0c0c0a;
-  --ink-1:#1f1f1c;
-  --ink-2:#3a3a35;
-  --ink-3:#65655d;
-  --ink-4:#8a8a80;
-
-  --hairline:#d8d3c4;
-  --hairline-2:#c4beac;
-
-  --ochre:#b8761e;
-  --ochre-2:#9a611a;
-  --ochre-soft:#f0e2c5;
-
-  --pos:#2d5f2d;
-  --neg:#8b3a3a;
-
-  /* Type */
-  --serif:'Fraunces',Georgia,serif;
-  --sans:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-  --mono:'JetBrains Mono',ui-monospace,monospace;
-
-  /* Layout */
-  --shell:min(1240px,calc(100% - 40px));
-  --pad-y:clamp(72px,9vw,128px);
-
-  /* Motion */
-  --ease:cubic-bezier(.22,1,.36,1);
-}
-
-@media(max-width:720px){
-  :root{
-    --shell:calc(100% - 24px);
-    --pad-y:64px;
-  }
-}
-
-html{
-  font-size:17px;
-  scroll-behavior:smooth;
-  -webkit-text-size-adjust:100%;
-  text-rendering:optimizeLegibility;
-}
-
-body{
-  background:var(--paper);
-  color:var(--ink-1);
-  font-family:var(--sans);
-  line-height:1.55;
-  font-weight:400;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  overflow-x:hidden;
-  min-width:320px;
-  /* subtle paper texture for warmth */
-  background-image:
-    radial-gradient(circle at 15% 20%,rgba(184,118,30,.025),transparent 40%),
-    radial-gradient(circle at 85% 80%,rgba(184,118,30,.02),transparent 40%);
-  background-attachment:fixed;
-}
-
+:root{--bun:#d69a4d;--bun-dark:#a86120;--bun-light:#ffe0a4;--paper:#f5efe3;--cream:#fff8ea;--ink:#141411;--ink-2:#373630;--ink-3:#686257;--line:#d9ccba;--finance:#74c7b8;--freight:#e0883e;--consult:#a891d6;--compute:#f7c860;--manage:#1b1a17;--surface:rgba(255,248,234,.78);--surface-strong:rgba(255,248,234,.94);--shadow:0 28px 80px rgba(64,42,20,.16);--serif:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(.22,1,.36,1)}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{min-width:320px;min-height:100vh;overflow:hidden;background:linear-gradient(120deg,rgba(116,199,184,.12),transparent 34%),linear-gradient(240deg,rgba(168,145,214,.12),transparent 38%),var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.45;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{color:inherit;text-decoration:none}
-button{cursor:pointer;font-family:inherit;border:none;background:none;color:inherit;-webkit-tap-highlight-color:transparent}
-ul{list-style:none}
-img,svg{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
 ::selection{background:var(--ink);color:var(--paper)}
-
-/* ════════════════ NAV ════════════════ */
-.nav{
-  position:fixed;
-  top:0;left:0;right:0;
-  z-index:100;
-  height:64px;
-  display:flex;
-  align-items:center;
-  padding:0 20px;
-  background:rgba(247,244,237,0);
-  transition:background .3s var(--ease),border-color .3s var(--ease),backdrop-filter .3s var(--ease);
-  border-bottom:1px solid transparent;
-}
-.nav.scrolled{
-  background:rgba(247,244,237,.94);
-  backdrop-filter:saturate(180%) blur(20px);
-  -webkit-backdrop-filter:saturate(180%) blur(20px);
-  border-bottom-color:var(--hairline);
-}
-.nav-inner{
-  display:flex;
-  align-items:center;
-  width:100%;
-  max-width:1240px;
-  margin:0 auto;
-  gap:20px;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex-shrink:0;
-  min-height:44px;
-}
-.brand-mark{
-  width:32px;height:32px;
-  background:var(--ink);
-  display:grid;place-items:center;
-  font-family:var(--serif);
-  font-style:italic;
-  font-size:20px;
-  color:var(--ochre-soft);
-  line-height:1;
-  flex-shrink:0;
-}
-.brand-name{
-  font-family:var(--serif);
-  font-size:20px;
-  font-weight:500;
-  letter-spacing:-.015em;
-  color:var(--ink);
-  line-height:1;
-}
-
-.nav-links{display:none;gap:4px;margin-left:32px}
-.nav-links a{
-  padding:10px 14px;
-  font-size:14.5px;
-  color:var(--ink-2);
-  font-weight:500;
-  transition:color .15s;
-  min-height:44px;
-  display:flex;
-  align-items:center;
-}
-.nav-links a:hover{color:var(--ink)}
-.nav-cta{display:none;align-items:center;gap:10px;margin-left:auto}
-.nav-meta{
-  font-family:var(--mono);
-  font-size:11px;
-  font-weight:500;
-  color:var(--ochre);
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  padding:5px 10px;
-  border:1px solid var(--ochre);
-}
-
-.menu-btn{
-  display:flex;
-  flex-direction:column;
-  gap:5px;
-  width:44px;
-  height:44px;
-  align-items:center;
-  justify-content:center;
-  margin-left:auto;
-  margin-right:-10px;
-}
-.menu-btn span{
-  display:block;
-  width:20px;
-  height:2px;
-  background:var(--ink);
-  transition:transform .3s var(--ease),opacity .3s var(--ease);
-  border-radius:1px;
-}
-.menu-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.menu-btn.open span:nth-child(2){opacity:0}
-.menu-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-@media(min-width:840px){
-  .nav{padding:0 32px;height:72px}
-  .nav-links{display:flex}
-  .nav-cta{display:flex}
-  .menu-btn{display:none}
-}
-
-.drawer{
-  position:fixed;
-  top:64px;left:0;right:0;
-  z-index:99;
-  background:var(--paper);
-  border-bottom:1px solid var(--hairline);
-  padding:8px 20px 32px;
-  display:none;
-  flex-direction:column;
-  max-height:calc(100vh - 64px);
-  max-height:calc(100dvh - 64px);
-  overflow-y:auto;
-}
-.drawer.open{display:flex;animation:slidedown .25s var(--ease)}
-@keyframes slidedown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
-.drawer a{
-  padding:18px 4px;
-  font-size:20px;
-  font-family:var(--serif);
-  font-weight:400;
-  color:var(--ink);
-  border-bottom:1px solid var(--hairline);
-  min-height:44px;
-  display:flex;
-  align-items:center;
-}
-.drawer a:last-of-type{border-bottom:none}
-.drawer-meta{
-  margin-top:20px;
-  font-family:var(--mono);
-  font-size:11px;
-  color:var(--ochre);
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
-.drawer-cta{
-  margin-top:16px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-/* ════════════════ BUTTONS ════════════════ */
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  padding:0 22px;
-  height:52px;
-  min-width:44px;
-  font-family:var(--sans);
-  font-size:15.5px;
-  font-weight:500;
-  letter-spacing:-.005em;
-  border:1.5px solid var(--ink);
-  transition:transform .15s var(--ease),background .15s,color .15s,border-color .15s;
-  cursor:pointer;
-  white-space:nowrap;
-  -webkit-tap-highlight-color:transparent;
-}
-.btn:active{transform:scale(.98)}
-.btn--filled{background:var(--ink);color:var(--paper)}
-.btn--filled:hover{background:var(--ink-1)}
-.btn--outline{background:transparent;color:var(--ink);border-color:var(--ink)}
-.btn--outline:hover{background:var(--ink);color:var(--paper)}
-.btn--ochre{background:var(--ochre);color:var(--paper);border-color:var(--ochre);font-weight:600}
-.btn--ochre:hover{background:var(--ochre-2);border-color:var(--ochre-2)}
-.btn--ghost{background:transparent;border:none;color:var(--ink-2);padding:0 12px;height:44px}
-.btn--ghost:hover{color:var(--ink)}
-.btn--sm{height:40px;padding:0 16px;font-size:14px;border-width:1px}
-.btn--arrow::after{content:'→';font-size:1.1em;line-height:1;margin-left:2px}
-
-/* ════════════════ SHELL ════════════════ */
-.shell{width:var(--shell);margin:0 auto}
-
-section{
-  padding:var(--pad-y) 0;
-  position:relative;
-}
-
-.eyebrow{
-  font-family:var(--mono);
-  font-size:11.5px;
-  font-weight:500;
-  text-transform:uppercase;
-  letter-spacing:.16em;
-  color:var(--ochre);
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:24px;
-}
-.eyebrow::before{
-  content:'';
-  width:28px;
-  height:1.5px;
-  background:var(--ochre);
-}
-
-/* ════════════════ HERO ════════════════ */
-.hero{
-  padding-top:calc(64px + 48px);
-  padding-bottom:64px;
-  position:relative;
-}
-@media(min-width:840px){
-  .hero{
-    padding-top:calc(72px + 80px);
-    padding-bottom:96px;
-  }
-}
-
-.hero-meta{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  font-family:var(--mono);
-  font-size:12px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:var(--ink-2);
-  margin-bottom:32px;
-  background:var(--ochre-soft);
-  padding:6px 12px 6px 8px;
-  border:1px solid var(--ochre);
-  border-radius:999px;
-}
-.hero-meta::before{
-  content:'';
-  width:8px;height:8px;
-  background:var(--ochre);
-  border-radius:50%;
-  flex-shrink:0;
-  animation:livedot 2s ease-in-out infinite;
-}
-@keyframes livedot{
-  0%,100%{box-shadow:0 0 0 0 rgba(184,118,30,.5)}
-  70%{box-shadow:0 0 0 8px rgba(184,118,30,0)}
-}
-
-.hero-title{
-  font-family:var(--serif);
-  font-size:clamp(44px,9vw,108px);
-  font-weight:500;
-  line-height:.98;
-  letter-spacing:-.035em;
-  color:var(--ink);
-  margin-bottom:28px;
-}
-.hero-title em{
-  font-style:italic;
-  font-weight:400;
-}
-.hero-title .ochre{
-  color:var(--ochre);
-  font-style:italic;
-  font-weight:400;
-}
-.hero-title .underline{
-  position:relative;
-  display:inline-block;
-}
-.hero-title .underline::after{
-  content:'';
-  position:absolute;
-  left:0;right:0;
-  bottom:-2px;
-  height:3px;
-  background:var(--ochre);
-  transform:scaleX(0);
-  transform-origin:left;
-  animation:underlinedraw 1.2s var(--ease) 1.4s forwards;
-}
-@keyframes underlinedraw{to{transform:scaleX(1)}}
-
-.hero-sub{
-  font-size:clamp(17px,2vw,21px);
-  font-weight:400;
-  line-height:1.55;
-  color:var(--ink-2);
-  max-width:46ch;
-  margin-bottom:36px;
-}
-
-.hero-cta{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  margin-bottom:48px;
-}
-@media(min-width:480px){
-  .hero-cta{flex-direction:row;flex-wrap:wrap}
-}
-.hero-cta .btn{flex:0 1 auto}
-@media(max-width:479px){
-  .hero-cta .btn{width:100%}
-}
-
-/* Mobile-first stats - stacked, readable */
-.hero-stats{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:0;
-  border-top:2px solid var(--ink);
-  border-bottom:1px solid var(--hairline);
-  margin-bottom:48px;
-}
-.hero-stat{
-  padding:20px 0;
-  border-right:1px solid var(--hairline);
-}
-.hero-stat:last-child{border-right:none}
-.hero-stat:not(:first-child){padding-left:16px}
-.hero-stat:not(:last-child){padding-right:16px}
-.hero-stat-value{
-  font-family:var(--serif);
-  font-size:clamp(26px,5vw,40px);
-  font-weight:500;
-  letter-spacing:-.025em;
-  line-height:1;
-  color:var(--ink);
-  margin-bottom:6px;
-  font-variant-numeric:tabular-nums;
-}
-.hero-stat-label{
-  font-family:var(--mono);
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  color:var(--ink-3);
-  font-weight:500;
-}
-
-/* Hero workspace panel — now mobile-visible */
-.hero-panel{
-  background:var(--ink);
-  color:var(--paper);
-  padding:24px;
-  position:relative;
-  overflow:hidden;
-}
-@media(min-width:840px){
-  .hero-panel{padding:36px}
-}
-.hero-panel::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;right:0;
-  height:2px;
-  background:var(--ochre);
-}
-.hero-panel-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:20px;
-  gap:16px;
-}
-.hero-panel-label{
-  font-family:var(--mono);
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.12em;
-  color:var(--ochre);
-  font-weight:500;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-}
-.hero-panel-label::before{
-  content:'';
-  width:6px;height:6px;
-  background:var(--ochre);
-  border-radius:50%;
-  animation:livedot 2s infinite;
-}
-.hero-panel-time{
-  font-family:var(--mono);
-  font-size:11px;
-  color:rgba(247,244,237,.35);
-  letter-spacing:.05em;
-}
-.hero-panel-q{
-  font-family:var(--serif);
-  font-size:clamp(22px,3.5vw,30px);
-  font-weight:400;
-  letter-spacing:-.02em;
-  line-height:1.1;
-  color:var(--paper);
-  margin-bottom:24px;
-}
-.hero-panel-q em{font-style:italic;font-weight:300;color:var(--ochre-soft)}
-.hero-panel-rows{display:flex;flex-direction:column}
-.hero-panel-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 0;
-  border-top:1px solid rgba(247,244,237,.1);
-  gap:16px;
-}
-.hero-panel-row:first-child{border-top:1.5px solid rgba(247,244,237,.25);padding-top:16px}
-.hero-panel-row-left{display:flex;align-items:center;gap:10px;min-width:0}
-.hero-panel-row-tag{
-  width:6px;height:6px;
-  border-radius:50%;
-  flex-shrink:0;
-}
-.hero-panel-row-label{
-  font-size:14px;
-  color:rgba(247,244,237,.7);
-  font-weight:400;
-}
-.hero-panel-row-value{
-  font-family:var(--mono);
-  font-size:14px;
-  color:var(--paper);
-  font-variant-numeric:tabular-nums;
-  font-weight:500;
-  text-align:right;
-  flex-shrink:0;
-}
-.tag-fin{background:#86d6c6}
-.tag-frt{background:#e8a76e}
-.tag-con{background:#c9b3e8}
-
-/* Hero grid - mobile first */
-.hero-grid{
-  display:flex;
-  flex-direction:column;
-  gap:48px;
-}
-@media(min-width:980px){
-  .hero-grid{
-    display:grid;
-    grid-template-columns:1.15fr 1fr;
-    gap:64px;
-    align-items:end;
-  }
-}
-
-/* ════════════════ MANIFESTO ════════════════ */
-.manifesto{
-  padding:48px 0;
-  border-top:1px solid var(--hairline);
-  border-bottom:1px solid var(--hairline);
-  background:var(--paper-2);
-}
-@media(min-width:840px){
-  .manifesto{padding:64px 0}
-}
-.manifesto-text{
-  font-family:var(--serif);
-  font-size:clamp(22px,3vw,36px);
-  font-weight:400;
-  line-height:1.3;
-  letter-spacing:-.015em;
-  color:var(--ink);
-  max-width:30ch;
-}
-.manifesto-text em{font-style:italic;color:var(--ochre)}
-
-/* ════════════════ VERTICALS ════════════════ */
-.verticals-head{
-  display:flex;
-  flex-direction:column;
-  gap:24px;
-  margin-bottom:56px;
-}
-@media(min-width:880px){
-  .verticals-head{
-    display:grid;
-    grid-template-columns:1.2fr 1fr;
-    gap:48px;
-    align-items:end;
-    margin-bottom:72px;
-  }
-}
-
-.verticals-title{
-  font-family:var(--serif);
-  font-size:clamp(36px,6vw,68px);
-  font-weight:500;
-  line-height:1;
-  letter-spacing:-.03em;
-  color:var(--ink);
-}
-.verticals-title em{font-style:italic;font-weight:400}
-
-.verticals-sub{
-  font-size:clamp(16px,1.5vw,18px);
-  font-weight:400;
-  line-height:1.6;
-  color:var(--ink-2);
-  max-width:44ch;
-}
-
-.verticals-list{border-top:2px solid var(--ink)}
-
-.vertical{
-  border-bottom:1px solid var(--hairline);
-  padding:40px 0;
-  display:grid;
-  grid-template-columns:1fr;
-  gap:24px;
-  position:relative;
-}
-@media(min-width:760px){
-  .vertical{
-    grid-template-columns:auto 1.2fr 1fr;
-    gap:48px;
-    padding:56px 0;
-    align-items:start;
-  }
-}
-
-.vertical-head{display:flex;align-items:baseline;gap:16px}
-@media(min-width:760px){.vertical-head{display:block}}
-
-.vertical-num{
-  font-family:var(--serif);
-  font-style:italic;
-  font-size:clamp(36px,5vw,72px);
-  font-weight:300;
-  line-height:1;
-  color:var(--ochre);
-  letter-spacing:-.02em;
-  font-variant-numeric:tabular-nums;
-  width:auto;
-  flex-shrink:0;
-}
-@media(min-width:760px){.vertical-num{width:90px}}
-
-.vertical-name{
-  font-family:var(--serif);
-  font-size:clamp(28px,3.5vw,44px);
-  font-weight:500;
-  line-height:1;
-  letter-spacing:-.022em;
-  color:var(--ink);
-  margin-bottom:6px;
-}
-@media(max-width:759px){
-  .vertical-name{font-size:32px;margin-bottom:4px}
-  .vertical-head .vertical-num{font-size:42px}
-}
-
-.vertical-main{}
-.vertical-tag{
-  font-family:var(--mono);
-  font-size:11.5px;
-  text-transform:uppercase;
-  letter-spacing:.12em;
-  color:var(--ochre);
-  margin-bottom:16px;
-  font-weight:500;
-}
-
-.vertical-desc{
-  font-size:16px;
-  font-weight:400;
-  line-height:1.6;
-  color:var(--ink-2);
-  max-width:48ch;
-}
-
-.vertical-features{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  margin-top:8px;
-}
-@media(min-width:760px){.vertical-features{margin-top:0}}
-
-.vertical-feature{
-  display:grid;
-  grid-template-columns:20px 1fr;
-  gap:14px;
-  align-items:start;
-  font-size:15px;
-  line-height:1.5;
-  color:var(--ink-1);
-  font-weight:400;
-}
-.vertical-feature::before{
-  content:'';
-  width:16px;
-  height:2px;
-  background:var(--ochre);
-  margin-top:11px;
-  flex-shrink:0;
-}
-
-/* ════════════════ NUMBERS BAND ════════════════ */
-.numbers{
-  background:var(--ink);
-  color:var(--paper);
-  padding:var(--pad-y) 0;
-}
-.numbers-head{margin-bottom:48px}
-@media(min-width:840px){.numbers-head{margin-bottom:72px}}
-
-.numbers-eyebrow{color:var(--ochre)}
-.numbers-eyebrow::before{background:var(--ochre)}
-
-.numbers-title{
-  font-family:var(--serif);
-  font-size:clamp(34px,5vw,60px);
-  font-weight:500;
-  line-height:1.02;
-  letter-spacing:-.03em;
-  color:var(--paper);
-  max-width:22ch;
-}
-.numbers-title em{font-style:italic;font-weight:400}
-
-.numbers-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:0;
-  border-top:1px solid rgba(247,244,237,.15);
-}
-@media(min-width:880px){.numbers-grid{grid-template-columns:repeat(4,1fr)}}
-
-.number-cell{
-  padding:32px 16px 32px 0;
-  border-bottom:1px solid rgba(247,244,237,.1);
-  position:relative;
-}
-.number-cell:nth-child(odd){border-right:1px solid rgba(247,244,237,.1)}
-@media(min-width:880px){
-  .number-cell{
-    padding:40px 24px 40px 0;
-    border-right:1px solid rgba(247,244,237,.1);
-    border-bottom:none;
-  }
-  .number-cell:last-child{border-right:none}
-}
-@media(max-width:879px){
-  .number-cell:nth-child(n+3){padding-top:32px}
-  .number-cell:not(:nth-child(odd)){padding-left:16px}
-  .number-cell:nth-last-child(-n+2){border-bottom:none}
-}
-
-.number-value{
-  font-family:var(--serif);
-  font-size:clamp(40px,7vw,68px);
-  font-weight:500;
-  letter-spacing:-.04em;
-  line-height:1;
-  color:var(--paper);
-  margin-bottom:10px;
-  font-variant-numeric:tabular-nums;
-}
-.number-value .unit{
-  font-size:.45em;
-  color:var(--ochre);
-  margin-left:2px;
-  vertical-align:super;
-  font-weight:400;
-}
-.number-label{
-  font-size:15px;
-  font-weight:400;
-  color:rgba(247,244,237,.8);
-  margin-bottom:6px;
-  line-height:1.4;
-}
-.number-detail{
-  font-family:var(--mono);
-  font-size:10.5px;
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  color:rgba(247,244,237,.35);
-}
-
-/* ════════════════ PROCESS ════════════════ */
-.process-head{margin-bottom:48px;max-width:720px}
-@media(min-width:840px){.process-head{margin-bottom:64px}}
-
-.process-title{
-  font-family:var(--serif);
-  font-size:clamp(36px,6vw,68px);
-  font-weight:500;
-  line-height:1;
-  letter-spacing:-.03em;
-  color:var(--ink);
-}
-.process-title em{font-style:italic;font-weight:400}
-
-.process-list{
-  border-top:2px solid var(--ink);
-  counter-reset:step;
-}
-.process-step{
-  border-bottom:1px solid var(--hairline);
-  padding:32px 0;
-  display:grid;
-  grid-template-columns:1fr;
-  gap:16px;
-}
-@media(min-width:760px){
-  .process-step{
-    grid-template-columns:auto 1.4fr 1fr;
-    gap:48px;
-    padding:40px 0;
-    align-items:start;
-  }
-}
-
-.process-num{
-  font-family:var(--mono);
-  font-size:13px;
-  font-weight:500;
-  color:var(--ochre);
-  letter-spacing:.08em;
-}
-@media(min-width:760px){.process-num{padding-top:8px;min-width:80px}}
-
-.process-step-title{
-  font-family:var(--serif);
-  font-size:clamp(24px,2.6vw,32px);
-  font-weight:500;
-  letter-spacing:-.022em;
-  line-height:1.15;
-  color:var(--ink);
-  margin-bottom:8px;
-}
-.process-step-meta{
-  font-family:var(--mono);
-  font-size:11.5px;
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  color:var(--ink-3);
-  font-weight:500;
-}
-
-.process-step-desc{
-  font-size:16px;
-  font-weight:400;
-  line-height:1.6;
-  color:var(--ink-2);
-  max-width:42ch;
-}
-
-/* ════════════════ TESTIMONIALS ════════════════ */
-.testi{background:var(--paper-2)}
-
-.testi-head{margin-bottom:48px;max-width:720px}
-@media(min-width:840px){.testi-head{margin-bottom:64px}}
-
-.testi-title{
-  font-family:var(--serif);
-  font-size:clamp(36px,6vw,68px);
-  font-weight:500;
-  line-height:1;
-  letter-spacing:-.03em;
-  color:var(--ink);
-}
-.testi-title em{font-style:italic;font-weight:400}
-
-.testi-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:0;
-  border-top:2px solid var(--ink);
-}
-@media(min-width:880px){.testi-grid{grid-template-columns:1fr 1fr 1fr}}
-
-.testi-card{
-  padding:36px 0;
-  border-bottom:1px solid var(--hairline-2);
-  display:flex;
-  flex-direction:column;
-}
-@media(min-width:880px){
-  .testi-card{
-    padding:48px 32px;
-    border-right:1px solid var(--hairline-2);
-    border-bottom:none;
-  }
-  .testi-card:first-child{padding-left:0}
-  .testi-card:last-child{border-right:none;padding-right:0}
-}
-
-.testi-mark{
-  font-family:var(--serif);
-  font-style:italic;
-  font-size:72px;
-  font-weight:400;
-  line-height:.6;
-  color:var(--ochre);
-  margin-bottom:24px;
-  height:36px;
-}
-
-.testi-quote{
-  font-family:var(--serif);
-  font-size:20px;
-  font-weight:400;
-  line-height:1.45;
-  letter-spacing:-.01em;
-  color:var(--ink-1);
-  font-style:italic;
-  margin-bottom:32px;
-  flex:1;
-}
-.testi-quote strong{
-  font-style:normal;
-  color:var(--ink);
-  font-weight:600;
-  background:linear-gradient(transparent 60%,var(--ochre-soft) 60%);
-  padding:0 2px;
-}
-
-.testi-attr{
-  padding-top:24px;
-  border-top:1px solid var(--hairline-2);
-}
-.testi-name{
-  font-size:15px;
-  font-weight:600;
-  color:var(--ink);
-  margin-bottom:4px;
-  letter-spacing:-.01em;
-}
-.testi-role{
-  font-family:var(--mono);
-  font-size:11.5px;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-  color:var(--ink-3);
-  font-weight:500;
-}
-
-/* ════════════════ PRICING ════════════════ */
-.pricing-head{
-  display:flex;
-  flex-direction:column;
-  gap:24px;
-  margin-bottom:32px;
-}
-@media(min-width:880px){
-  .pricing-head{
-    display:grid;
-    grid-template-columns:1.2fr 1fr;
-    align-items:end;
-    margin-bottom:40px;
-  }
-}
-
-.pricing-title{
-  font-family:var(--serif);
-  font-size:clamp(36px,6vw,68px);
-  font-weight:500;
-  line-height:1;
-  letter-spacing:-.03em;
-  color:var(--ink);
-}
-.pricing-title em{font-style:italic;font-weight:400}
-
-.pricing-sub{
-  font-size:16px;
-  font-weight:400;
-  line-height:1.6;
-  color:var(--ink-2);
-  max-width:40ch;
-}
-
-.billing-toggle{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin-bottom:32px;
-  font-size:15px;
-  flex-wrap:wrap;
-}
-.billing-toggle-label{
-  color:var(--ink-3);
-  cursor:pointer;
-  font-weight:500;
-  padding:4px 0;
-  min-height:44px;
-  display:flex;
-  align-items:center;
-}
-.billing-toggle-label.active{color:var(--ink)}
-.toggle{
-  width:48px;height:28px;
-  background:var(--paper-3);
-  border:1.5px solid var(--ink);
-  position:relative;
-  cursor:pointer;
-  transition:background .25s;
-  flex-shrink:0;
-  border-radius:14px;
-}
-.toggle.on{background:var(--ink)}
-.toggle::after{
-  content:'';
-  position:absolute;
-  top:2px;left:2px;
-  width:20px;height:20px;
-  background:var(--paper);
-  transition:transform .25s var(--ease);
-  border-radius:50%;
-}
-.toggle.on::after{transform:translateX(20px);background:var(--ochre-soft)}
-.save-pill{
-  font-family:var(--mono);
-  font-size:11px;
-  font-weight:600;
-  letter-spacing:.1em;
-  color:var(--paper);
-  background:var(--ochre);
-  padding:5px 9px;
-  text-transform:uppercase;
-}
-.pricing-note{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:12px;
-  margin:0 0 32px;
-  padding:18px 0;
-  border-top:1px solid var(--hairline);
-  border-bottom:1px solid var(--hairline);
-}
-@media(min-width:760px){.pricing-note{grid-template-columns:1fr 1fr 1fr}}
-.pricing-note span{
-  font-size:14px;
-  line-height:1.45;
-  color:var(--ink-2);
-}
-.pricing-note strong{
-  color:var(--ink);
-  font-weight:600;
-}
-
-.pricing-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:0;
-  border:2px solid var(--ink);
-}
-@media(min-width:760px){.pricing-grid{grid-template-columns:1fr 1fr 1fr}}
-
-.tier{
-  padding:32px 24px;
-  display:flex;
-  flex-direction:column;
-  position:relative;
-  background:var(--paper);
-  border-bottom:1px solid var(--hairline);
-}
-@media(min-width:760px){
-  .tier{
-    padding:40px 28px;
-    border-right:1px solid var(--hairline);
-    border-bottom:none;
-  }
-  .tier:last-child{border-right:none}
-}
-.tier--featured{
-  background:var(--ink);
-  color:var(--paper);
-}
-@media(min-width:760px){
-  .tier--featured{
-    margin:-12px -1px;
-    border:2px solid var(--ochre);
-    z-index:2;
-  }
-}
-.tier-label{
-  font-family:var(--mono);
-  font-size:11.5px;
-  text-transform:uppercase;
-  letter-spacing:.12em;
-  color:var(--ink-3);
-  margin-bottom:12px;
-  font-weight:500;
-}
-.tier--featured .tier-label{color:var(--ochre)}
-.tier-name{
-  font-family:var(--serif);
-  font-size:32px;
-  font-weight:500;
-  letter-spacing:-.022em;
-  color:var(--ink);
-  margin-bottom:10px;
-  line-height:1;
-}
-.tier--featured .tier-name{color:var(--paper)}
-.tier-desc{
-  font-size:14.5px;
-  font-weight:400;
-  line-height:1.55;
-  color:var(--ink-2);
-  margin-bottom:24px;
-  min-height:44px;
-}
-.tier--featured .tier-desc{color:rgba(247,244,237,.7)}
-.tier-price{
-  display:flex;
-  align-items:baseline;
-  gap:6px;
-  margin-bottom:4px;
-  flex-wrap:wrap;
-}
-.tier-amount{
-  font-family:var(--serif);
-  font-size:56px;
-  font-weight:500;
-  letter-spacing:-.04em;
-  color:var(--ink);
-  line-height:1;
-  font-variant-numeric:tabular-nums;
-}
-.tier--featured .tier-amount{color:var(--paper)}
-.tier-list{
-  font-size:18px;
-  color:var(--ink-4);
-  text-decoration:line-through;
-  margin-left:4px;
-}
-.tier--featured .tier-list{color:rgba(247,244,237,.35)}
-.tier-mo{
-  font-size:15px;
-  font-weight:400;
-  color:var(--ink-3);
-}
-.tier--featured .tier-mo{color:rgba(247,244,237,.4)}
-.tier-period{
-  font-family:var(--mono);
-  font-size:11.5px;
-  color:var(--ink-3);
-  margin-bottom:24px;
-  letter-spacing:.04em;
-}
-.tier--featured .tier-period{color:rgba(247,244,237,.4)}
-
-.tier-cta{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-  height:48px;
-  padding:0 20px;
-  font-size:15px;
-  font-weight:600;
-  margin-bottom:28px;
-  cursor:pointer;
-  border:1.5px solid var(--ink);
-  background:transparent;
-  color:var(--ink);
-  transition:all .15s;
-  width:100%;
-  font-family:inherit;
-}
-.tier-cta:hover{background:var(--ink);color:var(--paper)}
-.tier--featured .tier-cta{
-  background:var(--ochre);
-  border-color:var(--ochre);
-  color:var(--paper);
-}
-.tier--featured .tier-cta:hover{background:var(--ochre-2);border-color:var(--ochre-2)}
-
-.tier-divider{height:1px;background:var(--hairline);margin-bottom:20px}
-.tier--featured .tier-divider{background:rgba(247,244,237,.12)}
-
-.tier-features{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
-.tier-feature{
-  display:grid;
-  grid-template-columns:16px 1fr;
-  gap:12px;
-  align-items:start;
-  font-size:14.5px;
-  font-weight:400;
-  line-height:1.5;
-  color:var(--ink-1);
-}
-.tier-feature::before{
-  content:'';
-  width:14px;
-  height:2px;
-  background:var(--ochre);
-  margin-top:10px;
-}
-.tier--featured .tier-feature{color:rgba(247,244,237,.85)}
-
-.tier-popular{
-  position:absolute;
-  top:-14px;
-  left:24px;
-  background:var(--ochre);
-  color:var(--paper);
-  font-family:var(--mono);
-  font-size:11px;
-  font-weight:600;
-  letter-spacing:.12em;
-  padding:5px 12px;
-  white-space:nowrap;
-}
-@media(min-width:760px){.tier-popular{left:50%;transform:translateX(-50%)}}
-
-/* ════════════════ CTA ════════════════ */
-.cta{
-  padding:var(--pad-y) 0;
-  text-align:center;
-  background:var(--paper-2);
-  border-top:2px solid var(--ink);
-  position:relative;
-  overflow:hidden;
-}
-.cta::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 25% 30%,rgba(184,118,30,.06),transparent 50%),
-    radial-gradient(circle at 75% 70%,rgba(184,118,30,.04),transparent 50%);
-  pointer-events:none;
-}
-.cta-inner{
-  max-width:760px;
-  margin:0 auto;
-  position:relative;
-}
-.cta-eyebrow{justify-content:center;display:inline-flex}
-.cta-title{
-  font-family:var(--serif);
-  font-size:clamp(40px,7vw,84px);
-  font-weight:500;
-  line-height:1;
-  letter-spacing:-.035em;
-  color:var(--ink);
-  margin-bottom:24px;
-}
-.cta-title em{font-style:italic;font-weight:400;color:var(--ochre)}
-.cta-sub{
-  font-size:clamp(16px,1.4vw,18px);
-  font-weight:400;
-  line-height:1.6;
-  color:var(--ink-2);
-  max-width:48ch;
-  margin:0 auto 36px;
-}
-.cta-buttons{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  justify-content:center;
-  align-items:center;
-  margin-bottom:24px;
-}
-@media(min-width:480px){
-  .cta-buttons{flex-direction:row;flex-wrap:wrap}
-}
-.cta-buttons .btn{width:100%;max-width:340px}
-@media(min-width:480px){.cta-buttons .btn{width:auto}}
-.cta-note{
-  font-family:var(--mono);
-  font-size:11px;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--ink-3);
-}
-
-/* ════════════════ TRUST NOTES ════════════════ */
-.trust-notes{
-  background:var(--paper);
-  border-top:1px solid var(--hairline);
-  padding:72px 0;
-}
-.trust-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:28px;
-  border-top:2px solid var(--ink);
-}
-@media(min-width:840px){.trust-grid{grid-template-columns:repeat(3,1fr);gap:0}}
-.trust-card{
-  padding:28px 0;
-  border-bottom:1px solid var(--hairline);
-}
-@media(min-width:840px){
-  .trust-card{
-    padding:36px 28px;
-    border-right:1px solid var(--hairline);
-    border-bottom:none;
-  }
-  .trust-card:first-child{padding-left:0}
-  .trust-card:last-child{border-right:none;padding-right:0}
-}
-.trust-card h3{
-  font-family:var(--serif);
-  font-size:clamp(24px,2.5vw,32px);
-  font-weight:500;
-  letter-spacing:-.02em;
-  line-height:1.1;
-  color:var(--ink);
-  margin-bottom:14px;
-}
-.trust-card p{
-  font-size:15.5px;
-  line-height:1.6;
-  color:var(--ink-2);
-}
-
-/* ════════════════ FOOTER ════════════════ */
-footer{
-  background:var(--ink);
-  color:var(--paper);
-  padding:64px 0 32px;
-}
-@media(min-width:840px){footer{padding:96px 0 40px}}
-
-.footer-inner{width:var(--shell);margin:0 auto}
-
-.footer-top{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:40px;
-  margin-bottom:48px;
-}
-@media(min-width:600px){
-  .footer-top{grid-template-columns:1fr 1fr}
-}
-@media(min-width:880px){
-  .footer-top{grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:64px}
-}
-
-.footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:16px}
-.footer-brand-mark{
-  width:32px;height:32px;
-  background:var(--ochre);
-  display:grid;place-items:center;
-  font-family:var(--serif);
-  font-style:italic;
-  font-size:20px;
-  color:var(--ink);
-}
-.footer-brand-name{
-  font-family:var(--serif);
-  font-size:22px;
-  font-weight:500;
-  letter-spacing:-.015em;
-}
-.footer-blurb{
-  font-size:14px;
-  font-weight:400;
-  line-height:1.6;
-  color:rgba(247,244,237,.55);
-  max-width:240px;
-  margin-bottom:24px;
-}
-.footer-email{
-  font-family:var(--mono);
-  font-size:13px;
-  color:var(--ochre);
-  display:inline-block;
-  border-bottom:1px solid var(--ochre);
-  padding-bottom:2px;
-  font-weight:500;
-}
-
-.footer-col-title{
-  font-family:var(--mono);
-  font-size:11.5px;
-  font-weight:600;
-  text-transform:uppercase;
-  letter-spacing:.12em;
-  color:var(--ochre);
-  margin-bottom:18px;
-}
-.footer-links{display:flex;flex-direction:column;gap:12px}
-.footer-links a{
-  font-size:14.5px;
-  font-weight:400;
-  color:rgba(247,244,237,.7);
-  transition:color .15s;
-  min-height:24px;
-}
-.footer-links a:hover{color:var(--paper)}
-
-.footer-bottom{
-  padding-top:32px;
-  border-top:1px solid rgba(247,244,237,.12);
-  display:flex;
-  flex-wrap:wrap;
-  gap:16px;
-  align-items:center;
-  font-family:var(--mono);
-  font-size:11.5px;
-  letter-spacing:.05em;
-  color:rgba(247,244,237,.4);
-}
-.footer-compliance{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-@media(min-width:600px){.footer-compliance{margin-left:auto}}
-.compliance-pill{
-  border:1px solid rgba(247,244,237,.2);
-  padding:5px 10px;
-  font-size:10.5px;
-  letter-spacing:.1em;
-  color:rgba(247,244,237,.55);
-}
-
-/* ════════════════ MOTION ════════════════ */
-@media(prefers-reduced-motion:no-preference){
-  .fade-in{
-    opacity:0;
-    transform:translateY(24px);
-    transition:opacity .8s var(--ease),transform .8s var(--ease);
-  }
-  .fade-in.visible{opacity:1;transform:none}
-  .d1{transition-delay:.06s}
-  .d2{transition-delay:.14s}
-  .d3{transition-delay:.22s}
-  .d4{transition-delay:.3s}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{
-    animation-duration:.01ms!important;
-    animation-iteration-count:1!important;
-    transition-duration:.01ms!important;
-  }
-  .underline::after{transform:scaleX(1)!important}
-}
-
-/* iOS safe areas */
-@supports(padding:max(0px)){
-  .nav{padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
-  footer{padding-bottom:max(32px,env(safe-area-inset-bottom))}
-}
-
-/* Print-friendly */
-@media print{
-  .nav,.drawer,.menu-btn{display:none}
-  body{background:white;color:black}
-}
+.app{min-height:100vh;min-height:100dvh;display:grid;grid-template-rows:auto 1fr}
+.nav{position:relative;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px clamp(16px,3vw,36px)}
+.brand{display:flex;align-items:center;gap:11px;min-height:44px}
+.brand-mark{width:34px;height:34px;display:grid;place-items:center;background:var(--ink);color:var(--bun-light);font-family:var(--serif);font-size:21px;font-style:italic;line-height:1}
+.brand-name{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:0}
+.flow-tabs{display:none;align-items:center;gap:4px;padding:5px;background:rgba(255,248,234,.62);border:1px solid var(--line);box-shadow:0 10px 34px rgba(64,42,20,.08)}
+.flow-tab{min-height:38px;padding:0 13px;font-size:13px;font-weight:600;color:var(--ink-3);transition:background .18s var(--ease),color .18s var(--ease)}
+.flow-tab.active{background:var(--ink);color:var(--paper)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.nav-status{display:none;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--bun-dark);border:1px solid rgba(168,97,32,.42);padding:7px 10px}
+.btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 17px;border:1.5px solid var(--ink);font-size:14px;font-weight:700;white-space:nowrap;transition:transform .18s var(--ease),background .18s var(--ease),color .18s var(--ease)}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.warm{background:var(--bun-dark);border-color:var(--bun-dark);color:var(--cream)}
+.btn.ghost{background:rgba(255,248,234,.55)}
+.mobile-select{min-height:44px;border:1.5px solid var(--ink);background:var(--surface-strong);color:var(--ink);padding:0 12px;font-weight:700;max-width:145px}
+@media(min-width:860px){.flow-tabs{display:flex}.nav-status{display:block}.mobile-select{display:none}}
+.stage{position:relative;min-height:0;padding:0 clamp(16px,3vw,36px) 26px}
+.screen{position:absolute;inset:0 clamp(16px,3vw,36px) 26px;display:grid;grid-template-columns:minmax(0,1fr);align-items:center;gap:28px;opacity:0;pointer-events:none;transform:translateY(18px) scale(.992);transition:opacity .36s var(--ease),transform .36s var(--ease)}
+.screen.active{opacity:1;pointer-events:auto;transform:none}
+.screen-inner{width:min(1220px,100%);margin:0 auto;min-height:calc(100vh - 116px);min-height:calc(100dvh - 116px);display:grid;grid-template-columns:minmax(0,1fr);gap:26px;align-items:center}
+@media(min-width:980px){.screen-inner{grid-template-columns:.95fr 1.05fr}}
+.copy-block{max-width:620px}
+.eyebrow{display:inline-flex;align-items:center;gap:11px;margin-bottom:18px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--bun-dark)}
+.eyebrow::before{content:'';width:28px;height:2px;background:var(--bun-dark)}
+h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:0;line-height:.98;color:var(--ink)}
+h1{font-size:clamp(48px,8.5vw,118px)}
+h2{font-size:clamp(38px,6vw,78px)}
+h1 em,h2 em{font-style:italic;font-weight:300;color:var(--bun-dark)}
+.lede{margin-top:24px;max-width:54ch;color:var(--ink-2);font-size:clamp(17px,1.8vw,21px);line-height:1.55}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.micro-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:32px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+.micro-proof div{padding:16px 14px 16px 0;border-right:1px solid var(--line)}
+.micro-proof div:last-child{border-right:0}
+.micro-proof strong{display:block;font-family:var(--serif);font-size:clamp(24px,3vw,38px);font-weight:500;line-height:1}
+.micro-proof span{display:block;margin-top:6px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3)}
+.bun-stage{min-height:560px;position:relative;display:grid;place-items:center}
+.bun-orbit{position:absolute;inset:18px;border:1px solid rgba(20,20,17,.12);border-radius:50%;animation:slowspin 18s linear infinite}
+.bun-orbit::before,.bun-orbit::after{content:'';position:absolute;width:9px;height:9px;border-radius:50%;background:var(--bun-dark)}
+.bun-orbit::before{top:18%;left:8%}
+.bun-orbit::after{right:14%;bottom:9%;background:var(--finance)}
+.bun-machine{width:min(520px,92vw);aspect-ratio:1/1.05;position:relative;display:grid;place-items:center}
+.bun-half{position:absolute;left:8%;width:84%;height:31%;background:radial-gradient(circle at 24% 34%,rgba(255,255,255,.34) 0 8px,transparent 9px),radial-gradient(circle at 45% 24%,rgba(255,255,255,.28) 0 6px,transparent 7px),radial-gradient(circle at 68% 36%,rgba(255,255,255,.3) 0 7px,transparent 8px),linear-gradient(155deg,var(--bun-light),var(--bun) 42%,var(--bun-dark));box-shadow:inset 0 -18px 40px rgba(101,55,16,.2),var(--shadow)}
+.bun-top{top:10%;border-radius:48% 48% 24% 24% / 70% 70% 30% 30%;animation:bunTop 4.2s var(--ease) infinite}
+.bun-bottom{bottom:10%;border-radius:24% 24% 46% 46% / 30% 30% 70% 70%;animation:bunBottom 4.2s var(--ease) infinite}
+.service-stack{position:absolute;inset:27% 7% 28%;display:grid;grid-template-rows:1fr 1fr 1fr;gap:12px}
+.service-layer{display:grid;grid-template-columns:112px 1fr auto;align-items:center;gap:12px;padding:12px 14px;background:var(--surface-strong);border:1.5px solid var(--ink);box-shadow:0 16px 42px rgba(64,42,20,.12);transform-origin:center;animation:layerPulse 4.2s var(--ease) infinite}
+.service-layer:nth-child(2){animation-delay:.18s}
+.service-layer:nth-child(3){animation-delay:.36s}
+.service-name{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+.service-line{height:8px;background:var(--line);position:relative;overflow:hidden}
+.service-line::after{content:'';position:absolute;inset:0 auto 0 0;width:42%;background:currentColor;animation:dataMove 2.6s var(--ease) infinite}
+.service-pill{width:9px;height:9px;border-radius:50%;background:currentColor}
+.finance-color{color:var(--finance)}
+.freight-color{color:var(--freight)}
+.consult-color{color:var(--consult)}
+.compute-core{position:absolute;z-index:2;width:132px;height:132px;display:grid;place-items:center;text-align:center;border-radius:50%;background:var(--ink);color:var(--cream);border:8px solid var(--compute);box-shadow:0 0 0 14px rgba(247,200,96,.2),0 22px 58px rgba(20,20,17,.25);animation:coreBeat 2.8s var(--ease) infinite}
+.compute-core span{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.12em;line-height:1.35}
+.manage-band{position:absolute;bottom:2%;left:50%;transform:translateX(-50%);min-width:260px;text-align:center;background:var(--manage);color:var(--cream);padding:13px 18px;border-top:3px solid var(--bun-dark);font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;box-shadow:var(--shadow)}
+.flow-panel{align-self:stretch;min-height:520px;background:var(--surface-strong);border:1.5px solid var(--ink);box-shadow:var(--shadow);display:grid;grid-template-rows:auto 1fr auto}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;border-bottom:1px solid var(--line)}
+.panel-label{font-family:var(--mono);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-3)}
+.panel-badge{padding:6px 10px;border:1px solid currentColor;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--bun-dark)}
+.flow-steps{display:grid;grid-template-columns:1fr}
+.flow-step{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:22px 20px;border-bottom:1px solid var(--line)}
+.flow-step:last-child{border-bottom:0}
+.step-num{width:36px;height:36px;display:grid;place-items:center;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:12px;font-weight:700}
+.flow-step h3{font-family:var(--serif);font-size:clamp(23px,2vw,31px);font-weight:500;line-height:1.05;margin-bottom:8px}
+.flow-step p{font-size:15.5px;line-height:1.55;color:var(--ink-2);max-width:52ch}
+.flow-meter{padding:18px 20px;display:grid;grid-template-columns:1fr;gap:10px;border-top:1px solid var(--line)}
+.meter-track{height:9px;background:var(--line);overflow:hidden}
+.meter-fill{height:100%;background:var(--bun-dark);width:68%;animation:meter 4s var(--ease) infinite}
+.flow-meter span{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.route-cards{display:grid;grid-template-columns:1fr;gap:12px;margin-top:28px}
+.route-card{display:grid;grid-template-columns:18px 1fr auto;gap:14px;align-items:center;padding:16px;border:1.5px solid var(--ink);background:var(--surface);text-align:left;transition:background .18s var(--ease),transform .18s var(--ease)}
+.route-card:hover{background:var(--cream);transform:translateX(3px)}
+.route-dot{width:12px;height:12px;border-radius:50%;background:currentColor}
+.route-card strong{display:block;font-size:15px}
+.route-card span span{display:block;margin-top:3px;font-size:13px;color:var(--ink-3)}
+.route-card i{font-style:normal;font-family:var(--mono);font-size:13px}
+.pricing-panel{grid-template-rows:auto 1fr}
+.pricing-grid{display:grid;grid-template-columns:1fr}
+.price-card{position:relative;padding:26px 22px;border-bottom:1px solid var(--line)}
+.price-card:last-child{border-bottom:0}
+.price-card.featured{background:var(--ink);color:var(--paper)}
+.price-card h3{font-family:var(--serif);font-size:30px;font-weight:500;margin-bottom:8px}
+.price-card p{font-size:14.5px;color:var(--ink-2);line-height:1.55;min-height:46px}
+.price-card.featured p{color:rgba(245,239,227,.72)}
+.price{display:flex;align-items:baseline;gap:8px;margin:18px 0 6px;flex-wrap:wrap}
+.price strong{font-family:var(--serif);font-size:clamp(44px,5vw,62px);font-weight:500;line-height:1}
+.price s{font-size:18px;color:var(--ink-3)}
+.price-card.featured .price s{color:rgba(245,239,227,.42)}
+.price small{font-size:14px;color:var(--ink-3)}
+.price-card.featured .price small{color:rgba(245,239,227,.6)}
+.price-note{font-family:var(--mono);font-size:11px;color:var(--bun-dark);letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px}
+.price-card.featured .price-note{color:var(--compute)}
+.price-card ul{display:grid;gap:10px;margin-top:18px}
+.price-card li{display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:14px;line-height:1.45}
+.price-card li::before{content:'';width:12px;height:2px;background:var(--bun-dark);margin-top:10px}
+.price-card.featured li::before{background:var(--compute)}
+@media(min-width:940px){.pricing-grid{grid-template-columns:repeat(3,1fr)}.price-card{border-right:1px solid var(--line);border-bottom:0}.price-card:last-child{border-right:0}}
+.access-form{display:grid;gap:12px;padding:22px}
+.field{display:grid;gap:7px}
+.field label{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.field input,.field textarea,.field select{width:100%;border:1.5px solid var(--ink);background:var(--cream);color:var(--ink);min-height:48px;padding:12px;font:inherit}
+.field textarea{min-height:110px;resize:vertical}
+.access-form .btn{width:100%;margin-top:6px}
+.footer-strip{position:fixed;z-index:18;left:clamp(16px,3vw,36px);right:clamp(16px,3vw,36px);bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:14px;pointer-events:none}
+.progress-dots{display:flex;gap:8px}
+.progress-dot{width:8px;height:8px;border:1px solid var(--ink);background:transparent;opacity:.5}
+.progress-dot.active{background:var(--ink);opacity:1}
+.legal-line{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3)}
+@keyframes slowspin{to{transform:rotate(360deg)}}
+@keyframes bunTop{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+@keyframes bunBottom{0%,100%{transform:translateY(0)}50%{transform:translateY(16px)}}
+@keyframes layerPulse{0%,100%{transform:translateX(0)}50%{transform:translateX(10px)}}
+@keyframes dataMove{0%{transform:translateX(-110%)}70%,100%{transform:translateX(250%)}}
+@keyframes coreBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+@keyframes meter{0%,100%{width:58%}50%{width:86%}}
+@media(max-width:979px){body{overflow:auto}.screen{position:relative;display:none;inset:auto;padding-bottom:42px}.screen.active{display:block}.screen-inner{min-height:auto;padding-top:18px}.bun-stage{min-height:430px}.flow-panel{min-height:auto;margin-top:22px}.footer-strip{position:relative;left:auto;right:auto;bottom:auto;padding:0 16px 16px}}
+@media(max-width:620px){.nav{align-items:flex-start}.nav-actions{flex-direction:column;align-items:flex-end}.btn{padding:0 13px}.micro-proof{grid-template-columns:1fr}.micro-proof div{border-right:0;border-bottom:1px solid var(--line)}.micro-proof div:last-child{border-bottom:0}.service-layer{grid-template-columns:88px 1fr auto}.service-stack{inset:29% 2% 30%}.compute-core{width:110px;height:110px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a class="brand" href="/" aria-label="BunManage home">
-      <span class="brand-mark">B</span>
-      <span class="brand-name">BunManage</span>
-    </a>
-    <div class="nav-links">
-      <a href="#platform">Platform</a>
-      <a href="#process">Process</a>
-      <a href="#fit">Use cases</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#security">Security</a>
+<div class="app">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="#home" data-flow-link="home" aria-label="BunManage home"><span class="brand-mark">B</span><span class="brand-name">BunManage</span></a>
+    <div class="flow-tabs" role="tablist" aria-label="BunManage flows">
+      <button class="flow-tab active" data-flow-link="home">Origin</button>
+      <button class="flow-tab" data-flow-link="finance">Finance</button>
+      <button class="flow-tab" data-flow-link="freight">Freight</button>
+      <button class="flow-tab" data-flow-link="consulting">Consulting</button>
+      <button class="flow-tab" data-flow-link="pricing">Pricing</button>
     </div>
-    <div class="nav-cta">
-      <span class="nav-meta">Beta</span>
-      <a href="mailto:hello@bunmanage.com?subject=BunManage%20access%20question" class="btn btn--ghost">Contact</a>
-      <a href="#access" class="btn btn--filled btn--sm">Request access →</a>
+    <div class="nav-actions">
+      <span class="nav-status">Private beta</span>
+      <select class="mobile-select" id="mobileFlow" aria-label="Choose experience">
+        <option value="home">Origin</option><option value="finance">Finance</option><option value="freight">Freight</option><option value="consulting">Consulting</option><option value="pricing">Pricing</option><option value="access">Access</option>
+      </select>
+      <a class="btn primary" href="#access" data-flow-link="access">Request access</a>
     </div>
-    <button class="menu-btn" id="menuBtn" onclick="toggleDrawer()" aria-label="Toggle menu" aria-controls="drawer" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- MOBILE DRAWER -->
-<div class="drawer" id="drawer">
-  <a href="#platform" onclick="closeDrawer()">Platform</a>
-  <a href="#process" onclick="closeDrawer()">Process</a>
-  <a href="#fit" onclick="closeDrawer()">Use cases</a>
-  <a href="#pricing" onclick="closeDrawer()">Pricing</a>
-  <a href="#security" onclick="closeDrawer()">Security</a>
-  <div class="drawer-meta">● Private beta · 2026</div>
-  <div class="drawer-cta">
-    <a href="mailto:hello@bunmanage.com?subject=BunManage%20access%20question" class="btn btn--outline" onclick="closeDrawer()">Contact</a>
-    <a href="#access" class="btn btn--ochre" onclick="closeDrawer()">Request access →</a>
-  </div>
+  </nav>
+  <main class="stage">
+    <section class="screen active" id="home" data-flow="home" aria-labelledby="home-title">
+      <div class="screen-inner">
+        <div class="copy-block">
+          <div class="eyebrow">Compute becomes the bun</div>
+          <h1 id="home-title">We manage what's <em>in between.</em></h1>
+          <p class="lede">BunManage turns the power of compute into the two buns: one layer that holds the operating system, and one layer that keeps it accountable. Finance, freight, and consulting run between them as connected service flows.</p>
+          <div class="actions"><button class="btn warm" data-flow-link="finance">Enter a flow</button><button class="btn ghost" data-flow-link="pricing">See founding pricing</button></div>
+          <div class="micro-proof" aria-label="BunManage model"><div><strong>2</strong><span>Compute buns</span></div><div><strong>3</strong><span>Service layers</span></div><div><strong>1</strong><span>Managed workspace</span></div></div>
+        </div>
+        <div class="bun-stage" aria-label="Animated BunManage service model">
+          <div class="bun-orbit"></div>
+          <div class="bun-machine">
+            <div class="bun-half bun-top"></div>
+            <div class="service-stack">
+              <button class="service-layer finance-color" data-flow-link="finance"><span class="service-name">Finance</span><span class="service-line"></span><span class="service-pill"></span></button>
+              <button class="service-layer freight-color" data-flow-link="freight"><span class="service-name">Freight</span><span class="service-line"></span><span class="service-pill"></span></button>
+              <button class="service-layer consult-color" data-flow-link="consulting"><span class="service-name">Consulting</span><span class="service-line"></span><span class="service-pill"></span></button>
+            </div>
+            <div class="compute-core"><span>Compute<br>control<br>layer</span></div>
+            <div class="bun-half bun-bottom"></div>
+            <div class="manage-band">BunManage owns the middle</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="screen" id="finance" data-flow="finance" aria-labelledby="finance-title">
+      <div class="screen-inner"><div class="copy-block"><div class="eyebrow">Finance flow</div><h2 id="finance-title">Money moves with a visible trail.</h2><p class="lede">Finance is the first layer: requests, approvals, payouts, reconciliation, and exports stay in one operating record.</p><div class="actions"><button class="btn warm" data-flow-link="freight">Next flow: freight</button><button class="btn ghost" data-flow-link="pricing">Price the stack</button></div></div><article class="flow-panel"><div class="panel-head"><span class="panel-label">Finance workspace</span><span class="panel-badge">Capital controls</span></div><div class="flow-steps"><div class="flow-step"><span class="step-num">01</span><div><h3>Intake the payment</h3><p>Capture vendor, client, amount, entity, and required documents before a payment enters the approval lane.</p></div></div><div class="flow-step"><span class="step-num">02</span><div><h3>Route approvals</h3><p>Match the request to role-based approval rules so finance, operations, and leadership see only what they need.</p></div></div><div class="flow-step"><span class="step-num">03</span><div><h3>Reconcile and export</h3><p>Keep status, notes, and audit history attached to the same record instead of chasing context across tools.</p></div></div></div><div class="flow-meter"><div class="meter-track"><div class="meter-fill"></div></div><span>Result: cleaner cash visibility and fewer manual handoffs</span></div></article></div>
+    </section>
+    <section class="screen" id="freight" data-flow="freight" aria-labelledby="freight-title">
+      <div class="screen-inner"><div class="copy-block"><div class="eyebrow">Freight flow</div><h2 id="freight-title">Movement and margin share the same context.</h2><p class="lede">Freight is the second layer: dispatch, assets, vendor scorecards, and cost data stay connected to the financial picture.</p><div class="actions"><button class="btn warm" data-flow-link="consulting">Next flow: consulting</button><button class="btn ghost" data-flow-link="pricing">See the offer</button></div></div><article class="flow-panel"><div class="panel-head"><span class="panel-label">Freight workspace</span><span class="panel-badge">Dispatch logic</span></div><div class="flow-steps"><div class="flow-step"><span class="step-num">01</span><div><h3>Book the load</h3><p>Bring lane, carrier, asset, document, and rate details into one record before operations start moving.</p></div></div><div class="flow-step"><span class="step-num">02</span><div><h3>Watch exceptions</h3><p>Surface ETA, detention, document, and vendor-risk issues before they become back-office cleanup.</p></div></div><div class="flow-step"><span class="step-num">03</span><div><h3>Close the loop</h3><p>Connect delivery status to billing, payout review, and scorecards so dispatch learns from every movement.</p></div></div></div><div class="flow-meter"><div class="meter-track"><div class="meter-fill"></div></div><span>Result: tighter dispatch decisions with finance beside them</span></div></article></div>
+    </section>
+    <section class="screen" id="consulting" data-flow="consulting" aria-labelledby="consulting-title">
+      <div class="screen-inner"><div class="copy-block"><div class="eyebrow">Consulting flow</div><h2 id="consulting-title">Specialist work becomes an accountable engagement.</h2><p class="lede">Consulting is the third layer: scopes, milestones, documents, approvals, and payouts stay tied to the same operating record.</p><div class="actions"><button class="btn warm" data-flow-link="pricing">Price the full bun</button><button class="btn ghost" data-flow-link="home">Back to origin</button></div></div><article class="flow-panel"><div class="panel-head"><span class="panel-label">Consulting workspace</span><span class="panel-badge">Engagement control</span></div><div class="flow-steps"><div class="flow-step"><span class="step-num">01</span><div><h3>Define the scope</h3><p>Turn a brief into milestones, owners, documents, rates, and approval expectations before the work starts.</p></div></div><div class="flow-step"><span class="step-num">02</span><div><h3>Track progress</h3><p>Keep notes, files, blockers, and client approval states visible without pushing the team into another project tool.</p></div></div><div class="flow-step"><span class="step-num">03</span><div><h3>Approve payout</h3><p>Route completion evidence back through finance controls so payments match the approved engagement record.</p></div></div></div><div class="flow-meter"><div class="meter-track"><div class="meter-fill"></div></div><span>Result: less ambiguity between delivery, documents, and payout</span></div></article></div>
+    </section>
+    <section class="screen" id="pricing" data-flow="pricing" aria-labelledby="pricing-title">
+      <div class="screen-inner"><div class="copy-block"><div class="eyebrow">Founding customer pricing</div><h2 id="pricing-title">Premium enough to trust. Discounted enough to start.</h2><p class="lede">BunManage is priced below mature freight ERP platforms, above generic task tools, and against the cost of running separate finance, freight, and consulting systems.</p><div class="actions"><button class="btn warm" data-flow-link="access">Request founding terms</button><button class="btn ghost" data-flow-link="finance">Review flows first</button></div></div><article class="flow-panel pricing-panel"><div class="panel-head"><span class="panel-label">20% off first 12 months</span><span class="panel-badge">Launch offer</span></div><div class="pricing-grid"><div class="price-card"><h3>Starter</h3><p>One serious vertical with unlimited team members and a clean implementation path.</p><div class="price"><strong>$399</strong><s>$499</s><small>/ mo</small></div><div class="price-note">Single vertical</div><ul><li>Finance, freight, or consulting flow</li><li>Role-based access and audit exports</li><li>Founding customer onboarding</li></ul></div><div class="price-card featured"><h3>Growth</h3><p>Two connected verticals for operators ready to replace duplicate systems.</p><div class="price"><strong>$999</strong><s>$1,249</s><small>/ mo</small></div><div class="price-note">Most useful starting point</div><ul><li>Any two service flows</li><li>Shared command surface and inbox</li><li>Priority workflow mapping</li></ul></div><div class="price-card"><h3>Atlas</h3><p>The full bun: finance, freight, and consulting managed through one workspace.</p><div class="price"><strong>$1,999</strong><s>$2,499</s><small>/ mo</small></div><div class="price-note">Full platform</div><ul><li>All three service flows</li><li>SSO, integration, and rollout planning</li><li>Dedicated implementation support</li></ul></div></div></article></div>
+    </section>
+    <section class="screen" id="access" data-flow="access" aria-labelledby="access-title">
+      <div class="screen-inner"><div class="copy-block"><div class="eyebrow">Request access</div><h2 id="access-title">Tell us what needs to sit inside your bun.</h2><p class="lede">Early access is selective so each workspace can be shaped around the operator's real finance, freight, and consulting flows.</p><div class="route-cards"><button class="route-card finance-color" data-flow-link="finance"><span class="route-dot"></span><span><strong>Finance first</strong><span>Start with approvals, reconciliation, and cash visibility.</span></span><i>01</i></button><button class="route-card freight-color" data-flow-link="freight"><span class="route-dot"></span><span><strong>Freight first</strong><span>Start with dispatch, assets, exceptions, and scorecards.</span></span><i>02</i></button><button class="route-card consult-color" data-flow-link="consulting"><span class="route-dot"></span><span><strong>Consulting first</strong><span>Start with scopes, milestones, documents, and payouts.</span></span><i>03</i></button></div></div><article class="flow-panel"><div class="panel-head"><span class="panel-label">Access request</span><span class="panel-badge">One business day</span></div><form class="access-form" action="mailto:hello@bunmanage.com" method="post" enctype="text/plain"><div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" placeholder="name@company.com"></div><div class="field"><label for="starting-flow">Starting flow</label><select id="starting-flow" name="starting-flow"><option>Finance</option><option>Freight</option><option>Consulting</option><option>Two or more flows</option></select></div><div class="field"><label for="context">What are you trying to manage?</label><textarea id="context" name="context" placeholder="Tell us what currently lives between systems."></textarea></div><button class="btn warm" type="submit">Email the access request</button><a class="btn ghost" href="mailto:hello@bunmanage.com?subject=Early%20Access%20-%20BunManage&body=Hi%20BunManage%20team%2C%0A%0AI%27d%20like%20to%20request%20early%20access.%20We%20operate%20in%3A%0A-%20Finance%3A%20%0A-%20Freight%3A%20%0A-%20Consulting%3A%20%0A%0AWhat%20we%27re%20trying%20to%20improve%3A%0A">Open email instead</a></form></article></div>
+    </section>
+  </main>
 </div>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="shell">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-meta fade-in d1">
-          Private beta · Bains Fund Management
-        </div>
-        <h1 class="hero-title fade-in d2">
-          One ledger for<br>
-          <em>finance, freight</em><br>
-          &amp; <span class="underline ochre">consulting.</span>
-        </h1>
-        <p class="hero-sub fade-in d3">
-          A private-beta workspace for firms that move money, manage assets, and deliver specialist work. Built to reduce duplicate systems and give operators one reliable view of the work.
-        </p>
-        <div class="hero-cta fade-in d4">
-          <a href="#access" class="btn btn--ochre">Request early access →</a>
-          <a href="#platform" class="btn btn--outline">See the platform</a>
-        </div>
-        <div class="hero-stats fade-in d4">
-          <div class="hero-stat">
-            <div class="hero-stat-value" data-target="3" data-suffix=" stacks">3 stacks</div>
-            <div class="hero-stat-label">Unified</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-value" data-target="1" data-suffix=" view">1 view</div>
-            <div class="hero-stat-label">Shared</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-value" data-target="14" data-suffix="d">14d</div>
-            <div class="hero-stat-label">To live</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Workspace panel — now mobile-visible -->
-      <div class="hero-panel fade-in d4">
-        <div class="hero-panel-head">
-          <div class="hero-panel-label">Example workspace</div>
-          <div class="hero-panel-time">Beta preview</div>
-        </div>
-        <div class="hero-panel-q">
-          What would we see<br>
-          <em>across all three?</em>
-        </div>
-        <div class="hero-panel-rows">
-          <div class="hero-panel-row">
-            <div class="hero-panel-row-left">
-              <span class="hero-panel-row-tag tag-fin"></span>
-              <span class="hero-panel-row-label">Finance · AR pending</span>
-            </div>
-            <span class="hero-panel-row-value">$284,400</span>
-          </div>
-          <div class="hero-panel-row">
-            <div class="hero-panel-row-left">
-              <span class="hero-panel-row-tag tag-frt"></span>
-              <span class="hero-panel-row-label">Freight · loads live</span>
-            </div>
-            <span class="hero-panel-row-value">318</span>
-          </div>
-          <div class="hero-panel-row">
-            <div class="hero-panel-row-left">
-              <span class="hero-panel-row-tag tag-con"></span>
-              <span class="hero-panel-row-label">Consulting · open</span>
-            </div>
-            <span class="hero-panel-row-value">42</span>
-          </div>
-          <div class="hero-panel-row">
-            <div class="hero-panel-row-left">
-              <span class="hero-panel-row-tag" style="background:var(--ochre)"></span>
-              <span class="hero-panel-row-label">Cash position</span>
-            </div>
-            <span class="hero-panel-row-value">$1.84M</span>
-          </div>
-          <div class="hero-panel-row">
-            <div class="hero-panel-row-left">
-              <span class="hero-panel-row-tag" style="background:#4ade80"></span>
-              <span class="hero-panel-row-label">Recon gap</span>
-            </div>
-            <span class="hero-panel-row-value">$0</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MANIFESTO -->
-<div class="manifesto" id="about">
-  <div class="shell">
-    <p class="manifesto-text fade-in">
-      Most firms run their money, their movement, and their people on <em>different systems.</em> We don't think they should.
-    </p>
-  </div>
-</div>
-
-<!-- VERTICALS -->
-<section id="platform">
-  <div class="shell">
-    <div class="verticals-head">
-      <h2 class="verticals-title fade-in">
-        Three verticals.<br>
-        <em>One system.</em>
-      </h2>
-      <p class="verticals-sub fade-in d1">
-        Pick one. Pick all three. The goal is the same ledger, the same access model, and the same command surface, so new workflows can be added without starting from scratch.
-      </p>
-    </div>
-
-    <div class="verticals-list">
-      <article class="vertical fade-in">
-        <div class="vertical-head">
-          <div class="vertical-num">01</div>
-          <div class="vertical-name">Finance</div>
-        </div>
-        <div class="vertical-main">
-          <div class="vertical-tag">Capital operations</div>
-          <p class="vertical-desc">Payment routing, reconciliation workflow, and cash-position review. Designed to reduce handoffs between accounting, bank portals, and controller spreadsheets.</p>
-        </div>
-        <ul class="vertical-features">
-          <li class="vertical-feature">Routing rules for wires, ACH, batches, amounts, and counterparties</li>
-          <li class="vertical-feature">Bank-connected reconciliation workflow for supported institutions</li>
-          <li class="vertical-feature">Multi-currency ledger model with position review</li>
-          <li class="vertical-feature">Exportable event history for finance and tax review</li>
-        </ul>
-      </article>
-
-      <article class="vertical fade-in">
-        <div class="vertical-head">
-          <div class="vertical-num">02</div>
-          <div class="vertical-name">Freight</div>
-        </div>
-        <div class="vertical-main">
-          <div class="vertical-tag">Physical operations</div>
-          <p class="vertical-desc">Dispatch, fleet asset tracking, and vendor scorecards connected to the same operating ledger. For brokers, carriers, and 3PLs coordinating mid-market volume.</p>
-        </div>
-        <ul class="vertical-features">
-          <li class="vertical-feature">Dispatch board structure for GPS, ETA, and detention alerts</li>
-          <li class="vertical-feature">Asset tracker with maintenance scheduling</li>
-          <li class="vertical-feature">Vendor scorecard: on-time, margin, incident history</li>
-          <li class="vertical-feature">Lane analytics and cost-per-mile optimization</li>
-        </ul>
-      </article>
-
-      <article class="vertical fade-in">
-        <div class="vertical-head">
-          <div class="vertical-num">03</div>
-          <div class="vertical-name">Consulting</div>
-        </div>
-        <div class="vertical-main">
-          <div class="vertical-tag">Engagement management</div>
-          <p class="vertical-desc">Scope, milestone, and pay specialist engagements end-to-end. Payment workflow is designed to stay connected to finance controls instead of running around close.</p>
-        </div>
-        <ul class="vertical-features">
-          <li class="vertical-feature">Milestone-gated approval and payout workflow</li>
-          <li class="vertical-feature">Specialist roster and engagement matching structure</li>
-          <li class="vertical-feature">Document bundle for NDA, W-9, and client requirements</li>
-          <li class="vertical-feature">Engagement boards with NPS and re-engagement scoring</li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- NUMBERS -->
-<section class="numbers">
-  <div class="shell">
-    <div class="numbers-head">
-      <div class="eyebrow numbers-eyebrow fade-in">By the numbers</div>
-      <h2 class="numbers-title fade-in d1">
-        Operating goals for<br>
-        a tighter <em>rollout.</em>
-      </h2>
-    </div>
-    <div class="numbers-grid">
-      <div class="number-cell fade-in">
-        <div class="number-value"><span data-target="3" data-suffix=" systems">3 systems</span></div>
-        <div class="number-label">Finance, freight, and consulting in one view</div>
-        <div class="number-detail">Target state</div>
-      </div>
-      <div class="number-cell fade-in d1">
-        <div class="number-value"><span data-target="1" data-suffix=" ledger">1 ledger</span></div>
-        <div class="number-label">Shared operating record across verticals</div>
-        <div class="number-detail">Core model</div>
-      </div>
-      <div class="number-cell fade-in d2">
-        <div class="number-value"><span data-target="4" data-suffix=" steps">4 steps</span></div>
-        <div class="number-label">Intake, provision, operate, and scale</div>
-        <div class="number-detail">Onboarding path</div>
-      </div>
-      <div class="number-cell fade-in d3">
-        <div class="number-value"><span data-target="14" data-suffix=" days">14 days</span></div>
-        <div class="number-label">Target pilot onboarding window</div>
-        <div class="number-detail">Private beta</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section id="process">
-  <div class="shell">
-    <div class="process-head">
-      <div class="eyebrow fade-in">How it works</div>
-      <h2 class="process-title fade-in d1">
-        Live in two weeks.<br>
-        <em>Not two quarters.</em>
-      </h2>
-    </div>
-
-    <div class="process-list">
-      <div class="process-step fade-in">
-        <div class="process-num">/01</div>
-        <div>
-          <h3 class="process-step-title">Intake</h3>
-          <div class="process-step-meta">Four questions · three minutes</div>
-        </div>
-        <p class="process-step-desc">Answer questions about your firm. The intake engine recommends your workspace configuration. No discovery call. No consultant.</p>
-      </div>
-
-      <div class="process-step fade-in">
-        <div class="process-num">/02</div>
-        <div>
-          <h3 class="process-step-title">Provision</h3>
-          <div class="process-step-meta">Workspace live in minutes</div>
-        </div>
-        <p class="process-step-desc">Tenant provisioned, RBAC seeded, routing templates pre-loaded. Connect a bank, invite your team — each step under two minutes.</p>
-      </div>
-
-      <div class="process-step fade-in">
-        <div class="process-num">/03</div>
-        <div>
-          <h3 class="process-step-title">Operate</h3>
-          <div class="process-step-meta">One screen · three verticals</div>
-        </div>
-        <p class="process-step-desc">Atlas dashboard shows what's live across all three. Cmd+K queries every invoice, load, and engagement. No tabs. No copy-paste.</p>
-      </div>
-
-      <div class="process-step fade-in">
-        <div class="process-num">/04</div>
-        <div>
-          <h3 class="process-step-title">Scale</h3>
-          <div class="process-step-meta">Add verticals as you grow</div>
-        </div>
-        <p class="process-step-desc">Start with one vertical. Add others when ready. Your ledger, RBAC, and team carry over — no migration, no new contract.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- USE CASES -->
-<section class="testi" id="fit">
-  <div class="shell">
-    <div class="testi-head">
-      <div class="eyebrow fade-in">Best fit</div>
-      <h2 class="testi-title fade-in d1">
-        Built for teams<br>
-        with messy <em>handoffs.</em>
-      </h2>
-    </div>
-    <div class="testi-grid">
-      <div class="testi-card fade-in">
-        <div class="testi-mark">01</div>
-        <blockquote class="testi-quote">
-          Finance leaders who need <strong>one operating record</strong> for payment status, approvals, reconciliation, and audit history.
-        </blockquote>
-        <div class="testi-attr">
-          <div class="testi-name">Cash visibility</div>
-          <div class="testi-role">Approvals · Reconciliation · Audit trail</div>
-        </div>
-      </div>
-
-      <div class="testi-card fade-in d1">
-        <div class="testi-mark">02</div>
-        <blockquote class="testi-quote">
-          Freight operators who need <strong>dispatch context and cost context</strong> in the same workspace instead of separate boards and spreadsheets.
-        </blockquote>
-        <div class="testi-attr">
-          <div class="testi-name">Movement controls</div>
-          <div class="testi-role">Loads · Assets · Vendor scorecards</div>
-        </div>
-      </div>
-
-      <div class="testi-card fade-in d2">
-        <div class="testi-mark">03</div>
-        <blockquote class="testi-quote">
-          Consulting teams who need <strong>scope, milestones, documents, and payout approvals</strong> tied back to the same financial source of truth.
-        </blockquote>
-        <div class="testi-attr">
-          <div class="testi-name">Engagement oversight</div>
-          <div class="testi-role">Milestones · Documents · Payout review</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-  <div class="shell">
-    <div class="pricing-head">
-      <div>
-        <div class="eyebrow fade-in">Pricing</div>
-        <h2 class="pricing-title fade-in d1">
-          Launch pricing.<br>
-          <em>20% lighter.</em>
-        </h2>
-      </div>
-      <p class="pricing-sub fade-in d2">Modeled against the cost of separate finance, freight, and workflow systems. Early customers get 20% off for the first 12 months while BunManage is new.</p>
-    </div>
-
-    <div class="billing-toggle fade-in">
-      <button class="billing-toggle-label" id="monthLabel" onclick="setBilling(false)">Standard</button>
-      <button class="toggle on" id="billToggle" onclick="setBilling()" role="switch" aria-label="Toggle launch pricing" aria-checked="true"></button>
-      <button class="billing-toggle-label active" id="annualLabel" onclick="setBilling(true)">Launch -20%</button>
-      <span class="save-pill">First 12 months</span>
-    </div>
-
-    <div class="pricing-note fade-in d1">
-      <span><strong>Finance peers</strong> often mix subscriptions, per-user tiers, and payment fees.</span>
-      <span><strong>Freight TMS peers</strong> commonly price from usage-based entry points to $2k+ managed platforms.</span>
-      <span><strong>Workflow peers</strong> look cheaper per seat, but costs compound across departments and add-ons.</span>
-    </div>
-
-    <div class="pricing-grid">
-      <div class="tier fade-in">
-        <div class="tier-label">Single vertical</div>
-        <h3 class="tier-name">Starter</h3>
-        <p class="tier-desc">One vertical, full feature set, unlimited team members.</p>
-        <div class="tier-price">
-          <span class="tier-amount" id="p1">$239</span>
-          <span class="tier-list" id="p1l">$299</span>
-          <span class="tier-mo">/ mo</span>
-        </div>
-        <div class="tier-period" id="p1p">Launch pricing · first 12 months</div>
-        <a href="#access" class="tier-cta">Request launch pricing →</a>
-        <div class="tier-divider"></div>
-        <ul class="tier-features">
-          <li class="tier-feature">One vertical: Finance, Freight, or Consulting</li>
-          <li class="tier-feature">Unlimited team members + RBAC</li>
-          <li class="tier-feature">Cmd+K command surface</li>
-          <li class="tier-feature">Audit log exports and role-based access</li>
-          <li class="tier-feature">Pilot volume reviewed during onboarding</li>
-        </ul>
-      </div>
-
-      <div class="tier tier--featured fade-in d1">
-        <div class="tier-popular">MOST POPULAR</div>
-        <div class="tier-label">Any two verticals</div>
-        <h3 class="tier-name">Growth</h3>
-        <p class="tier-desc">Two verticals on a shared ledger with cross-vertical command surface.</p>
-        <div class="tier-price">
-          <span class="tier-amount" id="p2">$639</span>
-          <span class="tier-list" id="p2l">$799</span>
-          <span class="tier-mo">/ mo</span>
-        </div>
-        <div class="tier-period" id="p2p">Launch pricing · first 12 months</div>
-        <a href="#access" class="tier-cta">Request launch pricing →</a>
-        <div class="tier-divider"></div>
-        <ul class="tier-features">
-          <li class="tier-feature">Any 2 verticals — mix and match</li>
-          <li class="tier-feature">Cross-vertical Cmd+K search</li>
-          <li class="tier-feature">Unified inbox and alerts</li>
-          <li class="tier-feature">Webhook relay for approved integrations</li>
-          <li class="tier-feature">Expanded pilot volume and workflow support</li>
-          <li class="tier-feature">Priority onboarding support</li>
-        </ul>
-      </div>
-
-      <div class="tier fade-in d2">
-        <div class="tier-label">All three verticals</div>
-        <h3 class="tier-name">Atlas</h3>
-        <p class="tier-desc">Finance, Freight, and Consulting on one ledger. The full platform.</p>
-        <div class="tier-price">
-          <span class="tier-amount" id="p3">$1,599</span>
-          <span class="tier-list" id="p3l">$1,999</span>
-          <span class="tier-mo">/ mo</span>
-        </div>
-        <div class="tier-period" id="p3p">Launch pricing · first 12 months</div>
-        <a href="#access" class="tier-cta">Talk through rollout →</a>
-        <div class="tier-divider"></div>
-        <ul class="tier-features">
-          <li class="tier-feature">All three verticals · shared ledger</li>
-          <li class="tier-feature">Atlas AI — natural language queries</li>
-          <li class="tier-feature">SSO / SAML / SCIM provisioning</li>
-          <li class="tier-feature">Webhook/event-bus architecture review</li>
-          <li class="tier-feature">Custom volume, support, and uptime terms</li>
-          <li class="tier-feature">Dedicated implementation support</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TRUST NOTES -->
-<section class="trust-notes" id="security">
-  <div class="shell">
-    <div class="verticals-head">
-      <h2 class="verticals-title fade-in">
-        Security-minded<br>
-        from <em>day one.</em>
-      </h2>
-      <p class="verticals-sub fade-in d1">
-        BunManage is in private beta. Compliance reports and formal attestations should be requested directly during onboarding.
-      </p>
-    </div>
-    <div class="trust-grid">
-      <article class="trust-card fade-in" id="privacy">
-        <h3>Data handling</h3>
-        <p>Beta workspaces are designed around least-privilege access, clear team permissions, and exportable operational records for review.</p>
-      </article>
-      <article class="trust-card fade-in d1" id="terms">
-        <h3>Beta terms</h3>
-        <p>Commercial terms, supported integrations, service levels, and data requirements are confirmed before any production rollout.</p>
-      </article>
-      <article class="trust-card fade-in d2" id="roadmap">
-        <h3>Roadmap</h3>
-        <p>Current focus areas are finance controls, dispatch context, consulting engagement oversight, and a shared command surface.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta" id="access">
-  <div class="shell">
-    <div class="cta-inner">
-      <div class="eyebrow cta-eyebrow fade-in">Request access</div>
-      <h2 class="cta-title fade-in d1">
-        Ready to consolidate<br>
-        your <em>operations?</em>
-      </h2>
-      <p class="cta-sub fade-in d2">
-        We're onboarding firms selectively during private beta. Tell us what you run and we'll get back within one business day.
-      </p>
-      <div class="cta-buttons fade-in d3">
-        <a href="mailto:hello@bunmanage.com?subject=Early%20Access%20-%20BunManage&body=Hi%20BunManage%20team%2C%0A%0AI%27d%20like%20to%20request%20early%20access.%20We%20operate%20in%3A%0A-%20Finance%3A%20%0A-%20Freight%3A%20%0A-%20Consulting%3A%20%0A%0AWhat%20we%27re%20trying%20to%20improve%3A%0A" class="btn btn--ochre">hello@bunmanage.com</a>
-        <a href="#platform" class="btn btn--outline">Read the platform first</a>
-      </div>
-      <div class="cta-note fade-in d3">Bains Fund Management LLC · Private beta 2026</div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <div class="footer-brand">
-          <span class="footer-brand-mark">B</span>
-          <span class="footer-brand-name">BunManage</span>
-        </div>
-        <p class="footer-blurb">Operational intelligence for finance, freight & consulting. A product of Bains Fund Management LLC.</p>
-        <a href="mailto:hello@bunmanage.com" class="footer-email">hello@bunmanage.com</a>
-      </div>
-      <div>
-        <div class="footer-col-title">Platform</div>
-        <ul class="footer-links">
-          <li><a href="#platform">Finance</a></li>
-          <li><a href="#platform">Freight</a></li>
-          <li><a href="#platform">Consulting</a></li>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Company</div>
-        <ul class="footer-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#fit">Use cases</a></li>
-          <li><a href="#roadmap">Roadmap</a></li>
-          <li><a href="#access">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Legal</div>
-        <ul class="footer-links">
-          <li><a href="#security">Security</a></li>
-          <li><a href="#privacy">Privacy</a></li>
-          <li><a href="#terms">Terms</a></li>
-          <li><a href="mailto:hello@bunmanage.com?subject=BunManage%20security%20request">Security request</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 BAINS FUND MANAGEMENT LLC</span>
-      <span>BUNMANAGE™</span>
-      <div class="footer-compliance">
-        <span class="compliance-pill">ROLE-BASED ACCESS</span>
-        <span class="compliance-pill">AUDIT TRAILS</span>
-        <span class="compliance-pill">EXPORTABLE RECORDS</span>
-      </div>
-    </div>
-  </div>
-</footer>
-
+<div class="footer-strip" aria-hidden="true"><div class="progress-dots"><span class="progress-dot active"></span><span class="progress-dot"></span><span class="progress-dot"></span><span class="progress-dot"></span><span class="progress-dot"></span><span class="progress-dot"></span></div><div class="legal-line">Bains Fund Management LLC - Private beta 2026</div></div>
 <script>
 'use strict';
-
-const nav = document.getElementById('nav');
-let lastY = 0;
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  if ((y > 20) !== (lastY > 20)) nav.classList.toggle('scrolled', y > 20);
-  lastY = y;
-}, { passive: true });
-
-const menuBtn = document.getElementById('menuBtn');
-const drawer = document.getElementById('drawer');
-function toggleDrawer() {
-  const open = menuBtn.classList.toggle('open');
-  drawer.classList.toggle('open', open);
-  menuBtn.setAttribute('aria-expanded', open);
-  document.body.style.overflow = open ? 'hidden' : '';
+const flows=['home','finance','freight','consulting','pricing','access'];
+const screens=[...document.querySelectorAll('[data-flow]')];
+const links=[...document.querySelectorAll('[data-flow-link]')];
+const navTabs=[...document.querySelectorAll('.flow-tab')];
+const dots=[...document.querySelectorAll('.progress-dot')];
+const mobileFlow=document.getElementById('mobileFlow');
+function label(flow){return flow.charAt(0).toUpperCase()+flow.slice(1)}
+function showFlow(flow,push=true){
+  const next=flows.includes(flow)?flow:'home';
+  screens.forEach(screen=>screen.classList.toggle('active',screen.dataset.flow===next));
+  navTabs.forEach(tab=>tab.classList.toggle('active',tab.dataset.flowLink===next));
+  dots.forEach((dot,index)=>dot.classList.toggle('active',flows[index]===next));
+  if(mobileFlow) mobileFlow.value=next;
+  document.title=next==='home'?'BunManage - The operating layer between your services':'BunManage - '+label(next)+' flow';
+  if(push) history.pushState({flow:next},'','#'+next);
 }
-function closeDrawer() {
-  menuBtn.classList.remove('open');
-  drawer.classList.remove('open');
-  menuBtn.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
-}
-document.addEventListener('click', e => {
-  if (drawer.classList.contains('open') && !e.target.closest('#menuBtn') && !e.target.closest('#drawer')) {
-    closeDrawer();
-  }
-});
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
-
-const prices = {
-  standard: ['$299', '$799', '$1,999'],
-  launch:  ['$239', '$639', '$1,599']
-};
-let isAnnual = true;
-function setBilling(force) {
-  if (typeof force === 'boolean') { if (force === isAnnual) return; isAnnual = force; }
-  else isAnnual = !isAnnual;
-  document.getElementById('billToggle').classList.toggle('on', isAnnual);
-  document.getElementById('billToggle').setAttribute('aria-checked', String(isAnnual));
-  document.getElementById('monthLabel').classList.toggle('active', !isAnnual);
-  document.getElementById('annualLabel').classList.toggle('active', isAnnual);
-  const set = isAnnual ? prices.launch : prices.standard;
-  const period = isAnnual ? 'Launch pricing · first 12 months' : 'Standard monthly price';
-  ['p1','p2','p3'].forEach((id, i) => {
-    document.getElementById(id).textContent = set[i];
-    document.getElementById(id + 'p').textContent = period;
-    document.getElementById(id + 'l').style.display = isAnnual ? 'inline' : 'none';
-  });
-}
-
-const fadeObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); }});
-}, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
-document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
-
-function animateCounter(el) {
-  const target = parseFloat(el.dataset.target);
-  const prefix = el.dataset.prefix || '';
-  const suffix = el.dataset.suffix || '';
-  if (isNaN(target)) return;
-  const dur = 1400;
-  const start = performance.now();
-  (function step(now) {
-    const t = Math.min((now - start) / dur, 1);
-    const eased = 1 - Math.pow(1 - t, 3);
-    const v = target * eased;
-    const display = target % 1 === 0 ? Math.round(v) : v.toFixed(1);
-    el.textContent = prefix + display + suffix;
-    if (t < 1) requestAnimationFrame(step);
-  })(start);
-}
-const countObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting && !e.target.dataset.counted) {
-      e.target.dataset.counted = '1';
-      animateCounter(e.target);
-      countObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.5 });
-document.querySelectorAll('[data-target]').forEach(el => countObs.observe(el));
-
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', () => { if (drawer.classList.contains('open')) closeDrawer(); });
-});
+links.forEach(item=>item.addEventListener('click',event=>{const flow=item.dataset.flowLink;if(!flow)return;event.preventDefault();showFlow(flow)}));
+if(mobileFlow) mobileFlow.addEventListener('change',event=>showFlow(event.target.value));
+window.addEventListener('popstate',()=>showFlow(location.hash.replace('#','')||'home',false));
+showFlow(location.hash.replace('#','')||'home',false);
 </script>
 </body>
 </html>

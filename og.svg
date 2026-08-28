@@ -1,13 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">BunManage</title>
-  <desc id="desc">Operations workspace for finance, freight, and consulting</desc>
-  <rect width="1200" height="630" fill="#f7f4ed"/>
-  <rect x="72" y="72" width="1056" height="486" fill="none" stroke="#0c0c0a" stroke-width="3"/>
-  <rect x="72" y="72" width="1056" height="10" fill="#b8761e"/>
-  <text x="112" y="165" fill="#b8761e" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="5">PRIVATE BETA</text>
-  <text x="112" y="290" fill="#0c0c0a" font-family="Georgia, serif" font-size="92" font-weight="500">BunManage</text>
-  <text x="112" y="370" fill="#1f1f1c" font-family="Georgia, serif" font-size="48">One operating view for finance,</text>
-  <text x="112" y="430" fill="#1f1f1c" font-family="Georgia, serif" font-size="48">freight, and consulting.</text>
-  <line x1="112" y1="494" x2="520" y2="494" stroke="#b8761e" stroke-width="5"/>
-  <text x="112" y="535" fill="#3a3a35" font-family="Inter, Arial, sans-serif" font-size="24">Built by Bains Fund Management LLC</text>
+  <desc id="desc">The operating layer between finance, freight, and consulting services</desc>
+  <rect width="1200" height="630" fill="#f5efe3"/>
+  <circle cx="902" cy="312" r="198" fill="none" stroke="#d9ccba" stroke-width="2"/>
+  <path d="M742 214 C780 128 1024 128 1062 214 C1069 233 1054 254 1032 254 L772 254 C750 254 735 233 742 214Z" fill="#d69a4d"/>
+  <path d="M756 415 C798 492 1006 492 1048 415 C1059 394 1044 370 1020 370 L784 370 C760 370 745 394 756 415Z" fill="#a86120"/>
+  <rect x="742" y="274" width="320" height="34" fill="#fff8ea" stroke="#141411" stroke-width="3"/>
+  <rect x="742" y="315" width="320" height="34" fill="#fff8ea" stroke="#141411" stroke-width="3"/>
+  <rect x="742" y="356" width="320" height="34" fill="#fff8ea" stroke="#141411" stroke-width="3"/>
+  <rect x="774" y="286" width="86" height="10" fill="#74c7b8"/>
+  <rect x="774" y="327" width="122" height="10" fill="#e0883e"/>
+  <rect x="774" y="368" width="104" height="10" fill="#a891d6"/>
+  <circle cx="902" cy="332" r="62" fill="#141411" stroke="#f7c860" stroke-width="12"/>
+  <text x="902" y="323" text-anchor="middle" fill="#fff8ea" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">COMPUTE</text>
+  <text x="902" y="349" text-anchor="middle" fill="#fff8ea" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">LAYER</text>
+  <text x="86" y="150" fill="#a86120" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="4">PRIVATE BETA</text>
+  <text x="86" y="272" fill="#141411" font-family="Georgia, serif" font-size="92" font-weight="500">BunManage</text>
+  <text x="86" y="352" fill="#141411" font-family="Georgia, serif" font-size="50">We manage what's</text>
+  <text x="86" y="414" fill="#a86120" font-family="Georgia, serif" font-size="56" font-style="italic">in between.</text>
+  <line x1="86" y1="468" x2="496" y2="468" stroke="#a86120" stroke-width="5"/>
+  <text x="86" y="522" fill="#373630" font-family="Inter, Arial, sans-serif" font-size="24">Finance, freight, and consulting flows in one operating workspace.</text>
 </svg>
