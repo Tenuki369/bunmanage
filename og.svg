@@ -1,26 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">BunManage - Wrap the work</title>
-  <desc id="desc">The agentic wrapper for finance, freight, and consulting flows</desc>
-  <rect width="1200" height="630" fill="#141411"/>
-  <path d="M-40 518 L1240 192" stroke="#373630" stroke-width="2" opacity=".5"/>
-  <path d="M-40 426 L1240 100" stroke="#373630" stroke-width="2" opacity=".35"/>
-  <path d="M-40 610 L1240 284" stroke="#373630" stroke-width="2" opacity=".35"/>
-  <circle cx="910" cy="315" r="196" fill="#f5efe3"/>
-  <circle cx="910" cy="315" r="174" fill="#141411"/>
-  <circle cx="910" cy="315" r="150" fill="none" stroke="#ffe0a4" stroke-width="5"/>
-  <path d="M780 205 H1040 C1062 205 1080 223 1080 245 V270 H740 V245 C740 223 758 205 780 205Z" fill="#d69a4d"/>
-  <path d="M740 360 H1080 V385 C1080 407 1062 425 1040 425 H780 C758 425 740 407 740 385Z" fill="#a86120"/>
-  <rect x="774" y="287" width="272" height="22" fill="#fff8ea"/>
-  <rect x="774" y="321" width="272" height="22" fill="#fff8ea"/>
-  <rect x="794" y="294" width="84" height="8" fill="#74c7b8"/>
-  <rect x="794" y="328" width="122" height="8" fill="#e0883e"/>
-  <circle cx="910" cy="315" r="72" fill="#141411" stroke="#f7c860" stroke-width="10"/>
-  <text x="910" y="334" text-anchor="middle" fill="#ffe0a4" font-family="Georgia, serif" font-size="76" font-style="italic">B</text>
-  <text x="910" y="178" text-anchor="middle" fill="#f7c860" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="5">BUNMANAGE</text>
-  <text x="910" y="470" text-anchor="middle" fill="#f7c860" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="5">WRAP THE WORK</text>
-  <text x="82" y="128" fill="#f7c860" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="4">PRIVATE BETA</text>
-  <text x="78" y="296" fill="#fff8ea" font-family="Inter, Arial, sans-serif" font-size="112" font-weight="800">WRAP</text>
-  <text x="78" y="410" fill="#fff8ea" font-family="Inter, Arial, sans-serif" font-size="112" font-weight="800">THE WORK.</text>
-  <rect x="82" y="462" width="430" height="5" fill="#f7c860"/>
-  <text x="82" y="526" fill="#d9ccba" font-family="Inter, Arial, sans-serif" font-size="25">The agentic wrapper for finance, freight, and consulting flows.</text>
+  <title id="title">BunManage - The middle, managed</title>
+  <desc id="desc">Service buns for finance, freight, and consulting. Everything in the middle, managed.</desc>
+  <rect width="1200" height="630" fill="#11100d"/>
+  <path d="M0 520 L1200 216" stroke="#24211a" stroke-width="3"/>
+  <path d="M0 420 L1200 116" stroke="#24211a" stroke-width="2"/>
+  <path d="M0 610 L1200 306" stroke="#24211a" stroke-width="2"/>
+  <circle cx="905" cy="315" r="205" fill="#f1c15b"/>
+  <circle cx="905" cy="315" r="180" fill="#11100d"/>
+  <circle cx="905" cy="315" r="152" fill="none" stroke="#f8eedc" stroke-width="5"/>
+  <path d="M776 193 H1034 C1058 193 1078 213 1078 237 V264 H732 V237 C732 213 752 193 776 193Z" fill="#f1c15b"/>
+  <path d="M732 366 H1078 V393 C1078 417 1058 437 1034 437 H776 C752 437 732 417 732 393Z" fill="#8f541e"/>
+  <rect x="770" y="285" width="270" height="22" fill="#f8eedc"/>
+  <rect x="770" y="320" width="270" height="22" fill="#f8eedc"/>
+  <rect x="792" y="292" width="85" height="8" fill="#72d1c2"/>
+  <rect x="792" y="327" width="124" height="8" fill="#f08b3d"/>
+  <circle cx="905" cy="315" r="76" fill="#11100d" stroke="#f1c15b" stroke-width="10"/>
+  <text x="905" y="337" text-anchor="middle" fill="#f8eedc" font-family="Georgia, serif" font-size="82" font-style="italic" font-weight="700">B</text>
+  <text x="905" y="174" text-anchor="middle" fill="#f8eedc" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" letter-spacing="5">SERVICE BUNS</text>
+  <text x="905" y="476" text-anchor="middle" fill="#f8eedc" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" letter-spacing="5">COMPLETE STACK</text>
+  <text x="82" y="126" fill="#f1c15b" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="900" letter-spacing="4">BUNMANAGE PRIVATE BETA</text>
+  <text x="78" y="282" fill="#f8eedc" font-family="Inter, Arial, sans-serif" font-size="99" font-weight="900">THE MIDDLE,</text>
+  <text x="78" y="394" fill="#f8eedc" font-family="Inter, Arial, sans-serif" font-size="99" font-weight="900">MANAGED.</text>
+  <rect x="82" y="448" width="440" height="5" fill="#f1c15b"/>
+  <text x="82" y="512" fill="#efe2ca" font-family="Inter, Arial, sans-serif" font-size="24">Finance, freight, and consulting services around the messy work inside.</text>
 </svg>
