@@ -1,23 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">BunManage</title>
-  <desc id="desc">The operating layer between finance, freight, and consulting services</desc>
+  <desc id="desc">Agentic wrapper for finance, freight, and consulting flows</desc>
   <rect width="1200" height="630" fill="#f5efe3"/>
-  <circle cx="902" cy="312" r="198" fill="none" stroke="#d9ccba" stroke-width="2"/>
-  <path d="M742 214 C780 128 1024 128 1062 214 C1069 233 1054 254 1032 254 L772 254 C750 254 735 233 742 214Z" fill="#d69a4d"/>
-  <path d="M756 415 C798 492 1006 492 1048 415 C1059 394 1044 370 1020 370 L784 370 C760 370 745 394 756 415Z" fill="#a86120"/>
-  <rect x="742" y="274" width="320" height="34" fill="#fff8ea" stroke="#141411" stroke-width="3"/>
-  <rect x="742" y="315" width="320" height="34" fill="#fff8ea" stroke="#141411" stroke-width="3"/>
-  <rect x="742" y="356" width="320" height="34" fill="#fff8ea" stroke="#141411" stroke-width="3"/>
-  <rect x="774" y="286" width="86" height="10" fill="#74c7b8"/>
-  <rect x="774" y="327" width="122" height="10" fill="#e0883e"/>
-  <rect x="774" y="368" width="104" height="10" fill="#a891d6"/>
-  <circle cx="902" cy="332" r="62" fill="#141411" stroke="#f7c860" stroke-width="12"/>
-  <text x="902" y="323" text-anchor="middle" fill="#fff8ea" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">COMPUTE</text>
-  <text x="902" y="349" text-anchor="middle" fill="#fff8ea" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">LAYER</text>
-  <text x="86" y="150" fill="#a86120" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="4">PRIVATE BETA</text>
+  <rect x="670" y="76" width="412" height="478" rx="34" fill="#fff8ea" stroke="#d9ccba" stroke-width="2"/>
+  <circle cx="876" cy="315" r="174" fill="none" stroke="#d9ccba" stroke-width="2"/>
+  <circle cx="876" cy="315" r="114" fill="none" stroke="#a86120" stroke-width="2" opacity=".45"/>
+  <path d="M720 128 H1032 C1059 128 1081 150 1081 177 V222 C1081 235 1070 246 1057 246 H695 C682 246 671 235 671 222 V177 C671 150 693 128 720 128Z" fill="#d69a4d" stroke="#141411" stroke-width="3"/>
+  <path d="M671 409 H1081 V453 C1081 480 1059 502 1032 502 H720 C693 502 671 480 671 453Z" fill="#a86120" stroke="#141411" stroke-width="3"/>
+  <text x="708" y="215" fill="#141411" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3">AGENTIC ORCHESTRATION</text>
+  <text x="708" y="463" fill="#fff8ea" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3">POLICY / MEMORY / AUDIT</text>
+  <rect x="708" y="273" width="336" height="34" fill="#fff8ea" stroke="#141411" stroke-width="3"/>
+  <rect x="708" y="318" width="336" height="34" fill="#fff8ea" stroke="#141411" stroke-width="3"/>
+  <rect x="708" y="363" width="336" height="34" fill="#fff8ea" stroke="#141411" stroke-width="3"/>
+  <rect x="738" y="285" width="95" height="10" fill="#74c7b8"/>
+  <rect x="738" y="330" width="132" height="10" fill="#e0883e"/>
+  <rect x="738" y="375" width="112" height="10" fill="#a891d6"/>
+  <rect x="800" y="244" width="154" height="154" rx="28" fill="#141411" stroke="#f7c860" stroke-width="12"/>
+  <text x="877" y="306" text-anchor="middle" fill="#fff8ea" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">BUNMANAGE</text>
+  <text x="877" y="334" text-anchor="middle" fill="#fff8ea" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">AGENTIC</text>
+  <text x="877" y="362" text-anchor="middle" fill="#fff8ea" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">WRAPPER</text>
+  <rect x="86" y="108" width="162" height="40" fill="#141411"/>
+  <text x="108" y="135" fill="#f7c860" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="3">PRIVATE BETA</text>
   <text x="86" y="272" fill="#141411" font-family="Georgia, serif" font-size="92" font-weight="500">BunManage</text>
-  <text x="86" y="352" fill="#141411" font-family="Georgia, serif" font-size="50">We manage what's</text>
-  <text x="86" y="414" fill="#a86120" font-family="Georgia, serif" font-size="56" font-style="italic">in between.</text>
+  <text x="86" y="352" fill="#141411" font-family="Georgia, serif" font-size="50">Agentic wrapper</text>
+  <text x="86" y="414" fill="#a86120" font-family="Georgia, serif" font-size="56" font-style="italic">for operating flows.</text>
   <line x1="86" y1="468" x2="496" y2="468" stroke="#a86120" stroke-width="5"/>
-  <text x="86" y="522" fill="#373630" font-family="Inter, Arial, sans-serif" font-size="24">Finance, freight, and consulting flows in one operating workspace.</text>
+  <text x="86" y="522" fill="#373630" font-family="Inter, Arial, sans-serif" font-size="24">Finance, freight, and consulting inside one managed workspace.</text>
 </svg>
