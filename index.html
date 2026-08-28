@@ -3,14 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>BunManage — One ledger for finance, freight & consulting</title>
-<meta name="description" content="BunManage is the operational platform for finance, freight, and consulting firms. One ledger. One workspace. Audit-grade. Built by Bains Fund Management LLC.">
+<title>BunManage — Operations workspace for finance, freight & consulting</title>
+<meta name="description" content="BunManage is a private-beta operations workspace for firms that manage finance, freight, and consulting work across one ledger and one operating view. Built by Bains Fund Management LLC.">
 <meta name="theme-color" content="#f7f4ed">
-<meta property="og:title" content="BunManage — One ledger for finance, freight & consulting">
-<meta property="og:description" content="The operational platform for finance, freight, and consulting firms.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="BunManage — Operations workspace for finance, freight & consulting">
+<meta property="og:description" content="Private-beta workspace for finance, freight, and consulting operations.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://bunmanage.com">
-<link rel="canonical" href="https://bunmanage.com">
+<meta property="og:url" content="https://www.bunmanage.com">
+<meta property="og:site_name" content="BunManage">
+<meta property="og:image" content="https://www.bunmanage.com/og.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BunManage — Operations workspace for finance, freight & consulting">
+<meta name="twitter:description" content="Private-beta workspace for finance, freight, and consulting operations.">
+<meta name="twitter:image" content="https://www.bunmanage.com/og.svg">
+<link rel="canonical" href="https://www.bunmanage.com">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23f7f4ed'/><text x='4' y='25' font-family='Georgia,serif' font-size='24' font-style='italic' fill='%23111'>B</text></svg>" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1254,6 +1261,47 @@ section{
   color:var(--ink-3);
 }
 
+/* ════════════════ TRUST NOTES ════════════════ */
+.trust-notes{
+  background:var(--paper);
+  border-top:1px solid var(--hairline);
+  padding:72px 0;
+}
+.trust-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:28px;
+  border-top:2px solid var(--ink);
+}
+@media(min-width:840px){.trust-grid{grid-template-columns:repeat(3,1fr);gap:0}}
+.trust-card{
+  padding:28px 0;
+  border-bottom:1px solid var(--hairline);
+}
+@media(min-width:840px){
+  .trust-card{
+    padding:36px 28px;
+    border-right:1px solid var(--hairline);
+    border-bottom:none;
+  }
+  .trust-card:first-child{padding-left:0}
+  .trust-card:last-child{border-right:none;padding-right:0}
+}
+.trust-card h3{
+  font-family:var(--serif);
+  font-size:clamp(24px,2.5vw,32px);
+  font-weight:500;
+  letter-spacing:-.02em;
+  line-height:1.1;
+  color:var(--ink);
+  margin-bottom:14px;
+}
+.trust-card p{
+  font-size:15.5px;
+  line-height:1.6;
+  color:var(--ink-2);
+}
+
 /* ════════════════ FOOTER ════════════════ */
 footer{
   background:var(--ink);
@@ -1396,22 +1444,23 @@ footer{
 <!-- NAV -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a class="brand" href="#" aria-label="BunManage home">
+    <a class="brand" href="/" aria-label="BunManage home">
       <span class="brand-mark">B</span>
       <span class="brand-name">BunManage</span>
     </a>
     <div class="nav-links">
       <a href="#platform">Platform</a>
       <a href="#process">Process</a>
-      <a href="#clients">Clients</a>
+      <a href="#fit">Use cases</a>
       <a href="#pricing">Pricing</a>
+      <a href="#security">Security</a>
     </div>
     <div class="nav-cta">
       <span class="nav-meta">Beta</span>
-      <a href="#" class="btn btn--ghost">Sign in</a>
+      <a href="mailto:hello@bunmanage.com?subject=BunManage%20access%20question" class="btn btn--ghost">Contact</a>
       <a href="#access" class="btn btn--filled btn--sm">Request access →</a>
     </div>
-    <button class="menu-btn" id="menuBtn" onclick="toggleDrawer()" aria-label="Toggle menu" aria-expanded="false">
+    <button class="menu-btn" id="menuBtn" onclick="toggleDrawer()" aria-label="Toggle menu" aria-controls="drawer" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -1421,11 +1470,12 @@ footer{
 <div class="drawer" id="drawer">
   <a href="#platform" onclick="closeDrawer()">Platform</a>
   <a href="#process" onclick="closeDrawer()">Process</a>
-  <a href="#clients" onclick="closeDrawer()">Clients</a>
+  <a href="#fit" onclick="closeDrawer()">Use cases</a>
   <a href="#pricing" onclick="closeDrawer()">Pricing</a>
+  <a href="#security" onclick="closeDrawer()">Security</a>
   <div class="drawer-meta">● Private beta · 2026</div>
   <div class="drawer-cta">
-    <a href="#" class="btn btn--outline" onclick="closeDrawer()">Sign in</a>
+    <a href="mailto:hello@bunmanage.com?subject=BunManage%20access%20question" class="btn btn--outline" onclick="closeDrawer()">Contact</a>
     <a href="#access" class="btn btn--ochre" onclick="closeDrawer()">Request access →</a>
   </div>
 </div>
@@ -1444,7 +1494,7 @@ footer{
           &amp; <span class="underline ochre">consulting.</span>
         </h1>
         <p class="hero-sub fade-in d3">
-          The operational platform for firms that move money, manage assets, and deliver specialist work. Built to replace three software stacks with one workspace, one source of truth.
+          A private-beta workspace for firms that move money, manage assets, and deliver specialist work. Built to reduce duplicate systems and give operators one reliable view of the work.
         </p>
         <div class="hero-cta fade-in d4">
           <a href="#access" class="btn btn--ochre">Request early access →</a>
@@ -1452,12 +1502,12 @@ footer{
         </div>
         <div class="hero-stats fade-in d4">
           <div class="hero-stat">
-            <div class="hero-stat-value" data-target="2.4" data-prefix="$" data-suffix="B">$2.4B</div>
-            <div class="hero-stat-label">Routed</div>
+            <div class="hero-stat-value" data-target="3" data-suffix=" stacks">3 stacks</div>
+            <div class="hero-stat-label">Unified</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-value" data-target="96.4" data-suffix="%">96.4%</div>
-            <div class="hero-stat-label">On-time</div>
+            <div class="hero-stat-value" data-target="1" data-suffix=" view">1 view</div>
+            <div class="hero-stat-label">Shared</div>
           </div>
           <div class="hero-stat">
             <div class="hero-stat-value" data-target="14" data-suffix="d">14d</div>
@@ -1469,11 +1519,11 @@ footer{
       <!-- Workspace panel — now mobile-visible -->
       <div class="hero-panel fade-in d4">
         <div class="hero-panel-head">
-          <div class="hero-panel-label">Live workspace</div>
-          <div class="hero-panel-time">Today · 09:42</div>
+          <div class="hero-panel-label">Example workspace</div>
+          <div class="hero-panel-time">Beta preview</div>
         </div>
         <div class="hero-panel-q">
-          What's open<br>
+          What would we see<br>
           <em>across all three?</em>
         </div>
         <div class="hero-panel-rows">
@@ -1519,7 +1569,7 @@ footer{
 </section>
 
 <!-- MANIFESTO -->
-<div class="manifesto">
+<div class="manifesto" id="about">
   <div class="shell">
     <p class="manifesto-text fade-in">
       Most firms run their money, their movement, and their people on <em>different systems.</em> We don't think they should.
@@ -1536,7 +1586,7 @@ footer{
         <em>One system.</em>
       </h2>
       <p class="verticals-sub fade-in d1">
-        Pick one. Pick all three. They share the same ledger, the same access controls, and the same command surface. Adding a vertical is a permission flip, not a migration.
+        Pick one. Pick all three. The goal is the same ledger, the same access model, and the same command surface, so new workflows can be added without starting from scratch.
       </p>
     </div>
 
@@ -1548,13 +1598,13 @@ footer{
         </div>
         <div class="vertical-main">
           <div class="vertical-tag">Capital operations</div>
-          <p class="vertical-desc">Payment routing, automated reconciliation, and live cash position. Replaces QuickBooks, your bank portal, and the spreadsheet your controller updates on Tuesdays.</p>
+          <p class="vertical-desc">Payment routing, reconciliation workflow, and cash-position review. Designed to reduce handoffs between accounting, bank portals, and controller spreadsheets.</p>
         </div>
         <ul class="vertical-features">
-          <li class="vertical-feature">Routing rules — wire, ACH, batch by amount and counterparty</li>
-          <li class="vertical-feature">Reconciliation across 12,400 institutions via Plaid</li>
-          <li class="vertical-feature">Multi-currency ledger with live FX positions</li>
-          <li class="vertical-feature">1099-NEC automation and audit-grade event log</li>
+          <li class="vertical-feature">Routing rules for wires, ACH, batches, amounts, and counterparties</li>
+          <li class="vertical-feature">Bank-connected reconciliation workflow for supported institutions</li>
+          <li class="vertical-feature">Multi-currency ledger model with position review</li>
+          <li class="vertical-feature">Exportable event history for finance and tax review</li>
         </ul>
       </article>
 
@@ -1565,10 +1615,10 @@ footer{
         </div>
         <div class="vertical-main">
           <div class="vertical-tag">Physical operations</div>
-          <p class="vertical-desc">Real-time dispatch, fleet asset tracking, and vendor scorecards — wired to the same ledger that pays them. For brokers, carriers, and 3PLs running mid-market volume.</p>
+          <p class="vertical-desc">Dispatch, fleet asset tracking, and vendor scorecards connected to the same operating ledger. For brokers, carriers, and 3PLs coordinating mid-market volume.</p>
         </div>
         <ul class="vertical-features">
-          <li class="vertical-feature">Live dispatch board with GPS, ETA, and detention alerts</li>
+          <li class="vertical-feature">Dispatch board structure for GPS, ETA, and detention alerts</li>
           <li class="vertical-feature">Asset tracker with maintenance scheduling</li>
           <li class="vertical-feature">Vendor scorecard: on-time, margin, incident history</li>
           <li class="vertical-feature">Lane analytics and cost-per-mile optimization</li>
@@ -1582,12 +1632,12 @@ footer{
         </div>
         <div class="vertical-main">
           <div class="vertical-tag">Engagement management</div>
-          <p class="vertical-desc">Scope, milestone, and pay specialist engagements end-to-end. Escrow is tied directly to the Capital ledger — no payment runs around your accounting close.</p>
+          <p class="vertical-desc">Scope, milestone, and pay specialist engagements end-to-end. Payment workflow is designed to stay connected to finance controls instead of running around close.</p>
         </div>
         <ul class="vertical-features">
-          <li class="vertical-feature">Milestone-gated escrow with automated payout</li>
-          <li class="vertical-feature">Expert matchmaking from 2,000+ vetted specialists</li>
-          <li class="vertical-feature">Compliance bundle: SOC 2, NDA, W-9 in one place</li>
+          <li class="vertical-feature">Milestone-gated approval and payout workflow</li>
+          <li class="vertical-feature">Specialist roster and engagement matching structure</li>
+          <li class="vertical-feature">Document bundle for NDA, W-9, and client requirements</li>
           <li class="vertical-feature">Engagement boards with NPS and re-engagement scoring</li>
         </ul>
       </article>
@@ -1601,30 +1651,30 @@ footer{
     <div class="numbers-head">
       <div class="eyebrow numbers-eyebrow fade-in">By the numbers</div>
       <h2 class="numbers-title fade-in d1">
-        Live figures from<br>
-        the platform <em>today.</em>
+        Operating goals for<br>
+        a tighter <em>rollout.</em>
       </h2>
     </div>
     <div class="numbers-grid">
       <div class="number-cell fade-in">
-        <div class="number-value"><span data-target="2.4" data-prefix="$" data-suffix="B">$2.4B</span></div>
-        <div class="number-label">Capital routed last quarter</div>
-        <div class="number-detail">All workspaces</div>
+        <div class="number-value"><span data-target="3" data-suffix=" systems">3 systems</span></div>
+        <div class="number-label">Finance, freight, and consulting in one view</div>
+        <div class="number-detail">Target state</div>
       </div>
       <div class="number-cell fade-in d1">
-        <div class="number-value"><span data-target="96.4" data-suffix="%">96.4%</span></div>
-        <div class="number-label">Freight delivered on time</div>
-        <div class="number-detail">7-day average</div>
+        <div class="number-value"><span data-target="1" data-suffix=" ledger">1 ledger</span></div>
+        <div class="number-label">Shared operating record across verticals</div>
+        <div class="number-detail">Core model</div>
       </div>
       <div class="number-cell fade-in d2">
-        <div class="number-value"><span data-target="1.4" data-suffix="d">1.4d</span></div>
-        <div class="number-label">Consulting match time</div>
-        <div class="number-detail">Brief to expert</div>
+        <div class="number-value"><span data-target="4" data-suffix=" steps">4 steps</span></div>
+        <div class="number-label">Intake, provision, operate, and scale</div>
+        <div class="number-detail">Onboarding path</div>
       </div>
       <div class="number-cell fade-in d3">
         <div class="number-value"><span data-target="14" data-suffix=" days">14 days</span></div>
-        <div class="number-label">Onboarding to live</div>
-        <div class="number-detail">Intake to first transaction</div>
+        <div class="number-label">Target pilot onboarding window</div>
+        <div class="number-detail">Private beta</div>
       </div>
     </div>
   </div>
@@ -1681,47 +1731,47 @@ footer{
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testi" id="clients">
+<!-- USE CASES -->
+<section class="testi" id="fit">
   <div class="shell">
     <div class="testi-head">
-      <div class="eyebrow fade-in">Client results</div>
+      <div class="eyebrow fade-in">Best fit</div>
       <h2 class="testi-title fade-in d1">
-        What operators<br>
-        actually <em>say.</em>
+        Built for teams<br>
+        with messy <em>handoffs.</em>
       </h2>
     </div>
     <div class="testi-grid">
       <div class="testi-card fade-in">
-        <div class="testi-mark">"</div>
+        <div class="testi-mark">01</div>
         <blockquote class="testi-quote">
-          We replaced three subscriptions and a custom Notion setup in one migration. Our reconciliation gap went from <strong>three days to zero</strong> overnight.
+          Finance leaders who need <strong>one operating record</strong> for payment status, approvals, reconciliation, and audit history.
         </blockquote>
         <div class="testi-attr">
-          <div class="testi-name">Cole Kerr</div>
-          <div class="testi-role">CEO · Galleon Asset Management</div>
+          <div class="testi-name">Cash visibility</div>
+          <div class="testi-role">Approvals · Reconciliation · Audit trail</div>
         </div>
       </div>
 
       <div class="testi-card fade-in d1">
-        <div class="testi-mark">"</div>
+        <div class="testi-mark">02</div>
         <blockquote class="testi-quote">
-          Fourteen new broker tenants onboarded last month. Each one <strong>live in under twenty minutes.</strong> The last internal tool we'll build ourselves.
+          Freight operators who need <strong>dispatch context and cost context</strong> in the same workspace instead of separate boards and spreadsheets.
         </blockquote>
         <div class="testi-attr">
-          <div class="testi-name">Marcus Patel</div>
-          <div class="testi-role">CTO · Stratus Capital LLC</div>
+          <div class="testi-name">Movement controls</div>
+          <div class="testi-role">Loads · Assets · Vendor scorecards</div>
         </div>
       </div>
 
       <div class="testi-card fade-in d2">
-        <div class="testi-mark">"</div>
+        <div class="testi-mark">03</div>
         <blockquote class="testi-quote">
-          Engagement NPS went from 7.8 to <strong>9.3 in two quarters.</strong> The escrow-to-milestone flow is the best process we've deployed.
+          Consulting teams who need <strong>scope, milestones, documents, and payout approvals</strong> tied back to the same financial source of truth.
         </blockquote>
         <div class="testi-attr">
-          <div class="testi-name">Sandra Okafor</div>
-          <div class="testi-role">COO · Northwind Equity Group</div>
+          <div class="testi-name">Engagement oversight</div>
+          <div class="testi-role">Milestones · Documents · Payout review</div>
         </div>
       </div>
     </div>
@@ -1739,13 +1789,13 @@ footer{
           <em>No surprises.</em>
         </h2>
       </div>
-      <p class="pricing-sub fade-in d2">No per-seat fees. No usage overages below tier ceiling. Volume tiers adjust automatically as your business grows.</p>
+      <p class="pricing-sub fade-in d2">Pilot pricing is designed around the verticals you use, not seat-count sprawl. Final terms are confirmed during onboarding.</p>
     </div>
 
     <div class="billing-toggle fade-in">
-      <span class="billing-toggle-label active" id="monthLabel" onclick="setBilling(false)">Monthly</span>
-      <div class="toggle" id="billToggle" onclick="setBilling()" role="switch" aria-label="Toggle annual billing"></div>
-      <span class="billing-toggle-label" id="annualLabel" onclick="setBilling(true)">Annual</span>
+      <button class="billing-toggle-label active" id="monthLabel" onclick="setBilling(false)">Monthly</button>
+      <button class="toggle" id="billToggle" onclick="setBilling()" role="switch" aria-label="Toggle annual billing" aria-checked="false"></button>
+      <button class="billing-toggle-label" id="annualLabel" onclick="setBilling(true)">Annual</button>
       <span class="save-pill">Save 20%</span>
     </div>
 
@@ -1765,8 +1815,8 @@ footer{
           <li class="tier-feature">One vertical: Finance, Freight, or Consulting</li>
           <li class="tier-feature">Unlimited team members + RBAC</li>
           <li class="tier-feature">Cmd+K command surface</li>
-          <li class="tier-feature">Audit log + SOC 2 Type II</li>
-          <li class="tier-feature">Up to $5M monthly volume</li>
+          <li class="tier-feature">Audit log exports and role-based access</li>
+          <li class="tier-feature">Pilot volume reviewed during onboarding</li>
         </ul>
       </div>
 
@@ -1786,9 +1836,9 @@ footer{
           <li class="tier-feature">Any 2 verticals — mix and match</li>
           <li class="tier-feature">Cross-vertical Cmd+K search</li>
           <li class="tier-feature">Unified inbox and alerts</li>
-          <li class="tier-feature">Webhook relay (100k events/mo)</li>
-          <li class="tier-feature">Up to $50M monthly volume</li>
-          <li class="tier-feature">Priority Slack support</li>
+          <li class="tier-feature">Webhook relay for approved integrations</li>
+          <li class="tier-feature">Expanded pilot volume and workflow support</li>
+          <li class="tier-feature">Priority onboarding support</li>
         </ul>
       </div>
 
@@ -1807,11 +1857,40 @@ footer{
           <li class="tier-feature">All three verticals · shared ledger</li>
           <li class="tier-feature">Atlas AI — natural language queries</li>
           <li class="tier-feature">SSO / SAML / SCIM provisioning</li>
-          <li class="tier-feature">Unlimited webhooks + event bus</li>
-          <li class="tier-feature">Unlimited volume · 99.99% SLA</li>
-          <li class="tier-feature">Dedicated CSM + Slack channel</li>
+          <li class="tier-feature">Webhook/event-bus architecture review</li>
+          <li class="tier-feature">Custom volume, support, and uptime terms</li>
+          <li class="tier-feature">Dedicated implementation support</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST NOTES -->
+<section class="trust-notes" id="security">
+  <div class="shell">
+    <div class="verticals-head">
+      <h2 class="verticals-title fade-in">
+        Security-minded<br>
+        from <em>day one.</em>
+      </h2>
+      <p class="verticals-sub fade-in d1">
+        BunManage is in private beta. Compliance reports and formal attestations should be requested directly during onboarding.
+      </p>
+    </div>
+    <div class="trust-grid">
+      <article class="trust-card fade-in" id="privacy">
+        <h3>Data handling</h3>
+        <p>Beta workspaces are designed around least-privilege access, clear team permissions, and exportable operational records for review.</p>
+      </article>
+      <article class="trust-card fade-in d1" id="terms">
+        <h3>Beta terms</h3>
+        <p>Commercial terms, supported integrations, service levels, and data requirements are confirmed before any production rollout.</p>
+      </article>
+      <article class="trust-card fade-in d2" id="roadmap">
+        <h3>Roadmap</h3>
+        <p>Current focus areas are finance controls, dispatch context, consulting engagement oversight, and a shared command surface.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -1829,7 +1908,7 @@ footer{
         We're onboarding firms selectively during private beta. Tell us what you run and we'll get back within one business day.
       </p>
       <div class="cta-buttons fade-in d3">
-        <a href="mailto:hello@bunmanage.com?subject=Early%20Access%20—%20BunManage" class="btn btn--ochre">hello@bunmanage.com</a>
+        <a href="mailto:hello@bunmanage.com?subject=Early%20Access%20-%20BunManage&body=Hi%20BunManage%20team%2C%0A%0AI%27d%20like%20to%20request%20early%20access.%20We%20operate%20in%3A%0A-%20Finance%3A%20%0A-%20Freight%3A%20%0A-%20Consulting%3A%20%0A%0AWhat%20we%27re%20trying%20to%20improve%3A%0A" class="btn btn--ochre">hello@bunmanage.com</a>
         <a href="#platform" class="btn btn--outline">Read the platform first</a>
       </div>
       <div class="cta-note fade-in d3">Bains Fund Management LLC · Private beta 2026</div>
@@ -1862,19 +1941,19 @@ footer{
       <div>
         <div class="footer-col-title">Company</div>
         <ul class="footer-links">
-          <li><a href="#">About</a></li>
-          <li><a href="#clients">Clients</a></li>
-          <li><a href="#">Changelog</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#fit">Use cases</a></li>
+          <li><a href="#roadmap">Roadmap</a></li>
           <li><a href="#access">Contact</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-col-title">Legal</div>
         <ul class="footer-links">
-          <li><a href="#">Security</a></li>
-          <li><a href="#">Privacy</a></li>
-          <li><a href="#">Terms</a></li>
-          <li><a href="#">SOC 2 report</a></li>
+          <li><a href="#security">Security</a></li>
+          <li><a href="#privacy">Privacy</a></li>
+          <li><a href="#terms">Terms</a></li>
+          <li><a href="mailto:hello@bunmanage.com?subject=BunManage%20security%20request">Security request</a></li>
         </ul>
       </div>
     </div>
@@ -1882,9 +1961,9 @@ footer{
       <span>© 2026 BAINS FUND MANAGEMENT LLC</span>
       <span>BUNMANAGE™</span>
       <div class="footer-compliance">
-        <span class="compliance-pill">SOC 2 TYPE II</span>
-        <span class="compliance-pill">GDPR</span>
-        <span class="compliance-pill">HIPAA-READY</span>
+        <span class="compliance-pill">ROLE-BASED ACCESS</span>
+        <span class="compliance-pill">AUDIT TRAILS</span>
+        <span class="compliance-pill">EXPORTABLE RECORDS</span>
       </div>
     </div>
   </div>
@@ -1931,6 +2010,7 @@ function setBilling(force) {
   if (typeof force === 'boolean') { if (force === isAnnual) return; isAnnual = force; }
   else isAnnual = !isAnnual;
   document.getElementById('billToggle').classList.toggle('on', isAnnual);
+  document.getElementById('billToggle').setAttribute('aria-checked', String(isAnnual));
   document.getElementById('monthLabel').classList.toggle('active', !isAnnual);
   document.getElementById('annualLabel').classList.toggle('active', isAnnual);
   const set = isAnnual ? prices.annual : prices.monthly;

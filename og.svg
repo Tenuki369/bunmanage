@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">BunManage</title>
+  <desc id="desc">Operations workspace for finance, freight, and consulting</desc>
+  <rect width="1200" height="630" fill="#f7f4ed"/>
+  <rect x="72" y="72" width="1056" height="486" fill="none" stroke="#0c0c0a" stroke-width="3"/>
+  <rect x="72" y="72" width="1056" height="10" fill="#b8761e"/>
+  <text x="112" y="165" fill="#b8761e" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="5">PRIVATE BETA</text>
+  <text x="112" y="290" fill="#0c0c0a" font-family="Georgia, serif" font-size="92" font-weight="500">BunManage</text>
+  <text x="112" y="370" fill="#1f1f1c" font-family="Georgia, serif" font-size="48">One operating view for finance,</text>
+  <text x="112" y="430" fill="#1f1f1c" font-family="Georgia, serif" font-size="48">freight, and consulting.</text>
+  <line x1="112" y1="494" x2="520" y2="494" stroke="#b8761e" stroke-width="5"/>
+  <text x="112" y="535" fill="#3a3a35" font-family="Inter, Arial, sans-serif" font-size="24">Built by Bains Fund Management LLC</text>
+</svg>
