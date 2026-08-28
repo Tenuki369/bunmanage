@@ -1034,6 +1034,25 @@ section{
   padding:5px 9px;
   text-transform:uppercase;
 }
+.pricing-note{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  margin:0 0 32px;
+  padding:18px 0;
+  border-top:1px solid var(--hairline);
+  border-bottom:1px solid var(--hairline);
+}
+@media(min-width:760px){.pricing-note{grid-template-columns:1fr 1fr 1fr}}
+.pricing-note span{
+  font-size:14px;
+  line-height:1.45;
+  color:var(--ink-2);
+}
+.pricing-note strong{
+  color:var(--ink);
+  font-weight:600;
+}
 
 .pricing-grid{
   display:grid;
@@ -1104,6 +1123,7 @@ section{
   align-items:baseline;
   gap:6px;
   margin-bottom:4px;
+  flex-wrap:wrap;
 }
 .tier-amount{
   font-family:var(--serif);
@@ -1115,6 +1135,13 @@ section{
   font-variant-numeric:tabular-nums;
 }
 .tier--featured .tier-amount{color:var(--paper)}
+.tier-list{
+  font-size:18px;
+  color:var(--ink-4);
+  text-decoration:line-through;
+  margin-left:4px;
+}
+.tier--featured .tier-list{color:rgba(247,244,237,.35)}
 .tier-mo{
   font-size:15px;
   font-weight:400;
@@ -1785,18 +1812,24 @@ footer{
       <div>
         <div class="eyebrow fade-in">Pricing</div>
         <h2 class="pricing-title fade-in d1">
-          Straightforward.<br>
-          <em>No surprises.</em>
+          Launch pricing.<br>
+          <em>20% lighter.</em>
         </h2>
       </div>
-      <p class="pricing-sub fade-in d2">Pilot pricing is designed around the verticals you use, not seat-count sprawl. Final terms are confirmed during onboarding.</p>
+      <p class="pricing-sub fade-in d2">Modeled against the cost of separate finance, freight, and workflow systems. Early customers get 20% off for the first 12 months while BunManage is new.</p>
     </div>
 
     <div class="billing-toggle fade-in">
-      <button class="billing-toggle-label active" id="monthLabel" onclick="setBilling(false)">Monthly</button>
-      <button class="toggle" id="billToggle" onclick="setBilling()" role="switch" aria-label="Toggle annual billing" aria-checked="false"></button>
-      <button class="billing-toggle-label" id="annualLabel" onclick="setBilling(true)">Annual</button>
-      <span class="save-pill">Save 20%</span>
+      <button class="billing-toggle-label" id="monthLabel" onclick="setBilling(false)">Standard</button>
+      <button class="toggle on" id="billToggle" onclick="setBilling()" role="switch" aria-label="Toggle launch pricing" aria-checked="true"></button>
+      <button class="billing-toggle-label active" id="annualLabel" onclick="setBilling(true)">Launch -20%</button>
+      <span class="save-pill">First 12 months</span>
+    </div>
+
+    <div class="pricing-note fade-in d1">
+      <span><strong>Finance peers</strong> often mix subscriptions, per-user tiers, and payment fees.</span>
+      <span><strong>Freight TMS peers</strong> commonly price from usage-based entry points to $2k+ managed platforms.</span>
+      <span><strong>Workflow peers</strong> look cheaper per seat, but costs compound across departments and add-ons.</span>
     </div>
 
     <div class="pricing-grid">
@@ -1805,11 +1838,12 @@ footer{
         <h3 class="tier-name">Starter</h3>
         <p class="tier-desc">One vertical, full feature set, unlimited team members.</p>
         <div class="tier-price">
-          <span class="tier-amount" id="p1">$299</span>
+          <span class="tier-amount" id="p1">$239</span>
+          <span class="tier-list" id="p1l">$299</span>
           <span class="tier-mo">/ mo</span>
         </div>
-        <div class="tier-period" id="p1p">Billed monthly</div>
-        <a href="#access" class="tier-cta">Get started →</a>
+        <div class="tier-period" id="p1p">Launch pricing · first 12 months</div>
+        <a href="#access" class="tier-cta">Request launch pricing →</a>
         <div class="tier-divider"></div>
         <ul class="tier-features">
           <li class="tier-feature">One vertical: Finance, Freight, or Consulting</li>
@@ -1826,11 +1860,12 @@ footer{
         <h3 class="tier-name">Growth</h3>
         <p class="tier-desc">Two verticals on a shared ledger with cross-vertical command surface.</p>
         <div class="tier-price">
-          <span class="tier-amount" id="p2">$799</span>
+          <span class="tier-amount" id="p2">$639</span>
+          <span class="tier-list" id="p2l">$799</span>
           <span class="tier-mo">/ mo</span>
         </div>
-        <div class="tier-period" id="p2p">Billed monthly</div>
-        <a href="#access" class="tier-cta">Start 14-day trial →</a>
+        <div class="tier-period" id="p2p">Launch pricing · first 12 months</div>
+        <a href="#access" class="tier-cta">Request launch pricing →</a>
         <div class="tier-divider"></div>
         <ul class="tier-features">
           <li class="tier-feature">Any 2 verticals — mix and match</li>
@@ -1847,11 +1882,12 @@ footer{
         <h3 class="tier-name">Atlas</h3>
         <p class="tier-desc">Finance, Freight, and Consulting on one ledger. The full platform.</p>
         <div class="tier-price">
-          <span class="tier-amount" id="p3">$1,999</span>
+          <span class="tier-amount" id="p3">$1,599</span>
+          <span class="tier-list" id="p3l">$1,999</span>
           <span class="tier-mo">/ mo</span>
         </div>
-        <div class="tier-period" id="p3p">Billed monthly</div>
-        <a href="#access" class="tier-cta">Talk to us →</a>
+        <div class="tier-period" id="p3p">Launch pricing · first 12 months</div>
+        <a href="#access" class="tier-cta">Talk through rollout →</a>
         <div class="tier-divider"></div>
         <ul class="tier-features">
           <li class="tier-feature">All three verticals · shared ledger</li>
@@ -2002,10 +2038,10 @@ document.addEventListener('click', e => {
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
 
 const prices = {
-  monthly: ['$299', '$799', '$1,999'],
-  annual:  ['$239', '$639', '$1,599']
+  standard: ['$299', '$799', '$1,999'],
+  launch:  ['$239', '$639', '$1,599']
 };
-let isAnnual = false;
+let isAnnual = true;
 function setBilling(force) {
   if (typeof force === 'boolean') { if (force === isAnnual) return; isAnnual = force; }
   else isAnnual = !isAnnual;
@@ -2013,11 +2049,12 @@ function setBilling(force) {
   document.getElementById('billToggle').setAttribute('aria-checked', String(isAnnual));
   document.getElementById('monthLabel').classList.toggle('active', !isAnnual);
   document.getElementById('annualLabel').classList.toggle('active', isAnnual);
-  const set = isAnnual ? prices.annual : prices.monthly;
-  const period = isAnnual ? 'Billed annually · save 20%' : 'Billed monthly';
+  const set = isAnnual ? prices.launch : prices.standard;
+  const period = isAnnual ? 'Launch pricing · first 12 months' : 'Standard monthly price';
   ['p1','p2','p3'].forEach((id, i) => {
     document.getElementById(id).textContent = set[i];
     document.getElementById(id + 'p').textContent = period;
+    document.getElementById(id + 'l').style.display = isAnnual ? 'inline' : 'none';
   });
 }
 
