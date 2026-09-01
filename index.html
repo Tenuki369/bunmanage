@@ -3,376 +3,578 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>BunManage - Managed operations for the messy middle</title>
-<meta name="description" content="BunManage is a private-beta operating layer for finance, freight, and consulting teams. We manage the invoices, approvals, documents, exceptions, vendors, payouts, and handoffs that sit between disconnected systems.">
-<meta name="theme-color" content="#11100d">
+<title>BunManage - Audit-grade operations ledger</title>
+<meta name="description" content="BunManage unifies capital operations, logistics, and specialist work onto a single audit-grade operating ledger with configurable modules, workflow intake, and launch pricing.">
+<meta name="theme-color" content="#080a0d">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="BunManage - The middle, managed">
-<meta property="og:description" content="Managed operations for finance, freight, and consulting teams. The middle, managed.">
+<meta property="og:title" content="BunManage - Audit-grade operations ledger">
+<meta property="og:description" content="Configure capital, logistics, and specialist work on one audit-grade operating ledger.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.bunmanage.com">
 <meta property="og:site_name" content="BunManage">
 <meta property="og:image" content="https://www.bunmanage.com/og.svg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="BunManage - The middle, managed">
-<meta name="twitter:description" content="Managed operations for finance, freight, and consulting teams. The middle, managed.">
+<meta name="twitter:title" content="BunManage - Audit-grade operations ledger">
+<meta name="twitter:description" content="Configure capital, logistics, and specialist work on one audit-grade operating ledger.">
 <meta name="twitter:image" content="https://www.bunmanage.com/og.svg">
 <link rel="canonical" href="https://www.bunmanage.com">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2311100d'/><circle cx='16' cy='16' r='15' fill='%23f1c15b'/><circle cx='16' cy='16' r='10' fill='%2311100d'/><path d='M9 12h14M9 20h14' stroke='%23f8eedc' stroke-width='2' stroke-linecap='round'/><text x='11' y='21' font-family='Georgia,serif' font-size='14' font-style='italic' fill='%23f8eedc'>B</text></svg>" type="image/svg+xml">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23080a0d'/><path d='M8 9h16v4H8zM8 15h16v4H8zM8 21h16v2H8z' fill='%2372d1c2'/><path d='M15 6h2v21h-2z' fill='%23f1c15b'/></svg>" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"BunManage","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://www.bunmanage.com","description":"A private-beta operating layer for finance, freight, and consulting workflows.","offers":{"@type":"AggregateOffer","lowPrice":"399","highPrice":"1999","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"BunManage","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://www.bunmanage.com","description":"An audit-grade operating ledger for capital operations, logistics, and specialist work.","offers":{"@type":"AggregateOffer","lowPrice":"399","highPrice":"1999","priceCurrency":"USD"}}
 </script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--ink:#11100d;--ink-2:#24211a;--cream:#f8eedc;--paper:#efe2ca;--gold:#f1c15b;--gold-2:#d89535;--brown:#8f541e;--teal:#72d1c2;--blue:#77a7ff;--orange:#f08b3d;--violet:#a994e8;--rose:#f06f72;--line:rgba(248,238,220,.16);--muted:rgba(248,238,220,.72);--panel:rgba(248,238,220,.08);--panel-2:rgba(248,238,220,.14);--shadow:0 30px 90px rgba(0,0,0,.42);--sans:'Inter',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;--serif:'Fraunces',Georgia,serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(.22,1,.36,1)}
+:root{
+  --bg:#080a0d;
+  --bg-2:#0d1117;
+  --panel:#111821;
+  --panel-2:#151e2a;
+  --panel-3:#0b0f15;
+  --text:#eef4f8;
+  --muted:#91a0ad;
+  --faint:#5d6a75;
+  --line:rgba(238,244,248,.12);
+  --line-strong:rgba(238,244,248,.22);
+  --accent:#72d1c2;
+  --gold:#f1c15b;
+  --blue:#77a7ff;
+  --violet:#a994e8;
+  --red:#ff6b7a;
+  --green:#88d18a;
+  --shadow:0 24px 70px rgba(0,0,0,.42);
+  --sans:'Inter',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Consolas,monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{min-width:320px;min-height:100vh;overflow:hidden;background:linear-gradient(115deg,rgba(114,209,194,.10),transparent 28%),linear-gradient(245deg,rgba(241,193,91,.13),transparent 32%),linear-gradient(135deg,#11100d,#1c1711 56%,#11100d);color:var(--cream);font-family:var(--sans);line-height:1.45;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-body::before{content:'';position:fixed;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(248,238,220,.045) 1px,transparent 1px),linear-gradient(rgba(248,238,220,.035) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.88),transparent 86%)}
+body{min-width:320px;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 78% 12%,rgba(114,209,194,.12),transparent 28%),radial-gradient(circle at 18% 78%,rgba(119,167,255,.10),transparent 30%),linear-gradient(135deg,#080a0d,#101620 52%,#080a0d)}
+body::after{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(238,244,248,.04) 1px,transparent 1px),linear-gradient(rgba(238,244,248,.035) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.88),transparent 92%)}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit}
-button{color:inherit;background:none;border:0;cursor:pointer}
-button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
-::selection{background:var(--gold);color:var(--ink)}
-.app{min-height:100vh;min-height:100dvh;display:grid;grid-template-rows:auto 1fr}
-.nav{position:relative;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px clamp(16px,3vw,38px)}
-.brand{display:flex;align-items:center;gap:12px;min-height:54px}
-.seal{position:relative;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--cream);box-shadow:0 16px 36px rgba(0,0,0,.26)}
-.seal::before{content:'';position:absolute;inset:7px;border-radius:50%;background:var(--ink)}
-.seal::after{content:'';position:absolute;left:13px;right:13px;top:13px;height:28px;border-top:3px solid var(--cream);border-bottom:3px solid var(--gold);border-radius:999px}
-.seal span{position:relative;z-index:2;font-family:var(--serif);font-size:26px;font-style:italic;line-height:1}
-.brand-copy{display:grid;gap:2px}
-.brand-name{font-family:var(--serif);font-size:23px;font-weight:700;line-height:1}
-.brand-motto{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
-.flow-tabs{display:none;align-items:center;gap:4px;padding:5px;border:1px solid var(--line);background:rgba(17,16,13,.72);backdrop-filter:blur(14px)}
-.flow-tab{min-height:38px;padding:0 13px;font-size:13px;font-weight:700;color:rgba(248,238,220,.62);transition:background .18s var(--ease),color .18s var(--ease)}
-.flow-tab.active{background:var(--gold);color:var(--ink)}
-.nav-actions{display:flex;align-items:center;gap:10px}
-.nav-status{display:none;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(241,193,91,.45);padding:8px 10px}
-.mobile-select{min-height:44px;max-width:148px;border:1px solid var(--line);background:var(--ink);color:var(--cream);padding:0 12px;font-weight:800}
-.btn{min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 18px;border:1.5px solid rgba(248,238,220,.7);font-size:14px;font-weight:900;letter-spacing:.01em;white-space:nowrap;transition:transform .18s var(--ease),background .18s var(--ease),color .18s var(--ease),border-color .18s var(--ease)}
-.btn:hover{transform:translateY(-2px)}
-.btn.primary,.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--ink)}
-.btn.dark{background:rgba(17,16,13,.58);color:var(--cream)}
-.btn.subtle{background:rgba(248,238,220,.08);color:var(--cream)}
-@media(min-width:900px){.flow-tabs{display:flex}.mobile-select{display:none}.nav-status{display:block}}
-.stage{position:relative;min-height:0;padding:0 clamp(16px,3vw,38px) 24px}
-.screen{position:absolute;inset:0 clamp(16px,3vw,38px) 24px;display:grid;align-items:center;opacity:0;pointer-events:none;transform:translateY(20px) scale(.985);transition:opacity .42s var(--ease),transform .42s var(--ease)}
-.screen.active{opacity:1;pointer-events:auto;transform:none}
-.screen-inner{width:min(1240px,100%);margin:0 auto;min-height:calc(100vh - 122px);min-height:calc(100dvh - 122px);display:grid;grid-template-columns:minmax(0,1fr);align-items:center;gap:28px}
-@media(min-width:1020px){.screen-inner{grid-template-columns:.92fr 1.08fr}}
-.copy{max-width:670px}
-.eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:18px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
-.eyebrow::before{content:'';width:34px;height:2px;background:var(--gold)}
-h1,h2{color:var(--cream);letter-spacing:0}
-h1{font-size:clamp(54px,9.7vw,132px);line-height:.84;font-weight:900;text-transform:uppercase}
-h1 em{display:block;font-family:var(--serif);font-weight:500;font-style:italic;text-transform:none;color:var(--gold);font-size:.86em}
-h2{font-family:var(--serif);font-size:clamp(40px,6vw,82px);font-weight:700;line-height:.96}
-h2 em{font-style:italic;color:var(--gold)}
-.plain-promise{display:inline-flex;margin-top:18px;padding:10px 12px;border-left:3px solid var(--teal);background:rgba(114,209,194,.10);color:var(--cream);font-size:15px;font-weight:900;line-height:1.35}
-.lede{max-width:57ch;margin-top:20px;color:var(--muted);font-size:clamp(17px,1.7vw,21px);line-height:1.58}
-.campaign{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.campaign span{min-height:32px;display:inline-flex;align-items:center;padding:0 10px;background:var(--cream);color:var(--ink);font-family:var(--mono);font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.proof{display:grid;grid-template-columns:repeat(3,1fr);margin-top:32px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.proof div{padding:16px 14px 16px 0;border-right:1px solid var(--line)}
-.proof div:last-child{border-right:0}
-.proof strong{display:block;font-family:var(--serif);font-size:clamp(27px,3vw,42px);font-weight:700;line-height:1;color:var(--gold)}
-.proof span{display:block;margin-top:6px;font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.11em;color:rgba(248,238,220,.58)}
-.flow-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}
-.flow-mini button{min-height:72px;padding:12px;border:1px solid var(--line);background:rgba(248,238,220,.06);text-align:left;transition:background .18s var(--ease),transform .18s var(--ease)}
-.flow-mini button:hover{background:rgba(248,238,220,.12);transform:translateY(-2px)}
-.flow-mini strong{display:block;font-size:14px;color:var(--cream)}
-.flow-mini small{display:block;margin-top:4px;color:var(--muted);font-size:12px;line-height:1.35}
-.stack-stage{min-height:580px;position:relative;display:grid;place-items:center}
-.burger-system{position:relative;width:min(680px,95vw);min-height:560px;display:grid;place-items:center}
-.welcome-burst{position:absolute;z-index:9;left:50%;top:50%;transform:translate(-50%,-50%) scale(.88);min-width:238px;padding:16px 18px;text-align:center;background:var(--cream);color:var(--ink);box-shadow:0 28px 72px rgba(0,0,0,.38);opacity:0;animation:welcomePop 5.6s var(--ease) forwards;pointer-events:none}
-.welcome-burst span,.welcome-burst b{display:block}
-.welcome-burst span{font-family:var(--mono);font-size:10px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--brown)}
-.welcome-burst b{margin-top:3px;font-family:var(--serif);font-size:31px;line-height:1;color:var(--ink)}
-.halo{position:absolute;inset:18px;border-radius:50%;border:1px solid rgba(241,193,91,.28);opacity:0;animation:haloServe 6.4s var(--ease) forwards,spin 26s linear infinite}
-.halo::before,.halo::after{content:'';position:absolute;border-radius:50%;border:1px solid rgba(248,238,220,.14)}
-.halo::before{inset:54px}
-.halo::after{inset:108px}
-.stack-shadow{position:absolute;left:13%;right:13%;bottom:42px;height:38px;background:radial-gradient(ellipse,rgba(0,0,0,.62),transparent 70%);filter:blur(8px);opacity:0;animation:shadowServe 6.4s var(--ease) forwards}
-.service-bun{position:absolute;left:7%;right:7%;height:122px;border:1.5px solid rgba(17,16,13,.9);background:linear-gradient(135deg,#ffe5a6,#d89535 52%,#8f541e);box-shadow:0 28px 70px rgba(0,0,0,.33),inset 0 1px 0 rgba(255,255,255,.44);overflow:hidden;opacity:0}
-.service-bun::before{content:'';position:absolute;inset:22px 34px;border-top:1px solid rgba(17,16,13,.18);border-bottom:1px solid rgba(17,16,13,.15)}
-.service-bun::after{content:attr(data-label);position:absolute;left:30px;bottom:19px;font-family:var(--mono);font-size:10px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:rgba(17,16,13,.78)}
-.service-bun.top{top:36px;border-radius:70px 70px 23px 23px;animation:topBunServe 6.4s var(--ease) forwards}
-.service-bun.bottom{bottom:36px;border-radius:23px 23px 70px 70px;animation:bottomBunServe 6.4s var(--ease) forwards}
-.middle-stack{position:absolute;z-index:3;left:4%;right:4%;top:184px;bottom:184px;display:grid;grid-template-columns:1fr;gap:11px}
-.middle-item{display:grid;grid-template-columns:124px 1fr 92px;align-items:center;gap:12px;min-height:46px;padding:11px 14px;background:var(--cream);color:var(--ink);border:1.5px solid var(--ink);box-shadow:0 18px 44px rgba(0,0,0,.22);opacity:0;transform:translateY(24px) scale(.9)}
-.middle-item:nth-child(1){margin-right:86px;color:var(--teal);animation:middlePop .62s var(--ease) .62s forwards,slideMiddle 5s var(--ease) 2.1s infinite}
-.middle-item:nth-child(2){margin-left:54px;color:var(--blue);animation:middlePop .62s var(--ease) .86s forwards,slideMiddle 5s var(--ease) 2.3s infinite}
-.middle-item:nth-child(3){margin-right:54px;color:var(--violet);animation:middlePop .62s var(--ease) 1.1s forwards,slideMiddle 5s var(--ease) 2.5s infinite}
-.middle-item:nth-child(4){margin-left:86px;color:var(--rose);animation:middlePop .62s var(--ease) 1.34s forwards,slideMiddle 5s var(--ease) 2.7s infinite}
-.middle-item b{font-family:var(--mono);font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
-.middle-item i{height:7px;background:rgba(17,16,13,.16);position:relative;overflow:hidden}
-.middle-item i::after{content:'';position:absolute;inset:0 auto 0 0;width:38%;background:currentColor;animation:moveSignal 2.8s var(--ease) infinite}
-.middle-item small{justify-self:end;font-family:var(--mono);font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:rgba(17,16,13,.72)}
-.service-tags{position:absolute;z-index:6;inset:96px 7% auto;display:flex;justify-content:center;gap:8px;opacity:0;animation:tagsServe 6.4s var(--ease) forwards}
-.service-tags span{min-height:28px;display:inline-flex;align-items:center;padding:0 10px;background:var(--ink);border:1px solid rgba(248,238,220,.32);color:var(--cream);font-family:var(--mono);font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 12px 28px rgba(0,0,0,.22)}
-.brand-core{position:absolute;z-index:5;width:174px;height:174px;border-radius:50%;display:grid;place-items:center;background:var(--ink);border:2px solid var(--gold);box-shadow:inset 0 0 0 10px var(--ink),inset 0 0 0 12px rgba(248,238,220,.82),0 0 0 15px rgba(241,193,91,.18),0 34px 82px rgba(0,0,0,.45);opacity:0;transform:scale(.72);animation:coreServe .72s var(--ease) 3.8s forwards,pulse 3s var(--ease) 4.55s infinite}
-.brand-core b{font-family:var(--serif);font-size:72px;font-weight:700;font-style:italic;color:var(--cream)}
-.brand-core span{position:absolute;font-family:var(--mono);font-size:8px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
-.brand-core .top-word{top:27px}
-.brand-core .bottom-word{bottom:27px}
-.stack-caption{position:absolute;z-index:6;left:50%;bottom:5px;transform:translate(-50%,18px);min-width:min(420px,90vw);display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;padding:13px 15px;background:var(--gold);color:var(--ink);font-family:var(--mono);font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.12em;box-shadow:var(--shadow);opacity:0;animation:captionServe .72s var(--ease) 4.55s forwards}
-.stack-caption small{font-size:10px;color:rgba(17,16,13,.62)}
-.phase-notes{position:absolute;z-index:7;left:0;top:132px;display:grid;gap:8px;opacity:0;animation:captionServe .72s var(--ease) 4.7s forwards}
-.phase-notes span{width:168px;padding:10px 11px;border:1px solid rgba(248,238,220,.18);background:rgba(17,16,13,.72);box-shadow:0 15px 36px rgba(0,0,0,.22);font-family:var(--mono);font-size:9px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.phase-notes b{display:block;color:var(--gold);font-size:10px;margin-bottom:3px}
-.motion-controls{position:absolute;right:5%;bottom:62px;z-index:9;display:flex;gap:7px}
-.mini-control{min-height:32px;padding:0 10px;border:1px solid rgba(248,238,220,.28);background:rgba(17,16,13,.64);color:var(--cream);font-family:var(--mono);font-size:9px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
-.mini-control:hover{border-color:var(--gold);color:var(--gold)}
-.flow-panel{align-self:stretch;min-height:530px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(248,238,220,.13),rgba(248,238,220,.06));box-shadow:var(--shadow);backdrop-filter:blur(18px);display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
-.panel-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 20px;border-bottom:1px solid var(--line)}
-.panel-label{font-family:var(--mono);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:var(--gold)}
-.panel-badge{padding:7px 10px;border:1px solid rgba(241,193,91,.48);font-family:var(--mono);font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--cream)}
-.problem-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0}
-.problem{min-height:132px;padding:22px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-.problem:nth-child(even){border-right:0}
-.problem strong{display:block;font-family:var(--serif);font-size:28px;font-weight:700;line-height:1.05;margin-bottom:8px}
-.problem p{font-size:14.5px;color:var(--muted);line-height:1.55}
-.trust-strip{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
-.trust-item{padding:18px 20px;border-right:1px solid var(--line)}
-.trust-item:last-child{border-right:0}
-.trust-item b{display:block;font-family:var(--mono);font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
-.trust-item span{display:block;font-size:13.5px;color:var(--muted);line-height:1.5}
-.flow-steps{display:grid}
-.flow-step{display:grid;grid-template-columns:42px 1fr;gap:16px;padding:22px 20px;border-bottom:1px solid var(--line)}
-.flow-step:last-child{border-bottom:0}
-.step-num{width:34px;height:34px;display:grid;place-items:center;background:var(--gold);color:var(--ink);font-family:var(--mono);font-size:12px;font-weight:900}
-.flow-step h3{font-family:var(--serif);font-size:clamp(24px,2vw,32px);font-weight:700;line-height:1.05;margin-bottom:8px}
-.flow-step p{max-width:54ch;color:var(--muted);font-size:15px;line-height:1.55}
-.result-strip{padding:17px 20px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:18px;font-family:var(--mono);font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:rgba(248,238,220,.64)}
-.meter{width:min(210px,34vw);height:9px;background:rgba(248,238,220,.13);overflow:hidden}
-.meter i{display:block;height:100%;width:68%;background:var(--gold);animation:meter 4s var(--ease) infinite}
-.pricing-panel{grid-template-rows:auto 1fr auto}
-.pricing-grid{display:grid;grid-template-columns:1fr}
-.price-card{position:relative;padding:26px 22px;border-bottom:1px solid var(--line)}
-.price-card:last-child{border-bottom:0}
-.price-card.featured{background:var(--cream);color:var(--ink)}
-.price-card h3{font-family:var(--serif);font-size:32px;font-weight:700;margin-bottom:8px}
-.price-fit{display:inline-flex;min-height:27px;align-items:center;padding:0 9px;background:rgba(114,209,194,.12);border:1px solid rgba(114,209,194,.34);font-family:var(--mono);font-size:9px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:13px}
-.featured .price-fit{background:rgba(143,84,30,.11);border-color:rgba(143,84,30,.28);color:var(--brown)}
-.price-card p{min-height:58px;color:rgba(248,238,220,.7);font-size:14.5px;line-height:1.55}
-.price-card.featured p{color:rgba(17,16,13,.7)}
-.price{display:flex;align-items:baseline;gap:9px;margin:18px 0 7px;flex-wrap:wrap}
-.price strong{font-family:var(--serif);font-size:clamp(46px,5vw,64px);line-height:1;color:var(--gold)}
-.featured .price strong{color:var(--brown)}
-.price s{font-size:18px;color:rgba(248,238,220,.42)}
-.featured .price s{color:rgba(17,16,13,.42)}
-.price small{font-size:14px;color:rgba(248,238,220,.55)}
-.featured .price small{color:rgba(17,16,13,.55)}
-.price-note{font-family:var(--mono);font-size:11px;font-weight:900;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
-.featured .price-note{color:var(--brown)}
-.price-card ul{display:grid;gap:10px;margin-top:18px}
-.price-card li{display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:14px;line-height:1.45;color:rgba(248,238,220,.76)}
-.featured li{color:rgba(17,16,13,.76)}
-.price-card li::before{content:'';width:11px;height:2px;background:var(--gold);margin-top:10px}
-.featured li::before{background:var(--brown)}
-.pricing-note{padding:16px 20px;border-top:1px solid var(--line);font-size:13px;line-height:1.55;color:var(--muted)}
-@media(min-width:940px){.pricing-grid{grid-template-columns:repeat(3,1fr)}.price-card{border-right:1px solid var(--line);border-bottom:0}.price-card:last-child{border-right:0}}
-.route-cards{display:grid;gap:12px;margin-top:28px}
-.route-card{display:grid;grid-template-columns:14px 1fr auto;align-items:center;gap:14px;padding:16px;border:1px solid var(--line);background:rgba(248,238,220,.08);text-align:left;transition:background .18s var(--ease),transform .18s var(--ease)}
-.route-card:hover{background:rgba(248,238,220,.14);transform:translateX(3px)}
-.route-dot{width:11px;height:11px;border-radius:50%;background:currentColor}
-.route-card strong{display:block;font-size:15px}
-.route-card span span{display:block;margin-top:4px;font-size:13px;color:var(--muted)}
-.route-card i{font-style:normal;font-family:var(--mono);font-size:13px;font-weight:900;color:var(--gold)}
-.access-form{display:grid;gap:12px;padding:22px}
-.field{display:grid;gap:7px}
-.field label{font-family:var(--mono);font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
-.field input,.field textarea,.field select{width:100%;min-height:48px;border:1px solid var(--line);background:rgba(17,16,13,.72);color:var(--cream);padding:12px}
-.field textarea{min-height:112px;resize:vertical}
-.access-form .btn{width:100%;margin-top:6px}
-.form-status{min-height:21px;color:var(--teal);font-size:13px;line-height:1.45}
-.direct-email{font-size:13px;color:var(--muted);text-align:center}
-.direct-email a{color:var(--gold);font-weight:800}
-.footer-strip{position:fixed;z-index:18;left:clamp(16px,3vw,38px);right:clamp(16px,3vw,38px);bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:14px;pointer-events:none}
-.progress-dots{display:flex;gap:8px}
-.progress-dot{width:8px;height:8px;border:1px solid rgba(248,238,220,.58);background:transparent;opacity:.55}
-.progress-dot.active{background:var(--gold);border-color:var(--gold);opacity:1}
-.legal-line{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(248,238,220,.48)}
-@keyframes welcomePop{0%{opacity:0;transform:translate(-50%,-50%) scale(.82)}10%,34%{opacity:1;transform:translate(-50%,-50%) scale(1)}48%,100%{opacity:0;transform:translate(-50%,-56%) scale(.96)}}
-@keyframes haloServe{0%,18%{opacity:0;transform:scale(.72)}38%,100%{opacity:1;transform:scale(1)}}
-@keyframes shadowServe{0%,52%{opacity:0;transform:scaleX(.64)}72%,100%{opacity:1;transform:scaleX(1)}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes topBunServe{0%,38%{opacity:0;transform:translateY(-120px) scale(.94)}54%{opacity:1;transform:translateY(12px) scale(1.02)}68%,100%{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes bottomBunServe{0%,43%{opacity:0;transform:translateY(120px) scale(.94)}59%{opacity:1;transform:translateY(-12px) scale(1.02)}73%,100%{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes middlePop{0%{opacity:0;transform:translateY(24px) scale(.9)}72%{opacity:1;transform:translateY(-4px) scale(1.02)}100%{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes tagsServe{0%,52%{opacity:0;transform:translateY(-14px)}70%,100%{opacity:1;transform:translateY(0)}}
-@keyframes coreServe{0%{opacity:0;transform:scale(.72) rotate(-8deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
-@keyframes captionServe{0%{opacity:0;transform:translate(-50%,18px)}100%{opacity:1;transform:translate(-50%,0)}}
-@keyframes slideMiddle{0%,100%{transform:translateX(0)}50%{transform:translateX(9px)}}
-@keyframes moveSignal{0%{transform:translateX(-115%)}70%,100%{transform:translateX(260%)}}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
-@keyframes meter{0%,100%{width:58%}50%{width:86%}}
-@media(min-width:1020px) and (max-height:820px){h1{font-size:clamp(52px,8.4vw,112px)}.lede{font-size:17px}.actions{margin-top:22px}.proof{margin-top:24px}.flow-mini{display:none}.stack-stage{min-height:510px}.burger-system{min-height:510px}}
-@media(max-width:1019px){body{overflow:auto}.screen{position:relative;inset:auto;display:none;padding-bottom:42px}.screen.active{display:block}.screen-inner{min-height:auto;padding-top:14px}.stack-stage{min-height:470px}.burger-system{min-height:450px}.flow-panel{min-height:auto;margin-top:22px}.footer-strip{position:relative;left:auto;right:auto;bottom:auto;padding:0 16px 16px}}
-@media(max-width:760px){.flow-mini{grid-template-columns:1fr}.trust-strip{grid-template-columns:1fr}.trust-item{border-right:0;border-bottom:1px solid var(--line)}.trust-item:last-child{border-bottom:0}}
-@media(max-width:680px){.nav{align-items:flex-start}.brand{gap:9px}.seal{width:44px;height:44px}.seal::after{left:11px;right:11px;top:11px;height:22px}.seal span{font-size:22px}.brand-motto{display:none}.nav-actions{flex-direction:column;align-items:flex-end}.btn{min-height:43px;padding:0 13px}.stage{padding-inline:14px}.copy{max-width:100%}h1{font-size:clamp(56px,17vw,74px)}h2{font-size:clamp(38px,12vw,56px)}.plain-promise{font-size:14px}.lede{font-size:16.5px}.campaign span{font-size:9px}.proof{grid-template-columns:1fr}.proof div{border-right:0;border-bottom:1px solid var(--line)}.proof div:last-child{border-bottom:0}.stack-stage{min-height:430px}.burger-system{width:100%;min-height:415px}.welcome-burst{min-width:190px;padding:13px 15px}.welcome-burst b{font-size:25px}.service-bun{left:1%;right:1%;height:88px}.service-bun::after{left:18px;bottom:13px;font-size:8.5px}.service-bun.top{top:28px}.service-bun.bottom{bottom:30px}.service-tags{top:83px;left:2%;right:2%;gap:5px}.service-tags span{min-height:24px;padding:0 7px;font-size:7.5px}.middle-stack{left:3%;right:3%;top:128px;bottom:128px;gap:8px}.middle-item{grid-template-columns:86px 1fr 58px;min-height:39px;padding:9px 10px}.middle-item:nth-child(1),.middle-item:nth-child(2),.middle-item:nth-child(3),.middle-item:nth-child(4){margin-left:0;margin-right:0}.middle-item b{font-size:8.5px}.middle-item small{font-size:7px}.brand-core{width:120px;height:120px}.brand-core b{font-size:49px}.brand-core span{font-size:6px}.brand-core .top-word{top:19px}.brand-core .bottom-word{bottom:19px}.stack-caption{grid-template-columns:1fr;gap:2px;min-width:min(300px,91vw);font-size:8.5px}.phase-notes{display:none}.motion-controls{right:2%;bottom:48px}.problem-grid{grid-template-columns:1fr}.problem{border-right:0}.result-strip{align-items:flex-start;flex-direction:column}.meter{width:100%}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+button{border:0;background:none;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+::selection{background:var(--accent);color:#06100f}
+.site-nav{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px clamp(16px,4vw,44px);border-bottom:1px solid var(--line);background:rgba(8,10,13,.76);backdrop-filter:blur(18px)}
+.brand{display:flex;align-items:center;gap:12px}
+.mark{width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--line-strong);background:linear-gradient(180deg,#151e2a,#0b0f15);box-shadow:inset 0 0 0 1px rgba(114,209,194,.12)}
+.mark span{position:relative;width:20px;height:24px;display:block}
+.mark span::before{content:'';position:absolute;left:9px;top:0;bottom:0;width:2px;background:var(--gold)}
+.mark span::after{content:'';position:absolute;inset:3px 0;background:linear-gradient(var(--accent) 0 4px,transparent 4px 8px,var(--blue) 8px 12px,transparent 12px 16px,var(--violet) 16px 20px)}
+.brand-copy{display:grid;gap:1px}
+.brand-name{font-size:18px;font-weight:900;letter-spacing:.01em}
+.brand-line{font-family:var(--mono);font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.nav-links{display:none;align-items:center;gap:4px;padding:4px;border:1px solid var(--line);background:rgba(17,24,33,.74)}
+.nav-links a{min-height:36px;display:inline-flex;align-items:center;padding:0 12px;color:var(--muted);font-size:13px;font-weight:800}
+.nav-links a:hover{background:rgba(238,244,248,.08);color:var(--text)}
+.nav-cta{display:flex;align-items:center;gap:10px}
+.status{display:none;min-height:34px;align-items:center;padding:0 10px;border:1px solid rgba(114,209,194,.3);font-family:var(--mono);font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:0 16px;border:1px solid var(--line-strong);background:rgba(238,244,248,.06);color:var(--text);font-size:14px;font-weight:900;transition:transform .18s var(--ease),background .18s var(--ease),border-color .18s var(--ease)}
+.btn:hover{transform:translateY(-2px);border-color:rgba(114,209,194,.55)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#06100f}
+.btn.dark{background:#0b0f15}
+@media(min-width:940px){.nav-links{display:flex}.status{display:inline-flex}}
+.section{padding:clamp(44px,7vw,92px) clamp(16px,4vw,44px)}
+.hero{min-height:calc(100vh - 77px);display:grid;align-items:center;padding-top:34px}
+.hero-grid{width:min(1320px,100%);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:30px;align-items:center}
+@media(min-width:1080px){.hero-grid{grid-template-columns:.86fr 1.14fr}}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:'';width:36px;height:2px;background:var(--accent)}
+h1{max-width:780px;font-size:clamp(46px,7.2vw,104px);line-height:.9;font-weight:900;letter-spacing:-.02em}
+h1 span{display:block;color:var(--accent)}
+h2{max-width:820px;font-size:clamp(34px,5vw,72px);line-height:.98;font-weight:900;letter-spacing:-.015em}
+h3{font-size:22px;line-height:1.1;font-weight:900}
+.lede{max-width:660px;margin-top:22px;color:var(--muted);font-size:clamp(17px,1.65vw,21px);line-height:1.6}
+.persona-switch{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;padding:6px;border:1px solid var(--line);background:rgba(17,24,33,.7);width:max-content;max-width:100%}
+.persona-btn{min-height:42px;padding:0 13px;border:1px solid transparent;color:var(--muted);font-size:13px;font-weight:900}
+.persona-btn.active{background:var(--text);border-color:var(--text);color:#080a0d}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:32px;border:1px solid var(--line);max-width:680px}
+.metric{padding:15px;border-right:1px solid var(--line)}
+.metric:last-child{border-right:0}
+.metric b{display:block;font-family:var(--mono);font-size:22px;color:var(--accent)}
+.metric span{display:block;margin-top:5px;color:var(--muted);font-size:12px;line-height:1.35}
+.system-card{border:1px solid var(--line-strong);background:linear-gradient(180deg,rgba(17,24,33,.92),rgba(11,15,21,.94));box-shadow:var(--shadow);overflow:hidden}
+.system-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.system-title{font-family:var(--mono);font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.system-state{font-family:var(--mono);font-size:10px;font-weight:800;color:var(--muted)}
+.matrix{position:relative;min-height:500px;padding:26px 24px 26px 148px}
+.ledger-spine{position:absolute;left:38px;top:54px;bottom:54px;width:76px;border:1px solid rgba(241,193,91,.42);background:linear-gradient(180deg,rgba(241,193,91,.18),rgba(241,193,91,.04));display:grid;align-items:center;justify-items:center;text-align:center;color:var(--gold);font-family:var(--mono);font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.ledger-spine::before,.ledger-spine::after{content:'';position:absolute;left:100%;width:38px;height:1px;background:rgba(241,193,91,.45)}
+.ledger-spine::before{top:26%}
+.ledger-spine::after{bottom:26%}
+.plane-list{display:grid;gap:16px}
+.plane{position:relative;min-height:124px;padding:18px 18px 18px 20px;border:1px solid var(--line);background:rgba(238,244,248,.045);transition:opacity .2s var(--ease),border-color .2s var(--ease),background .2s var(--ease),transform .2s var(--ease)}
+.plane::before{content:'';position:absolute;left:-72px;top:50%;width:72px;height:1px;background:var(--line-strong)}
+.plane.active{border-color:var(--plane-color);background:color-mix(in srgb,var(--plane-color) 12%,transparent);transform:translateX(4px)}
+.plane.dim{opacity:.42}
+.plane-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+.plane h3{color:var(--text)}
+.plane small{font-family:var(--mono);font-size:10px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;color:var(--plane-color)}
+.plane p{margin-top:9px;color:var(--muted);font-size:14px;line-height:1.55}
+.schema-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}
+.schema-row span{min-height:25px;display:inline-flex;align-items:center;padding:0 8px;border:1px solid rgba(238,244,248,.13);background:rgba(8,10,13,.45);font-family:var(--mono);font-size:9px;font-weight:800;color:var(--muted)}
+.throughput{margin-top:18px;padding:14px 16px;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.throughput b{display:block;font-family:var(--mono);font-size:16px;color:var(--text)}
+.throughput span{display:block;margin-top:3px;color:var(--muted);font-size:12px}
+.config-panel{width:min(1320px,100%);margin:0 auto;display:grid;gap:24px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:24px}
+.section-head p{max-width:610px;color:var(--muted);font-size:16px;line-height:1.6}
+.component-grid{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:900px){.component-grid{grid-template-columns:repeat(3,1fr)}}
+.component-card{padding:18px;border:1px solid var(--line);background:rgba(17,24,33,.72)}
+.checkline{display:flex;align-items:center;gap:10px;font-weight:900}
+.checkline input{width:18px;height:18px;accent-color:var(--accent)}
+.component-card p{margin-top:10px;color:var(--muted);font-size:14px;line-height:1.55}
+.workspace-shell{display:grid;grid-template-columns:72px 1fr;border:1px solid var(--line-strong);background:#0a0d12;box-shadow:var(--shadow);min-height:560px;overflow:hidden}
+.workspace-rail{border-right:1px solid var(--line);background:#07090c;padding:12px 10px;display:grid;align-content:start;gap:10px}
+.rail-btn{height:52px;display:grid;place-items:center;border:1px solid transparent;color:var(--muted);font-family:var(--mono);font-size:9px;font-weight:900;text-transform:uppercase}
+.rail-btn.active{border-color:rgba(114,209,194,.5);background:rgba(114,209,194,.12);color:var(--accent)}
+.rail-icon{font-size:18px;line-height:1}
+.workspace-main{display:grid;grid-template-rows:auto auto 1fr}
+.workspace-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.mode-chip{min-height:30px;display:inline-flex;align-items:center;padding:0 10px;background:rgba(114,209,194,.12);border:1px solid rgba(114,209,194,.35);font-family:var(--mono);font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.cmd{color:var(--faint);font-family:var(--mono);font-size:11px}
+.subheader{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
+.subheader div{padding:16px 18px;border-right:1px solid var(--line)}
+.subheader div:last-child{border-right:0}
+.subheader b{display:block;font-family:var(--mono);font-size:18px;color:var(--text)}
+.subheader span{display:block;margin-top:4px;color:var(--muted);font-size:12px}
+.records{display:grid;align-content:start}
+.record{display:grid;grid-template-columns:1fr 130px 120px;gap:14px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
+.record strong{display:block;font-size:15px}
+.record small{display:block;margin-top:5px;color:var(--muted);font-size:12px}
+.pill{min-height:27px;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(114,209,194,.34);background:rgba(114,209,194,.10);font-family:var(--mono);font-size:10px;font-weight:900;color:var(--accent)}
+.deep-dive{width:min(1320px,100%);margin:0 auto;display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:900px){.deep-dive{grid-template-columns:repeat(3,1fr)}}
+.deep-card{padding:22px;border:1px solid var(--line);background:rgba(17,24,33,.74)}
+.deep-card small{font-family:var(--mono);font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.deep-card h3{margin-top:12px}
+.deep-card p{margin-top:12px;color:var(--muted);font-size:14.5px;line-height:1.6}
+.flow-arrow{margin-top:16px;color:var(--gold);font-family:var(--mono);font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.intake-grid,.pricing-grid{width:min(1320px,100%);margin:0 auto;display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:1020px){.intake-grid,.pricing-grid{grid-template-columns:.86fr 1.14fr}}
+.wizard,.calculator,.result-card{border:1px solid var(--line-strong);background:rgba(17,24,33,.82);box-shadow:var(--shadow)}
+.wizard{padding:22px}
+.question{padding:18px 0;border-bottom:1px solid var(--line)}
+.question:first-child{padding-top:0}
+.question:last-child{border-bottom:0;padding-bottom:0}
+.question label,.question legend{display:block;margin-bottom:10px;font-family:var(--mono);font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.choice-row{display:flex;flex-wrap:wrap;gap:8px}
+.choice{min-height:39px;display:inline-flex;align-items:center;gap:8px;padding:0 10px;border:1px solid var(--line);background:rgba(238,244,248,.05);color:var(--muted);font-size:13px;font-weight:800}
+.choice input{accent-color:var(--accent)}
+.question select,.question input[type=email]{width:100%;min-height:46px;border:1px solid var(--line);background:#090d12;color:var(--text);padding:0 12px}
+.question input[type=range]{width:100%;accent-color:var(--accent)}
+.range-labels{display:flex;justify-content:space-between;margin-top:8px;color:var(--muted);font-family:var(--mono);font-size:10px}
+.result-card{padding:22px;display:grid;align-content:start;gap:18px}
+.result-top{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.result-top small{font-family:var(--mono);font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.brief-list{display:grid;gap:10px}
+.brief-list li{list-style:none;display:grid;grid-template-columns:16px 1fr;gap:10px;color:var(--muted);font-size:14px;line-height:1.45}
+.brief-list li::before{content:'';width:10px;height:2px;margin-top:10px;background:var(--accent)}
+.calculator{padding:22px}
+.calc-row{display:grid;gap:10px;margin-bottom:20px}
+.calc-row label{font-family:var(--mono);font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.calc-output{padding:22px;border:1px solid var(--line-strong);background:#0a0d12}
+.tier-name{font-size:34px;font-weight:900}
+.tier-price{display:flex;align-items:baseline;gap:10px;margin-top:10px}
+.tier-price b{font-size:52px;letter-spacing:-.03em;color:var(--accent)}
+.tier-price s{color:var(--faint);font-size:20px}
+.tier-price span{color:var(--muted)}
+.unlock-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:18px}
+.unlock{padding:12px;border:1px solid var(--line);color:var(--muted);font-size:13.5px}
+.unlock.active{border-color:rgba(114,209,194,.45);background:rgba(114,209,194,.08);color:var(--text)}
+.note{margin-top:14px;color:var(--muted);font-size:13px;line-height:1.55}
+.footer{padding:28px clamp(16px,4vw,44px);border-top:1px solid var(--line);color:var(--faint);font-family:var(--mono);font-size:11px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:760px){
+  .site-nav{align-items:flex-start}
+  .nav-cta{flex-direction:column;align-items:flex-end}
+  .hero{min-height:auto}
+  .metric-row,.subheader{grid-template-columns:1fr}
+  .metric,.subheader div{border-right:0;border-bottom:1px solid var(--line)}
+  .metric:last-child,.subheader div:last-child{border-bottom:0}
+  .matrix{padding:22px;min-height:auto}
+  .ledger-spine{position:relative;left:auto;top:auto;bottom:auto;width:100%;height:58px;margin-bottom:16px}
+  .ledger-spine::before,.ledger-spine::after,.plane::before{display:none}
+  .workspace-shell{grid-template-columns:1fr}
+  .workspace-rail{grid-template-columns:repeat(4,1fr);border-right:0;border-bottom:1px solid var(--line)}
+  .rail-btn{height:48px}
+  .record{grid-template-columns:1fr}
+  .cmd{display:none}
+  h1{font-size:clamp(44px,15vw,70px)}
+}
 </style>
 </head>
 <body>
-<div class="app">
-  <nav class="nav" aria-label="Primary">
-    <a class="brand" href="#home" data-flow-link="home" aria-label="BunManage home">
-      <span class="seal" aria-hidden="true"><span>B</span></span>
-      <span class="brand-copy"><span class="brand-name">BunManage</span><span class="brand-motto">The middle, managed</span></span>
-    </a>
-    <div class="flow-tabs" role="tablist" aria-label="BunManage experiences">
-      <button class="flow-tab active" role="tab" aria-selected="true" data-flow-link="home">Origin</button>
-      <button class="flow-tab" role="tab" aria-selected="false" data-flow-link="middle">Middle</button>
-      <button class="flow-tab" role="tab" aria-selected="false" data-flow-link="finance">Finance</button>
-      <button class="flow-tab" role="tab" aria-selected="false" data-flow-link="freight">Freight</button>
-      <button class="flow-tab" role="tab" aria-selected="false" data-flow-link="consulting">Consulting</button>
-      <button class="flow-tab" role="tab" aria-selected="false" data-flow-link="pricing">Pricing</button>
-    </div>
-    <div class="nav-actions">
-      <span class="nav-status">Private beta</span>
-      <select class="mobile-select" id="mobileFlow" aria-label="Choose experience">
-        <option value="home">Origin</option><option value="middle">Middle</option><option value="finance">Finance</option><option value="freight">Freight</option><option value="consulting">Consulting</option><option value="pricing">Pricing</option><option value="access">Access</option>
-      </select>
-      <a class="btn primary" href="#access" data-flow-link="access">Request access</a>
-    </div>
+<header class="site-nav">
+  <a class="brand" href="#top" aria-label="BunManage home">
+    <span class="mark" aria-hidden="true"><span></span></span>
+    <span class="brand-copy"><span class="brand-name">BunManage</span><span class="brand-line">Audit-grade ledger</span></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#architecture">Architecture</a>
+    <a href="#workspace">Workspace</a>
+    <a href="#intake">Intake</a>
+    <a href="#pricing">Pricing</a>
   </nav>
-  <main class="stage">
-    <section class="screen active" id="home" data-flow="home" aria-labelledby="home-title">
-      <div class="screen-inner">
-        <div class="copy">
-          <div class="eyebrow">Private beta operating layer</div>
-          <h1 id="home-title">The middle, <em>managed.</em></h1>
-          <p class="plain-promise">Managed operations for finance, freight, and consulting teams.</p>
-          <p class="lede">BunManage wraps the work that sits between your systems: approvals, vendors, documents, exceptions, payouts, and handoffs. The buns are the managed service layers. The middle is what we solve.</p>
-          <div class="campaign" aria-label="BunManage motto lines"><span>Buns hold</span><span>Middle moves</span><span>Business works</span></div>
-          <div class="actions"><button class="btn gold" data-flow-link="middle">See the middle</button><button class="btn dark" data-flow-link="pricing">Founding pricing</button></div>
-          <div class="proof" aria-label="BunManage model"><div><strong>3</strong><span>Managed service lanes</span></div><div><strong>1</strong><span>Shared operating record</span></div><div><strong>20%</strong><span>Founding launch discount</span></div></div>
-          <div class="flow-mini" aria-label="Choose a starting workflow">
-            <button data-flow-link="finance"><strong>Finance</strong><small>Approvals, reconciliation, payouts.</small></button>
-            <button data-flow-link="freight"><strong>Freight</strong><small>Dispatch, exceptions, scorecards.</small></button>
-            <button data-flow-link="consulting"><strong>Consulting</strong><small>Scopes, milestones, documents.</small></button>
-          </div>
+  <div class="nav-cta"><span class="status">Private beta</span><a class="btn primary" href="#intake">Configure system</a></div>
+</header>
+
+<main id="top">
+  <section class="section hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Configurable operating infrastructure</div>
+        <h1 id="heroTitle">Capital operations on one audit-grade ledger.</h1>
+        <p class="lede" id="heroCopy">Route approvals, reconciliations, settlement records, and banking context through a controlled operating layer built for teams that cannot afford spreadsheet drift.</p>
+        <div class="persona-switch" aria-label="Select operating focus">
+          <button class="persona-btn active" type="button" data-persona="capital">Capital Operations</button>
+          <button class="persona-btn" type="button" data-persona="logistics">Logistics &amp; Fleet</button>
+          <button class="persona-btn" type="button" data-persona="specialist">Specialist Work</button>
         </div>
-        <div class="stack-stage" aria-label="Animated BunManage operating burger model">
-          <div class="burger-system" id="burgerSystem">
-            <div class="welcome-burst"><span>Welcome in</span><b>BunManage</b></div>
-            <div class="halo"></div>
-            <div class="stack-shadow"></div>
-            <div class="service-bun top" data-label="Managed service layer"></div>
-            <div class="service-tags" aria-label="BunManage service buns"><span>Finance ops</span><span>Freight ops</span><span>Consulting ops</span></div>
-            <div class="middle-stack">
-              <button class="middle-item" data-flow-link="finance"><b>Invoices</b><i></i><small>Approved</small></button>
-              <button class="middle-item" data-flow-link="freight"><b>Exceptions</b><i></i><small>Routed</small></button>
-              <button class="middle-item" data-flow-link="consulting"><b>Approvals</b><i></i><small>Owned</small></button>
-              <button class="middle-item" data-flow-link="middle"><b>Handoffs</b><i></i><small>Visible</small></button>
-            </div>
-            <div class="brand-core" aria-label="BunManage seal"><span class="top-word">BunManage</span><b>B</b><span class="bottom-word">Ops stack</span></div>
-            <div class="service-bun bottom" data-label="Controls / memory / execution"></div>
-            <div class="phase-notes" aria-hidden="true"><span><b>01</b> Messy work appears</span><span><b>02</b> Service layers hold</span><span><b>03</b> Operating stack works</span></div>
-            <div class="motion-controls"><button class="mini-control" type="button" id="replayBurger">Replay</button><button class="mini-control" type="button" data-flow-link="middle">Explore</button></div>
-            <div class="stack-caption"><span>Complete operating stack</span><small>Everything working together</small></div>
-          </div>
+        <div class="hero-actions">
+          <a class="btn primary" href="#intake">Run 3-minute intake</a>
+          <a class="btn dark" href="#architecture">Inspect architecture</a>
+        </div>
+        <div class="metric-row" aria-label="Contextual pilot metrics">
+          <div class="metric"><b id="metricOne">14d</b><span id="metricOneLabel">Implementation map for founding pilots</span></div>
+          <div class="metric"><b id="metricTwo">100%</b><span id="metricTwoLabel">Transactions tied to an operating record</span></div>
+          <div class="metric"><b id="metricThree">20%</b><span id="metricThreeLabel">Founding customer launch discount</span></div>
         </div>
       </div>
-    </section>
-    <section class="screen" id="middle" data-flow="middle" aria-labelledby="middle-title" aria-hidden="true" inert>
-      <div class="screen-inner">
-        <div class="copy"><div class="eyebrow">What sits between</div><h2 id="middle-title">Your systems stay. The messy middle gets managed.</h2><p class="lede">BunManage is the managed space between tools: the questions, files, approvals, exceptions, and handoffs that usually disappear into chat and spreadsheets.</p><div class="actions"><button class="btn gold" data-flow-link="finance">Start with finance</button><button class="btn subtle" data-flow-link="access">Request access</button></div></div>
-        <article class="flow-panel"><div class="panel-head"><span class="panel-label">Middle layer</span><span class="panel-badge">Solved work</span></div><div class="problem-grid"><div class="problem"><strong>Invoices</strong><p>Capture the request, documents, status, and approval trail before money moves.</p></div><div class="problem"><strong>Vendors</strong><p>Keep partner details, scorecards, contacts, and risk notes in the same operating memory.</p></div><div class="problem"><strong>Loads</strong><p>Connect lanes, assets, rates, exceptions, and delivery evidence to the financial record.</p></div><div class="problem"><strong>Decisions</strong><p>Turn scattered updates into visible next actions, accountable owners, and clean handoffs.</p></div></div><div class="trust-strip" aria-label="Why operators can trust the workflow"><div class="trust-item"><b>Private beta</b><span>Each rollout starts with a real workflow map, not a generic software install.</span></div><div class="trust-item"><b>Audit-friendly</b><span>Approvals, documents, notes, and status changes stay tied to one operating record.</span></div><div class="trust-item"><b>Expandable</b><span>Start with one flow, prove it holds, then add the next service lane.</span></div></div><div class="result-strip"><span>Middle managed before it becomes cleanup</span><span class="meter"><i></i></span></div></article>
+
+      <article class="system-card" id="architecture" aria-label="Interactive system architecture">
+        <div class="system-head"><span class="system-title">Interactive stack matrix</span><span class="system-state" id="systemState">Capital plane isolated</span></div>
+        <div class="matrix">
+          <div class="ledger-spine">Audit<br>ledger<br>spine</div>
+          <div class="plane-list">
+            <button class="plane" style="--plane-color:var(--violet)" type="button" data-plane="specialist">
+              <div class="plane-top"><h3>Services &amp; Engagements</h3><small>Advisory escrow</small></div>
+              <p>Scopes, milestones, delivery evidence, client approvals, and payout readiness sync to the ledger.</p>
+              <div class="schema-row"><span>engagement_id</span><span>milestone_state</span><span>approval_hash</span></div>
+            </button>
+            <button class="plane" style="--plane-color:var(--blue)" type="button" data-plane="logistics">
+              <div class="plane-top"><h3>Logistics &amp; Telematics</h3><small>Dispatch engine</small></div>
+              <p>Loads, assets, lanes, exceptions, documents, and carrier scorecards stay connected to finance.</p>
+              <div class="schema-row"><span>load_id</span><span>asset_state</span><span>exception_code</span></div>
+            </button>
+            <button class="plane active" style="--plane-color:var(--accent)" type="button" data-plane="capital">
+              <div class="plane-top"><h3>Capital &amp; Banking</h3><small>Settlement control</small></div>
+              <p>Invoice approvals, reconciliations, payouts, payment rails, and entity controls record every decision.</p>
+              <div class="schema-row"><span>ledger_entry</span><span>approval_rule</span><span>settlement_ref</span></div>
+            </button>
+          </div>
+        </div>
+        <div class="throughput">
+          <div><b id="throughputOne">Approval rules</b><span>Active routing layer</span></div>
+          <div><b id="throughputTwo">Ledger sync</b><span>Every event attached</span></div>
+          <div><b id="throughputThree">Export ready</b><span>Audit trail retained</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="workspace">
+    <div class="config-panel">
+      <div class="section-head">
+        <div><div class="eyebrow">Domain viewports</div><h2>One ledger, dedicated operator views.</h2></div>
+        <p>A single overloaded dashboard creates fear. BunManage keeps the shared ledger underneath, while each team works in a focused mode with persistent navigation and familiar spatial memory.</p>
       </div>
-    </section>
-    <section class="screen" id="finance" data-flow="finance" aria-labelledby="finance-title" aria-hidden="true" inert>
-      <div class="screen-inner"><div class="copy"><div class="eyebrow">Finance service lane</div><h2 id="finance-title">Money moves with a visible trail.</h2><p class="lede">Finance is one managed service lane: requests, approvals, payouts, reconciliation, and exports stay inside a single operating record.</p><div class="actions"><button class="btn gold" data-flow-link="freight">Next: freight</button><button class="btn subtle" data-flow-link="pricing">Price the stack</button></div></div><article class="flow-panel"><div class="panel-head"><span class="panel-label">Finance workspace</span><span class="panel-badge">Flow 01</span></div><div class="flow-steps"><div class="flow-step"><span class="step-num">01</span><div><h3>Intake the payment</h3><p>Capture vendor, client, amount, entity, and required documents before a payment enters the approval lane.</p></div></div><div class="flow-step"><span class="step-num">02</span><div><h3>Route approvals</h3><p>Match the request to role-based approval rules so finance, operations, and leadership see only what they need.</p></div></div><div class="flow-step"><span class="step-num">03</span><div><h3>Reconcile and export</h3><p>Keep status, notes, and audit history attached to the same record instead of chasing context across tools.</p></div></div></div><div class="result-strip"><span>Cleaner cash visibility and fewer manual handoffs</span><span class="meter"><i></i></span></div></article></div>
-    </section>
-    <section class="screen" id="freight" data-flow="freight" aria-labelledby="freight-title" aria-hidden="true" inert>
-      <div class="screen-inner"><div class="copy"><div class="eyebrow">Freight service lane</div><h2 id="freight-title">Movement and margin share context.</h2><p class="lede">Freight is another managed service lane: dispatch, assets, vendor scorecards, exceptions, and cost data stay connected to the money picture.</p><div class="actions"><button class="btn gold" data-flow-link="consulting">Next: consulting</button><button class="btn subtle" data-flow-link="middle">Back to middle</button></div></div><article class="flow-panel"><div class="panel-head"><span class="panel-label">Freight workspace</span><span class="panel-badge">Flow 02</span></div><div class="flow-steps"><div class="flow-step"><span class="step-num">01</span><div><h3>Book the load</h3><p>Bring lane, carrier, asset, document, and rate details into one record before operations start moving.</p></div></div><div class="flow-step"><span class="step-num">02</span><div><h3>Watch exceptions</h3><p>Surface ETA, detention, document, and vendor-risk issues before they become back-office cleanup.</p></div></div><div class="flow-step"><span class="step-num">03</span><div><h3>Close the loop</h3><p>Connect delivery status to billing, payout review, and scorecards so dispatch learns from every movement.</p></div></div></div><div class="result-strip"><span>Tighter dispatch decisions with finance beside them</span><span class="meter"><i></i></span></div></article></div>
-    </section>
-    <section class="screen" id="consulting" data-flow="consulting" aria-labelledby="consulting-title" aria-hidden="true" inert>
-      <div class="screen-inner"><div class="copy"><div class="eyebrow">Consulting service lane</div><h2 id="consulting-title">Specialist work gets accountable.</h2><p class="lede">Consulting completes the service structure: scopes, milestones, documents, approvals, and payouts stay tied to the same operating record.</p><div class="actions"><button class="btn gold" data-flow-link="pricing">Price the complete stack</button><button class="btn subtle" data-flow-link="home">Back to origin</button></div></div><article class="flow-panel"><div class="panel-head"><span class="panel-label">Consulting workspace</span><span class="panel-badge">Flow 03</span></div><div class="flow-steps"><div class="flow-step"><span class="step-num">01</span><div><h3>Define the scope</h3><p>Turn a brief into milestones, owners, documents, rates, and approval expectations before the work starts.</p></div></div><div class="flow-step"><span class="step-num">02</span><div><h3>Track progress</h3><p>Keep notes, files, blockers, and client approval states visible without pushing the team into another project tool.</p></div></div><div class="flow-step"><span class="step-num">03</span><div><h3>Approve payout</h3><p>Route completion evidence back through finance controls so payments match the approved engagement record.</p></div></div></div><div class="result-strip"><span>Less ambiguity between delivery, documents, and payout</span><span class="meter"><i></i></span></div></article></div>
-    </section>
-    <section class="screen" id="pricing" data-flow="pricing" aria-labelledby="pricing-title" aria-hidden="true" inert>
-      <div class="screen-inner"><div class="copy"><div class="eyebrow">Founding customer pricing</div><h2 id="pricing-title">Priced for the full operating stack.</h2><p class="lede">BunManage is positioned above generic task tools and below mature enterprise freight and ERP platforms. Founding customers receive 20% off standard rates for the first 12 months.</p><div class="actions"><button class="btn gold" data-flow-link="access">Request founding terms</button><button class="btn subtle" data-flow-link="middle">Review the middle</button></div></div><article class="flow-panel pricing-panel"><div class="panel-head"><span class="panel-label">20% off first 12 months</span><span class="panel-badge">Launch offer</span></div><div class="pricing-grid"><div class="price-card"><h3>Starter</h3><div class="price-fit">Best for proving one flow</div><p>One managed service lane with a clean implementation path for a focused operator team.</p><div class="price"><strong>$399</strong><s>$499</s><small>/ mo</small></div><div class="price-note">Single service lane</div><ul><li>Finance, freight, or consulting workflow</li><li>Core roles, activity trail, and exports</li><li>Founding customer onboarding</li></ul></div><div class="price-card featured"><h3>Growth</h3><div class="price-fit">Best starting point</div><p>Two connected service lanes for teams ready to replace duplicate systems and scattered updates.</p><div class="price"><strong>$999</strong><s>$1,249</s><small>/ mo</small></div><div class="price-note">Most useful starting point</div><ul><li>Any two service workflows</li><li>Shared command surface and inbox</li><li>Priority workflow mapping</li></ul></div><div class="price-card"><h3>Complete</h3><div class="price-fit">Best for replacing the stack</div><p>The complete operating stack: finance, freight, and consulting managed through one workspace.</p><div class="price"><strong>$1,999</strong><s>$2,499</s><small>/ mo</small></div><div class="price-note">Full platform</div><ul><li>All three service workflows</li><li>Integration and rollout planning</li><li>Dedicated implementation support</li></ul></div></div><p class="pricing-note">Launch pricing is shown before taxes and any custom implementation scope. Standard rates are listed beside each founding price so buyers can see the 20% discount clearly.</p></article></div>
-    </section>
-    <section class="screen" id="access" data-flow="access" aria-labelledby="access-title" aria-hidden="true" inert>
-      <div class="screen-inner"><div class="copy"><div class="eyebrow">Request access</div><h2 id="access-title">Tell us what is in your middle.</h2><p class="lede">Early access is selective so each workspace can be shaped around the operator's real finance, freight, and consulting flows.</p><div class="route-cards"><button class="route-card" style="color:var(--teal)" data-flow-link="finance"><span class="route-dot"></span><span><strong>Finance first</strong><span>Start with approvals, reconciliation, and cash visibility.</span></span><i>01</i></button><button class="route-card" style="color:var(--blue)" data-flow-link="freight"><span class="route-dot"></span><span><strong>Freight first</strong><span>Start with dispatch, assets, exceptions, and scorecards.</span></span><i>02</i></button><button class="route-card" style="color:var(--violet)" data-flow-link="consulting"><span class="route-dot"></span><span><strong>Consulting first</strong><span>Start with scopes, milestones, documents, and payouts.</span></span><i>03</i></button></div></div><article class="flow-panel"><div class="panel-head"><span class="panel-label">Access request</span><span class="panel-badge">One business day</span></div><form class="access-form" id="accessForm" action="mailto:hello@bunmanage.com" method="post" enctype="text/plain"><div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" placeholder="name@company.com" required></div><div class="field"><label for="company">Company</label><input id="company" name="company" type="text" placeholder="Company name"></div><div class="field"><label for="starting-flow">Starting flow</label><select id="starting-flow" name="starting-flow"><option>Finance</option><option>Freight</option><option>Consulting</option><option>Two or more flows</option></select></div><div class="field"><label for="context">What needs managing?</label><textarea id="context" name="context" placeholder="Tell us what currently lives between systems." required></textarea></div><button class="btn gold" type="submit">Prepare access email</button><p class="form-status" id="formStatus" aria-live="polite"></p><p class="direct-email">Prefer direct email? <a href="mailto:hello@bunmanage.com?subject=Early%20Access%20-%20BunManage">hello@bunmanage.com</a></p></form></article></div>
-    </section>
-  </main>
-</div>
-<div class="footer-strip" aria-hidden="true"><div class="progress-dots"><span class="progress-dot active"></span><span class="progress-dot"></span><span class="progress-dot"></span><span class="progress-dot"></span><span class="progress-dot"></span><span class="progress-dot"></span><span class="progress-dot"></span></div><div class="legal-line">Bains Fund Management LLC - Private beta 2026</div></div>
+      <div class="workspace-shell">
+        <aside class="workspace-rail" aria-label="Workspace modules">
+          <button class="rail-btn active" type="button" data-module="ledger"><span class="rail-icon">L</span><span>Ledger</span></button>
+          <button class="rail-btn" type="button" data-module="dispatch"><span class="rail-icon">D</span><span>Dispatch</span></button>
+          <button class="rail-btn" type="button" data-module="engage"><span class="rail-icon">E</span><span>Engage</span></button>
+          <button class="rail-btn" type="button" data-module="control"><span class="rail-icon">C</span><span>Control</span></button>
+        </aside>
+        <div class="workspace-main">
+          <div class="workspace-bar"><span class="mode-chip" id="modeChip">Capital mode</span><span class="cmd">Structured rail first. Cmd+K stays optional.</span></div>
+          <div class="subheader">
+            <div><b id="workspaceMetricOne">42</b><span id="workspaceMetricOneLabel">Open approvals</span></div>
+            <div><b id="workspaceMetricTwo">$1.8M</b><span id="workspaceMetricTwoLabel">Pending settlement</span></div>
+            <div><b id="workspaceMetricThree">0</b><span id="workspaceMetricThreeLabel">Unmatched exports</span></div>
+          </div>
+          <div class="records" id="records"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head" style="width:min(1320px,100%);margin-left:auto;margin-right:auto">
+      <div><div class="eyebrow">System deep-dive</div><h2>Every workflow resolves back to the ledger.</h2></div>
+      <p>The platform story is not “three products on one page.” It is a shared event model where operational movement, financial action, and specialist verification become one traceable record.</p>
+    </div>
+    <div class="deep-dive">
+      <article class="deep-card"><small>01 Logistics event</small><h3>Delivery status changes.</h3><p>A load update, proof document, or exception is captured in the logistics plane with owner, timestamp, and source context.</p><div class="flow-arrow">Triggers payout review</div></article>
+      <article class="deep-card"><small>02 Capital action</small><h3>Invoice logic reacts.</h3><p>The capital plane receives the event, checks payment rules, routes approval, and prepares reconciliation context before money moves.</p><div class="flow-arrow">Writes ledger entry</div></article>
+      <article class="deep-card"><small>03 Ledger proof</small><h3>Audit trail closes.</h3><p>The ledger stores the operational trigger, approval decision, document evidence, and export state as one explainable history.</p><div class="flow-arrow">Ready for review</div></article>
+    </div>
+  </section>
+
+  <section class="section" id="intake">
+    <div class="intake-grid">
+      <div>
+        <div class="eyebrow">Public intake engine</div>
+        <h2>Configure the workspace before asking for access.</h2>
+        <p class="lede">No fake gate. Answer four questions and BunManage shows the recommended starting configuration, operating mode, and tier before preparing the access brief.</p>
+      </div>
+      <div class="wizard">
+        <div class="question">
+          <label for="intakePersona">1. Primary operation</label>
+          <select id="intakePersona">
+            <option value="capital">Capital Operations</option>
+            <option value="logistics">Logistics &amp; Fleet</option>
+            <option value="specialist">Specialist Work</option>
+          </select>
+        </div>
+        <fieldset class="question">
+          <legend>2. Active subsystems</legend>
+          <div class="choice-row">
+            <label class="choice"><input type="checkbox" name="subsystem" value="capital" checked> Capital</label>
+            <label class="choice"><input type="checkbox" name="subsystem" value="logistics"> Logistics</label>
+            <label class="choice"><input type="checkbox" name="subsystem" value="specialist"> Specialist</label>
+          </div>
+        </fieldset>
+        <div class="question">
+          <label for="volumeRange">3. Monthly routed volume</label>
+          <input id="volumeRange" type="range" min="1" max="100" value="8" aria-describedby="volumeValue">
+          <div class="range-labels"><span>$1M</span><span id="volumeValue">$8M</span><span>$100M+</span></div>
+        </div>
+        <div class="question">
+          <label for="currentStack">4. Current system of record</label>
+          <select id="currentStack">
+            <option>QuickBooks / spreadsheets</option>
+            <option>ERP plus manual approvals</option>
+            <option>TMS plus finance exports</option>
+            <option>Custom internal system</option>
+          </select>
+        </div>
+        <div class="question">
+          <label for="email">Claim configuration</label>
+          <input id="email" type="email" placeholder="name@company.com">
+        </div>
+      </div>
+      <article class="result-card">
+        <div class="result-top"><h3 id="briefTitle">Capital Ledger Pilot</h3><small id="briefTier">Growth fit</small></div>
+        <ul class="brief-list" id="briefList"></ul>
+        <button class="btn primary" type="button" id="prepareBrief">Prepare access brief</button>
+        <p class="note" id="briefStatus" aria-live="polite">Your configuration updates live as you answer the intake.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="pricing">
+    <div class="pricing-grid">
+      <div>
+        <div class="eyebrow">Dynamic pricing</div>
+        <h2>Price follows system complexity.</h2>
+        <p class="lede">Select active subsystems and monthly routed volume. The calculator explains the tier instead of forcing buyers to decode rigid plan jumps.</p>
+      </div>
+      <div class="calculator">
+        <div class="calc-row">
+          <label for="priceVerticals">Active subsystems: <span id="priceVerticalsValue">1</span></label>
+          <input id="priceVerticals" type="range" min="1" max="3" value="1">
+        </div>
+        <div class="calc-row">
+          <label for="priceVolume">Monthly routed volume: <span id="priceVolumeValue">$8M</span></label>
+          <input id="priceVolume" type="range" min="1" max="100" value="8">
+        </div>
+        <div class="calc-output">
+          <div class="tier-name" id="tierName">Starter</div>
+          <div class="tier-price"><b id="tierPrice">$399</b><s id="tierStandard">$499</s><span>/ mo launch</span></div>
+          <div class="unlock-grid">
+            <div class="unlock active" id="unlockOne">One dedicated domain viewport</div>
+            <div class="unlock" id="unlockTwo">Shared ledger across multiple subsystems</div>
+            <div class="unlock" id="unlockThree">Full platform rollout and implementation support</div>
+          </div>
+          <p class="note" id="tierNote">Starter fits one active subsystem and up to $5M in routed monthly volume.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>Bains Fund Management LLC - Private beta 2026</span>
+  <span>The middle, managed.</span>
+</footer>
+
 <script>
 'use strict';
-const flows=['home','middle','finance','freight','consulting','pricing','access'];
-const screens=[...document.querySelectorAll('[data-flow]')];
-const links=[...document.querySelectorAll('[data-flow-link]')];
-const navTabs=[...document.querySelectorAll('.flow-tab')];
-const dots=[...document.querySelectorAll('.progress-dot')];
-const mobileFlow=document.getElementById('mobileFlow');
-const replayButton=document.getElementById('replayBurger');
-const animatedParts=[...document.querySelectorAll('.burger-system .welcome-burst,.burger-system .halo,.burger-system .stack-shadow,.burger-system .service-bun,.burger-system .service-tags,.burger-system .middle-item,.burger-system .brand-core,.burger-system .stack-caption,.burger-system .phase-notes')];
-function label(flow){return flow.charAt(0).toUpperCase()+flow.slice(1)}
-function showFlow(flow,push=true){
-  const next=flows.includes(flow)?flow:'home';
-  screens.forEach(screen=>{
-    const active=screen.dataset.flow===next;
-    screen.classList.toggle('active',active);
-    screen.setAttribute('aria-hidden',String(!active));
-    screen.inert=!active;
-  });
-  navTabs.forEach(tab=>{
-    const active=tab.dataset.flowLink===next;
-    tab.classList.toggle('active',active);
-    tab.setAttribute('aria-selected',String(active));
-  });
-  dots.forEach((dot,index)=>dot.classList.toggle('active',flows[index]===next));
-  if(mobileFlow) mobileFlow.value=next;
-  document.title=next==='home'?'BunManage - Managed operations for the messy middle':'BunManage - '+label(next);
-  if(push) history.pushState({flow:next},'','#'+next);
+const personaData={
+  capital:{
+    title:'Capital operations on one audit-grade ledger.',
+    copy:'Route approvals, reconciliations, settlement records, and banking context through a controlled operating layer built for teams that cannot afford spreadsheet drift.',
+    state:'Capital plane isolated',
+    metrics:['14d','Implementation map for founding pilots','100%','Transactions tied to an operating record','20%','Founding customer launch discount'],
+    throughput:['Approval rules','Active routing layer','Ledger sync','Every event attached','Export ready','Audit trail retained'],
+    mode:'Capital mode',
+    workspace:['42','Open approvals','$1.8M','Pending settlement','0','Unmatched exports'],
+    records:[
+      ['Vendor payout approval','Docs verified - waiting on controller','Approval','High'],
+      ['Client invoice reconciliation','Three payments matched to ledger entries','Matched','Ready'],
+      ['Entity transfer review','Banking reference attached for audit','Review','Today']
+    ],
+    brief:'Capital Ledger Pilot'
+  },
+  logistics:{
+    title:'Logistics execution with finance-grade traceability.',
+    copy:'Connect loads, assets, carriers, exceptions, and delivery evidence to the financial actions they trigger without making dispatch live inside accounting software.',
+    state:'Logistics plane isolated',
+    metrics:['+19%','Target on-time delivery lift, not raw delivery rate','<24h','Exception review target for pilots','20%','Founding customer launch discount'],
+    throughput:['Load events','Dispatch source layer','Exception sync','Finance-ready context','Scorecards','Carrier history retained'],
+    mode:'Freight mode',
+    workspace:['18','Active exceptions','96.4%','Target lane compliance','7','Carrier scorecards due'],
+    records:[
+      ['Load BM-2841 exception','Late document uploaded by carrier','Exception','Owner set'],
+      ['Lane margin review','Fuel variance attached to settlement','Margin','Review'],
+      ['Asset status update','Delivery event ready for billing trigger','Closed','Ready']
+    ],
+    brief:'Logistics Control Pilot'
+  },
+  specialist:{
+    title:'Specialist work governed from scope to payout.',
+    copy:'Manage engagements, milestones, approval evidence, escrow logic, and delivery records in the same ledger that finance can trust.',
+    state:'Services plane isolated',
+    metrics:['3-step','Scope, verify, approve operating path','1 record','Milestone evidence tied to payout','20%','Founding customer launch discount'],
+    throughput:['Milestones','Engagement layer','Evidence sync','Client approval state','Payout gate','Finance handoff ready'],
+    mode:'Specialist mode',
+    workspace:['11','Milestones in review','$420K','Payouts gated','5','Client approvals needed'],
+    records:[
+      ['Advisory milestone approval','Evidence packet attached for client review','Milestone','Review'],
+      ['Escrow release condition','Scope completion awaiting second approval','Payout','Blocked'],
+      ['Specialist onboarding','W-9 and contract records synced','Complete','Ready']
+    ],
+    brief:'Specialist Work Pilot'
+  }
+};
+const personaButtons=[...document.querySelectorAll('.persona-btn')];
+const planes=[...document.querySelectorAll('.plane')];
+const railButtons=[...document.querySelectorAll('.rail-btn')];
+const records=document.getElementById('records');
+const intakePersona=document.getElementById('intakePersona');
+const subsystemInputs=[...document.querySelectorAll('input[name="subsystem"]')];
+const volumeRange=document.getElementById('volumeRange');
+const volumeValue=document.getElementById('volumeValue');
+const currentStack=document.getElementById('currentStack');
+const email=document.getElementById('email');
+const priceVerticals=document.getElementById('priceVerticals');
+const priceVolume=document.getElementById('priceVolume');
+let activePersona='capital';
+
+function dollars(value){return value>=100?'$100M+':'$'+value+'M'}
+function selectedSubsystems(){return subsystemInputs.filter(input=>input.checked).map(input=>input.value)}
+function tierFor(verticals,volume){
+  if(verticals>=3 || volume>50)return {name:'Atlas',price:'$1,999',standard:'$2,499',note:'Atlas fits all three subsystems or routed volume above $50M, with rollout planning and dedicated implementation support.'};
+  if(verticals>=2 || volume>5)return {name:'Growth',price:'$999',standard:'$1,249',note:'Growth fits two active subsystems or routed volume above $5M, with shared ledger routing and priority workflow mapping.'};
+  return {name:'Starter',price:'$399',standard:'$499',note:'Starter fits one active subsystem and up to $5M in routed monthly volume.'};
 }
-function replayLanding(){
-  const system=document.getElementById('burgerSystem');
-  if(!system)return;
-  animatedParts.forEach(part=>{part.style.animation='none'});
-  void system.offsetHeight;
-  animatedParts.forEach(part=>{part.style.animation=''});
+function setText(id,value){const node=document.getElementById(id);if(node)node.textContent=value}
+function renderRecords(persona){
+  records.innerHTML=personaData[persona].records.map(row=>'<div class="record"><div><strong>'+row[0]+'</strong><small>'+row[1]+'</small></div><span class="pill">'+row[2]+'</span><span class="pill">'+row[3]+'</span></div>').join('');
 }
-links.forEach(item=>item.addEventListener('click',event=>{const flow=item.dataset.flowLink;if(!flow)return;event.preventDefault();showFlow(flow)}));
-if(mobileFlow) mobileFlow.addEventListener('change',event=>showFlow(event.target.value));
-if(replayButton) replayButton.addEventListener('click',replayLanding);
-const accessForm=document.getElementById('accessForm');
-const formStatus=document.getElementById('formStatus');
-if(accessForm){
-  accessForm.addEventListener('submit',event=>{
-    event.preventDefault();
-    if(!accessForm.reportValidity())return;
-    const data=new FormData(accessForm);
-    const email=String(data.get('email')||'');
-    const company=String(data.get('company')||'');
-    const flow=String(data.get('starting-flow')||'');
-    const context=String(data.get('context')||'');
-    const subject='Early Access - BunManage';
-    const body=[
-      'Hi BunManage team,',
-      '',
-      'I would like to request early access.',
-      '',
-      'Work email: '+email,
-      'Company: '+company,
-      'Starting flow: '+flow,
-      '',
-      'What needs managing:',
-      context
-    ].join('\n');
-    if(formStatus) formStatus.textContent='Email draft prepared. We typically reply within one business day.';
-    window.location.href='mailto:hello@bunmanage.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+function setPersona(persona){
+  activePersona=persona;
+  const data=personaData[persona];
+  setText('heroTitle',data.title);
+  setText('heroCopy',data.copy);
+  setText('systemState',data.state);
+  setText('metricOne',data.metrics[0]);setText('metricOneLabel',data.metrics[1]);
+  setText('metricTwo',data.metrics[2]);setText('metricTwoLabel',data.metrics[3]);
+  setText('metricThree',data.metrics[4]);setText('metricThreeLabel',data.metrics[5]);
+  setText('throughputOne',data.throughput[0]);setText('throughputTwo',data.throughput[2]);setText('throughputThree',data.throughput[4]);
+  document.querySelectorAll('.throughput span')[0].textContent=data.throughput[1];
+  document.querySelectorAll('.throughput span')[1].textContent=data.throughput[3];
+  document.querySelectorAll('.throughput span')[2].textContent=data.throughput[5];
+  setText('modeChip',data.mode);
+  setText('workspaceMetricOne',data.workspace[0]);setText('workspaceMetricOneLabel',data.workspace[1]);
+  setText('workspaceMetricTwo',data.workspace[2]);setText('workspaceMetricTwoLabel',data.workspace[3]);
+  setText('workspaceMetricThree',data.workspace[4]);setText('workspaceMetricThreeLabel',data.workspace[5]);
+  renderRecords(persona);
+  personaButtons.forEach(button=>button.classList.toggle('active',button.dataset.persona===persona));
+  planes.forEach(plane=>{
+    const active=plane.dataset.plane===persona;
+    plane.classList.toggle('active',active);
+    plane.classList.toggle('dim',!active);
   });
+  if(intakePersona)intakePersona.value=persona;
+  updateIntake();
 }
-window.addEventListener('popstate',()=>showFlow(location.hash.replace('#','')||'home',false));
-showFlow(location.hash.replace('#','')||'home',false);
+function updateIntake(){
+  const persona=intakePersona.value;
+  const subs=selectedSubsystems();
+  const verticalCount=Math.max(1,subs.length);
+  const volume=Number(volumeRange.value);
+  const tier=tierFor(verticalCount,volume);
+  volumeValue.textContent=dollars(volume);
+  setText('briefTitle',personaData[persona].brief);
+  setText('briefTier',tier.name+' fit');
+  document.getElementById('briefList').innerHTML=[
+    'Primary mode: '+personaData[persona].mode,
+    'Active subsystems: '+subs.map(s=>personaData[s].mode.replace(' mode','')).join(', '),
+    'Monthly routed volume: '+dollars(volume),
+    'Current system: '+currentStack.value,
+    'Recommended tier: '+tier.name+' at '+tier.price+' / mo launch'
+  ].map(item=>'<li>'+item+'</li>').join('');
+  priceVerticals.value=String(verticalCount);
+  priceVolume.value=String(volume);
+  updatePricing();
+}
+function updatePricing(){
+  const verticals=Number(priceVerticals.value);
+  const volume=Number(priceVolume.value);
+  const tier=tierFor(verticals,volume);
+  setText('priceVerticalsValue',String(verticals));
+  setText('priceVolumeValue',dollars(volume));
+  setText('tierName',tier.name);
+  setText('tierPrice',tier.price);
+  setText('tierStandard',tier.standard);
+  setText('tierNote',tier.note);
+  document.getElementById('unlockOne').classList.toggle('active',verticals>=1);
+  document.getElementById('unlockTwo').classList.toggle('active',verticals>=2 || volume>5);
+  document.getElementById('unlockThree').classList.toggle('active',verticals>=3 || volume>50);
+}
+personaButtons.forEach(button=>button.addEventListener('click',()=>setPersona(button.dataset.persona)));
+planes.forEach(plane=>plane.addEventListener('click',()=>setPersona(plane.dataset.plane)));
+railButtons.forEach(button=>button.addEventListener('click',()=>{
+  railButtons.forEach(item=>item.classList.toggle('active',item===button));
+}));
+if(intakePersona)intakePersona.addEventListener('change',event=>setPersona(event.target.value));
+subsystemInputs.forEach(input=>input.addEventListener('change',()=>{
+  if(selectedSubsystems().length===0)input.checked=true;
+  updateIntake();
+}));
+if(volumeRange)volumeRange.addEventListener('input',updateIntake);
+if(currentStack)currentStack.addEventListener('change',updateIntake);
+if(priceVerticals)priceVerticals.addEventListener('input',updatePricing);
+if(priceVolume)priceVolume.addEventListener('input',updatePricing);
+document.getElementById('prepareBrief').addEventListener('click',()=>{
+  const subs=selectedSubsystems();
+  const volume=Number(volumeRange.value);
+  const tier=tierFor(Math.max(1,subs.length),volume);
+  const address=email.value || '';
+  const body=[
+    'Hi BunManage team,',
+    '',
+    'I configured a BunManage workspace from the public intake.',
+    '',
+    'Email: '+address,
+    'Primary operation: '+personaData[intakePersona.value].mode,
+    'Active subsystems: '+subs.join(', '),
+    'Monthly routed volume: '+dollars(volume),
+    'Current system: '+currentStack.value,
+    'Recommended tier: '+tier.name+' at '+tier.price+' / mo launch',
+    '',
+    'Please follow up with founding customer access.'
+  ].join('\n');
+  document.getElementById('briefStatus').textContent='Access brief prepared. Email opens with the configured workspace details.';
+  window.location.href='mailto:hello@bunmanage.com?subject='+encodeURIComponent('Early Access Configuration - BunManage')+'&body='+encodeURIComponent(body);
+});
+setPersona('capital');
 </script>
 </body>
 </html>
