@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Configure BunManage - Intake</title>
+<meta name="description" content="Configure a BunManage workspace by product path, active systems, routed volume, and current system of record.">
+<meta name="theme-color" content="#080a0d">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Configure BunManage - Intake">
+<meta property="og:description" content="Build a focused BunManage access brief before talking to the team.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.bunmanage.com/intake">
+<meta property="og:image" content="https://www.bunmanage.com/og.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.bunmanage.com/intake">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-nav">
+  <a class="brand" href="/" aria-label="BunManage home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand-copy"><span class="brand-name">BunManage</span><span class="brand-line">Audit-grade ledger</span></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/">Platform</a><a href="/capital-operations">Capital</a><a href="/logistics-fleet">Logistics</a><a href="/specialist-work">Specialist Work</a><a href="/pricing">Pricing</a>
+  </nav>
+  <div class="nav-cta"><span class="status">3-minute intake</span><a class="btn primary" href="/pricing">Pricing</a></div>
+</header>
+<main id="main">
+  <section class="section hero">
+    <div class="container intake-layout">
+      <div>
+        <div class="eyebrow">Public intake engine</div>
+        <h1>Start with the product path you actually need.</h1>
+        <p class="lede">The intake is now its own conversion flow. It can expand into lead scoring, workspace previews, routing rules, and CRM handoff without weighing down the homepage.</p>
+        <div class="metric-row">
+          <div class="metric"><b>4</b><span>Questions before asking for contact details</span></div>
+          <div class="metric"><b>Live</b><span>Tier and workspace recommendation</span></div>
+          <div class="metric"><b>Email</b><span>Configured access brief handoff</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="wizard">
+          <div class="question">
+            <label for="intakePersona">1. Primary product path</label>
+            <select id="intakePersona">
+              <option value="capital">Capital Operations</option>
+              <option value="logistics">Logistics &amp; Fleet</option>
+              <option value="specialist">Specialist Work</option>
+            </select>
+          </div>
+          <fieldset class="question">
+            <legend>2. Active product groups</legend>
+            <div class="choice-row">
+              <label class="choice"><input type="checkbox" name="subsystem" value="capital" checked> Capital</label>
+              <label class="choice"><input type="checkbox" name="subsystem" value="logistics"> Logistics</label>
+              <label class="choice"><input type="checkbox" name="subsystem" value="specialist"> Specialist</label>
+            </div>
+          </fieldset>
+          <div class="question">
+            <label for="volumeRange">3. Monthly routed volume</label>
+            <input id="volumeRange" type="range" min="1" max="100" value="8" aria-describedby="volumeValue">
+            <div class="range-labels"><span>$1M</span><span id="volumeValue">$8M</span><span>$100M+</span></div>
+          </div>
+          <div class="question">
+            <label for="currentStack">4. Current system of record</label>
+            <select id="currentStack">
+              <option>QuickBooks / spreadsheets</option>
+              <option>ERP plus manual approvals</option>
+              <option>TMS plus finance exports</option>
+              <option>Custom internal system</option>
+            </select>
+          </div>
+          <div class="question">
+            <label for="email">Claim configuration</label>
+            <input id="email" type="email" placeholder="name@company.com">
+          </div>
+        </div>
+        <article class="result-card" style="margin-top:18px">
+          <div class="result-top"><h3 id="briefTitle">Capital Ledger Pilot</h3><small id="briefTier">Growth fit</small></div>
+          <ul class="brief-list" id="briefList"></ul>
+          <button class="btn primary full" type="button" id="prepareBrief">Prepare access brief</button>
+          <p class="note" id="briefStatus" aria-live="polite">Your configuration updates live as you answer the intake.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer"><span>Bains Fund Management LLC - Private beta 2026</span><span>The middle, managed.</span></footer>
+<script src="/app.js"></script>
+</body>
+</html>

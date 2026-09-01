@@ -1,8 +1,8 @@
 # BunManage
 
-**Fund operations, unified.** — by Bains Fund Management LLC
+**Audit-grade operating systems.** - by Bains Fund Management LLC
 
-Capital · Talent · Cloud · Ops on one audit-grade ledger.
+Capital Operations, Logistics & Fleet, and Specialist Work on one audit-grade ledger.
 
 🌐 [bunmanage.com](https://bunmanage.com)
 

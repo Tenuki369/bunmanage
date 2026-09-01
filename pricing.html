@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pricing - BunManage</title>
+<meta name="description" content="Model BunManage launch pricing by active product groups and monthly routed volume.">
+<meta name="theme-color" content="#080a0d">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Pricing - BunManage">
+<meta property="og:description" content="Dynamic launch pricing for capital, logistics, and specialist-work operating systems.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.bunmanage.com/pricing">
+<meta property="og:image" content="https://www.bunmanage.com/og.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.bunmanage.com/pricing">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-nav">
+  <a class="brand" href="/" aria-label="BunManage home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand-copy"><span class="brand-name">BunManage</span><span class="brand-line">Audit-grade ledger</span></span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="/">Platform</a><a href="/capital-operations">Capital</a><a href="/logistics-fleet">Logistics</a><a href="/specialist-work">Specialist Work</a><a class="active" href="/pricing">Pricing</a>
+  </nav>
+  <div class="nav-cta"><span class="status">20% launch discount</span><a class="btn primary" href="/intake">Configure</a></div>
+</header>
+<main id="main">
+  <section class="section hero">
+    <div class="container pricing-layout">
+      <div>
+        <div class="eyebrow">Dynamic pricing</div>
+        <h1>Pricing follows operating complexity.</h1>
+        <p class="lede">Buyers should not wonder whether adding a second product path forces a mystery jump. Model active product groups and routed volume, then show the tier, unlocked capability, and founding customer discount clearly.</p>
+        <div class="metric-row">
+          <div class="metric"><b>$399</b><span>Starter launch price for one focused path</span></div>
+          <div class="metric"><b>$999</b><span>Growth launch price for cross-system routing</span></div>
+          <div class="metric"><b>$1,999</b><span>Atlas launch price for full platform rollout</span></div>
+        </div>
+      </div>
+      <article class="pricing-card">
+        <small>Calculator</small>
+        <h3 style="margin-top:12px">Choose product scope</h3>
+        <div class="calc-row" style="margin-top:22px">
+          <label for="priceVerticals">Active product groups: <span id="priceVerticalsValue">1</span></label>
+          <input id="priceVerticals" type="range" min="1" max="3" value="1">
+          <div class="range-labels"><span>One</span><span>Two</span><span>Three</span></div>
+        </div>
+        <div class="calc-row">
+          <label for="priceVolume">Monthly routed volume: <span id="priceVolumeValue">$8M</span></label>
+          <input id="priceVolume" type="range" min="1" max="100" value="8">
+          <div class="range-labels"><span>$1M</span><span>$50M</span><span>$100M+</span></div>
+        </div>
+        <div>
+          <div class="tier-name" id="tierName">Growth</div>
+          <div class="tier-price"><b id="tierPrice">$999</b><s id="tierStandard">$1,249</s><span>/ mo launch</span></div>
+          <div class="unlock-grid">
+            <div class="unlock active" id="unlockOne">One dedicated product path and workspace viewport</div>
+            <div class="unlock" id="unlockTwo">Shared ledger across multiple product groups</div>
+            <div class="unlock" id="unlockThree">Full platform rollout and implementation support</div>
+          </div>
+          <p class="note" id="tierNote">Growth fits two active product groups or routed volume above $5M, with shared ledger routing and priority workflow mapping.</p>
+        </div>
+        <div class="action-row"><a class="btn primary" href="/intake">Configure access brief</a></div>
+      </article>
+    </div>
+  </section>
+  <section class="section deep-band">
+    <div class="container">
+      <div class="section-head"><div><div class="eyebrow">Pricing architecture</div><h2>Simple entry, room to expand.</h2></div><p>The site now has a standalone pricing surface that can later support packaging, add-ons, implementation tiers, contract terms, savings proof, and competitor comparisons without burying all of that inside the homepage.</p></div>
+      <div class="module-grid">
+        <article class="module-card"><small>Starter</small><h3>$399 / mo launch</h3><p>One product group, one workspace viewport, up to $5M routed monthly volume. Standard reference price: $499.</p></article>
+        <article class="module-card"><small>Growth</small><h3>$999 / mo launch</h3><p>Two product groups or volume above $5M, shared ledger routing, and priority workflow mapping. Standard reference price: $1,249.</p></article>
+        <article class="module-card"><small>Atlas</small><h3>$1,999 / mo launch</h3><p>Three product groups or volume above $50M, full rollout planning, and dedicated implementation support. Standard reference price: $2,499.</p></article>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer"><span>Bains Fund Management LLC - Private beta 2026</span><span>The middle, managed.</span></footer>
+<script src="/app.js"></script>
+</body>
+</html>
