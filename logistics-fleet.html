@@ -36,12 +36,18 @@
         <div class="hero-actions"><a class="btn primary" href="/intake?product=logistics">Build freight brief</a><a class="btn dark" href="/pricing?product=logistics">Model pricing</a></div>
       </div>
       <article class="workspace-shell" aria-label="Logistics workspace preview">
-        <div class="workspace-rail"><button class="rail-btn active" type="button">Load</button><button class="rail-btn" type="button">Docs</button><button class="rail-btn" type="button">Lane</button><button class="rail-btn" type="button">Bill</button></div>
+        <div class="workspace-rail"><button class="rail-btn active" type="button" aria-label="Load rail"><span class="rail-icon">></span><span>Load</span></button><button class="rail-btn" type="button" aria-label="Document rail"><span class="rail-icon">#</span><span>Docs</span></button><button class="rail-btn" type="button" aria-label="Lane rail"><span class="rail-icon">=</span><span>Lane</span></button><button class="rail-btn" type="button" aria-label="Billing rail"><span class="rail-icon">$</span><span>Bill</span></button></div>
         <div class="workspace-main">
           <div class="workspace-bar"><span class="mode-chip" id="modeChip">Freight mode</span><span class="cmd">Dispatch rail + settlement proof</span></div>
           <div class="subheader"><div><b id="workspaceMetricOne">18</b><span id="workspaceMetricOneLabel">Active exceptions</span></div><div><b id="workspaceMetricTwo">96.4%</b><span id="workspaceMetricTwoLabel">Target lane compliance</span></div><div><b id="workspaceMetricThree">7</b><span id="workspaceMetricThreeLabel">Carrier scorecards due</span></div></div>
           <div class="records" id="records"></div>
         </div>
+        <aside class="record-drawer" id="recordDrawer" aria-live="polite">
+          <small id="drawerLabel">Exception Desk</small>
+          <h3 id="drawerTitle">Load BM-2841 exception</h3>
+          <p id="drawerBody">Late document uploaded by carrier and assigned before billing handoff.</p>
+          <dl><div><dt>Owner</dt><dd id="drawerOwner">Dispatch Lead</dd></div><div><dt>Receipt</dt><dd id="drawerReceipt">load_receipt.exception</dd></div><div><dt>Next</dt><dd id="drawerNext">Confirm POD and release billing packet</dd></div></dl>
+        </aside>
       </article>
     </div>
   </section>

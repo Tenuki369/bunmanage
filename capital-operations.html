@@ -36,12 +36,18 @@
         <div class="hero-actions"><a class="btn primary" href="/intake?product=capital">Build capital brief</a><a class="btn dark" href="/pricing?product=capital">Model pricing</a></div>
       </div>
       <article class="workspace-shell" aria-label="Capital operations workspace preview">
-        <div class="workspace-rail"><button class="rail-btn active" type="button">Ledger</button><button class="rail-btn" type="button">Pay</button><button class="rail-btn" type="button">Match</button><button class="rail-btn" type="button">Audit</button></div>
+        <div class="workspace-rail"><button class="rail-btn active" type="button" aria-label="Ledger rail"><span class="rail-icon">$</span><span>Ledger</span></button><button class="rail-btn" type="button" aria-label="Payment rail"><span class="rail-icon">+</span><span>Pay</span></button><button class="rail-btn" type="button" aria-label="Match rail"><span class="rail-icon">=</span><span>Match</span></button><button class="rail-btn" type="button" aria-label="Audit rail"><span class="rail-icon">!</span><span>Audit</span></button></div>
         <div class="workspace-main">
           <div class="workspace-bar"><span class="mode-chip" id="modeChip">Capital mode</span><span class="cmd">Approval rail + ledger proof</span></div>
           <div class="subheader"><div><b id="workspaceMetricOne">42</b><span id="workspaceMetricOneLabel">Open approvals</span></div><div><b id="workspaceMetricTwo">$1.8M</b><span id="workspaceMetricTwoLabel">Pending settlement</span></div><div><b id="workspaceMetricThree">0</b><span id="workspaceMetricThreeLabel">Unmatched exports</span></div></div>
           <div class="records" id="records"></div>
         </div>
+        <aside class="record-drawer" id="recordDrawer" aria-live="polite">
+          <small id="drawerLabel">Approval Desk</small>
+          <h3 id="drawerTitle">Vendor payout approval</h3>
+          <p id="drawerBody">Docs verified. Waiting on controller approval before release.</p>
+          <dl><div><dt>Owner</dt><dd id="drawerOwner">Controller</dd></div><div><dt>Receipt</dt><dd id="drawerReceipt">policy_check.passed</dd></div><div><dt>Next</dt><dd id="drawerNext">Approve or return for more evidence</dd></div></dl>
+        </aside>
       </article>
     </div>
   </section>

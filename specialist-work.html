@@ -36,12 +36,18 @@
         <div class="hero-actions"><a class="btn primary" href="/intake?product=specialist">Build specialist brief</a><a class="btn dark" href="/pricing?product=specialist">Model pricing</a></div>
       </div>
       <article class="workspace-shell" aria-label="Specialist work workspace preview">
-        <div class="workspace-rail"><button class="rail-btn active" type="button">Scope</button><button class="rail-btn" type="button">Proof</button><button class="rail-btn" type="button">Client</button><button class="rail-btn" type="button">Pay</button></div>
+        <div class="workspace-rail"><button class="rail-btn active" type="button" aria-label="Scope rail"><span class="rail-icon">*</span><span>Scope</span></button><button class="rail-btn" type="button" aria-label="Proof rail"><span class="rail-icon">#</span><span>Proof</span></button><button class="rail-btn" type="button" aria-label="Client rail"><span class="rail-icon">?</span><span>Client</span></button><button class="rail-btn" type="button" aria-label="Payment rail"><span class="rail-icon">$</span><span>Pay</span></button></div>
         <div class="workspace-main">
           <div class="workspace-bar"><span class="mode-chip" id="modeChip">Specialist mode</span><span class="cmd">Milestone rail + payout proof</span></div>
           <div class="subheader"><div><b id="workspaceMetricOne">11</b><span id="workspaceMetricOneLabel">Milestones in review</span></div><div><b id="workspaceMetricTwo">$420K</b><span id="workspaceMetricTwoLabel">Payouts gated</span></div><div><b id="workspaceMetricThree">5</b><span id="workspaceMetricThreeLabel">Client approvals needed</span></div></div>
           <div class="records" id="records"></div>
         </div>
+        <aside class="record-drawer" id="recordDrawer" aria-live="polite">
+          <small id="drawerLabel">Evidence Room</small>
+          <h3 id="drawerTitle">Advisory milestone approval</h3>
+          <p id="drawerBody">Evidence packet attached and client review state captured.</p>
+          <dl><div><dt>Owner</dt><dd id="drawerOwner">Client Sponsor</dd></div><div><dt>Receipt</dt><dd id="drawerReceipt">milestone_evidence.sent</dd></div><div><dt>Next</dt><dd id="drawerNext">Accept or request revision</dd></div></dl>
+        </aside>
       </article>
     </div>
   </section>
