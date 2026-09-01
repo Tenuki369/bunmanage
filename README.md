@@ -1,8 +1,8 @@
 # BunManage
 
-**Audit-grade operating systems.** - by Bains Fund Management LLC
+**The operating proof layer.** - by Bains Fund Management LLC
 
-Capital Operations, Logistics & Fleet, and Specialist Work on one audit-grade ledger.
+Money, movement, and specialist delivery become ledger-backed receipts.
 
 🌐 [bunmanage.com](https://bunmanage.com)
 

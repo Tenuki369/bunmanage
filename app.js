@@ -2,7 +2,7 @@
 
 const productData={
   capital:{
-    label:'Capital Operations',
+    label:'Money Room',
     mode:'Capital mode',
     brief:'Capital Ledger Pilot',
     metrics:['42','Open approvals','$1.8M','Pending settlement','0','Unmatched exports'],
@@ -13,7 +13,7 @@ const productData={
     ]
   },
   logistics:{
-    label:'Logistics & Fleet',
+    label:'Move Room',
     mode:'Freight mode',
     brief:'Logistics Control Pilot',
     metrics:['18','Active exceptions','96.4%','Target lane compliance','7','Carrier scorecards due'],
@@ -24,7 +24,7 @@ const productData={
     ]
   },
   specialist:{
-    label:'Specialist Work',
+    label:'Make Room',
     mode:'Specialist mode',
     brief:'Specialist Work Pilot',
     metrics:['11','Milestones in review','$420K','Payouts gated','5','Client approvals needed'],
@@ -38,9 +38,9 @@ const productData={
 
 function dollars(value){return value>=100?'$100M+':'$'+value+'M'}
 function tierFor(verticals,volume){
-  if(verticals>=3 || volume>50)return {name:'Atlas',price:'$1,999',standard:'$2,499',note:'Atlas fits all three product groups or routed volume above $50M, with rollout planning and dedicated implementation support.'};
-  if(verticals>=2 || volume>5)return {name:'Growth',price:'$999',standard:'$1,249',note:'Growth fits two active product groups or routed volume above $5M, with shared ledger routing and priority workflow mapping.'};
-  return {name:'Starter',price:'$399',standard:'$499',note:'Starter fits one active product group and up to $5M in routed monthly volume.'};
+  if(verticals>=3 || volume>50)return {name:'Atlas',price:'$1,999',standard:'$2,499',note:'Atlas fits all three proof rooms or routed volume above $50M, with rollout planning and dedicated implementation support.'};
+  if(verticals>=2 || volume>5)return {name:'Growth',price:'$999',standard:'$1,249',note:'Growth fits two active rooms or routed volume above $5M, with cross-room receipts and priority room mapping.'};
+  return {name:'Starter',price:'$399',standard:'$499',note:'Starter fits one proof room and up to $5M in routed monthly volume.'};
 }
 function setText(id,value){const node=document.getElementById(id);if(node)node.textContent=value}
 function selectedSubsystems(){
@@ -94,8 +94,8 @@ function updateIntake(){
   const briefList=document.getElementById('briefList');
   if(briefList){
     briefList.innerHTML=[
-      'Primary product path: '+(productData[persona] || productData.capital).label,
-      'Active product groups: '+subs.map(s=>(productData[s] || productData.capital).label).join(', '),
+      'First proof room: '+(productData[persona] || productData.capital).label,
+      'Rooms sharing receipts: '+subs.map(s=>(productData[s] || productData.capital).label).join(', '),
       'Monthly routed volume: '+dollars(volume),
       'Current system: '+currentStack.value,
       'Recommended tier: '+tier.name+' at '+tier.price+' / mo launch'
@@ -131,18 +131,18 @@ function prepareBrief(){
   const body=[
     'Hi BunManage team,',
     '',
-    'I configured a BunManage workspace from the public intake.',
+    'I built a BunManage access brief from the public intake.',
     '',
     'Email: '+(email ? email.value : ''),
-    'Primary product path: '+(productData[intakePersona.value] || productData.capital).label,
-    'Active product groups: '+subs.map(s=>(productData[s] || productData.capital).label).join(', '),
+    'First proof room: '+(productData[intakePersona.value] || productData.capital).label,
+    'Rooms sharing receipts: '+subs.map(s=>(productData[s] || productData.capital).label).join(', '),
     'Monthly routed volume: '+dollars(volume),
     'Current system: '+currentStack.value,
     'Recommended tier: '+tier.name+' at '+tier.price+' / mo launch',
     '',
     'Please follow up with founding customer access.'
   ].join('\n');
-  setText('briefStatus','Access brief prepared. Email opens with the configured workspace details.');
+  setText('briefStatus','Access brief prepared. Email opens with the room, volume, and proof requirements included.');
   window.location.href='mailto:hello@bunmanage.com?subject='+encodeURIComponent('Early Access Configuration - BunManage')+'&body='+encodeURIComponent(body);
 }
 function init(){

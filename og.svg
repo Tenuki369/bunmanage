@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">BunManage - Audit-grade operating systems</title>
-  <desc id="desc">Dedicated product paths for capital, logistics, and specialist work on one audit-grade ledger.</desc>
+  <desc id="desc">Money, movement, and expert work become ledger-backed receipts.</desc>
   <rect width="1200" height="630" fill="#080a0d"/>
   <path d="M0 520 L1200 220" stroke="#151e2a" stroke-width="3"/>
   <path d="M0 430 L1200 130" stroke="#111821" stroke-width="2"/>
@@ -27,5 +27,5 @@
   <text x="72" y="336" fill="#eef4f8" font-family="Inter, Arial, sans-serif" font-size="82" font-weight="900">OPERATING</text>
   <text x="72" y="427" fill="#eef4f8" font-family="Inter, Arial, sans-serif" font-size="82" font-weight="900">SYSTEMS.</text>
   <rect x="78" y="466" width="430" height="5" fill="#72d1c2"/>
-  <text x="78" y="525" fill="#91a0ad" font-family="Inter, Arial, sans-serif" font-size="24">Capital, logistics, and specialist work get dedicated product paths.</text>
+  <text x="78" y="525" fill="#91a0ad" font-family="Inter, Arial, sans-serif" font-size="24">Money, movement, and expert work become ledger-backed receipts.</text>
 </svg>
