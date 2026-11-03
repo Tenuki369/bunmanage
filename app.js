@@ -2,9 +2,11 @@
 
 const productData={
   capital:{
-    label:'Money Room',
-    mode:'Capital mode',
-    brief:'Capital Ledger Pilot',
+    label:'Capital Operations',
+    mode:'Capital Operations',
+    brief:'Capital Operations Pilot',
+    summary:'Capital Operations keeps requests, approvals, bank references, and reconciliation on one accountable record.',
+    route:'/capital-operations',
     heroTitle:'Money has to explain itself.',
     heroCopy:'Start with the Money Room when approvals, settlement, reconciliation, and close evidence are the daily drag. BunManage turns each money movement into a receipt chain.',
     heroMetrics:['42','Approval records waiting for owner action','$1.8M','Settlement value held behind proof','0','Target unmatched exports after rollout'],
@@ -16,9 +18,11 @@ const productData={
     ]
   },
   logistics:{
-    label:'Move Room',
-    mode:'Freight mode',
-    brief:'Logistics Control Pilot',
+    label:'Logistics & Fleet',
+    mode:'Logistics & Fleet',
+    brief:'Logistics & Fleet Pilot',
+    summary:'Logistics & Fleet connects dispatch, delivery evidence, exceptions, billing, and carrier settlement.',
+    route:'/logistics-fleet',
     heroTitle:'Freight has to become billable.',
     heroCopy:'Start with the Move Room when dispatch truth and invoice truth keep separating. BunManage keeps load state, carrier proof, exception owner, and settlement handoff in one receipt chain.',
     heroMetrics:['18','Load exceptions with named owners','96.4%','Target lane compliance after proof capture','<24h','Exception review target for pilot lanes'],
@@ -30,9 +34,11 @@ const productData={
     ]
   },
   specialist:{
-    label:'Make Room',
-    mode:'Specialist mode',
+    label:'Specialist Work',
+    mode:'Specialist Work',
     brief:'Specialist Work Pilot',
+    summary:'Specialist Work keeps scope, delivery evidence, client acceptance, revisions, and release conditions together.',
+    route:'/specialist-work',
     heroTitle:'Done has to prove itself.',
     heroCopy:'Start with the Make Room when scope, acceptance, and payout live in different stories. BunManage binds milestone evidence to client decision and release gates.',
     heroMetrics:['11','Milestones waiting on client decision','$420K','Payout value gated behind acceptance','5','Proof packets needing review'],
@@ -61,9 +67,9 @@ const productData={
 
 function dollars(value){return value>=100?'$100M+':'$'+value+'M'}
 function tierFor(verticals,volume){
-  if(verticals>=3 || volume>50)return {name:'Atlas',price:'$1,999',standard:'$2,499',note:'Atlas fits all three proof rooms or routed volume above $50M, with rollout planning and dedicated implementation support.'};
-  if(verticals>=2 || volume>5)return {name:'Growth',price:'$999',standard:'$1,249',note:'Growth fits two active rooms or routed volume above $5M, with cross-room receipts and priority room mapping.'};
-  return {name:'Starter',price:'$399',standard:'$499',note:'Starter fits one proof room and up to $5M in routed monthly volume.'};
+  if(verticals>=3 || volume>50)return {name:'Network',price:'$1,999',standard:'$2,499',note:'Network fits all three product families or routed volume above $50M, with rollout planning and dedicated implementation support.'};
+  if(verticals>=2 || volume>5)return {name:'Growth',price:'$999',standard:'$1,249',note:'Growth fits two active product families or routed volume above $5M, with cross-product records and priority mapping.'};
+  return {name:'Starter',price:'$399',standard:'$499',note:'Starter fits one product family and up to $5M in routed monthly volume.'};
 }
 function setText(id,value){const node=document.getElementById(id);if(node)node.textContent=value}
 function statusClass(value){return 'status-'+String(value || '').toLowerCase().replace(/[^a-z0-9]+/g,'-')}
@@ -104,12 +110,24 @@ function setDomain(product){
   setText('heroMetricOne',data.heroMetrics[0]);setText('heroMetricOneLabel',data.heroMetrics[1]);
   setText('heroMetricTwo',data.heroMetrics[2]);setText('heroMetricTwoLabel',data.heroMetrics[3]);
   setText('heroMetricThree',data.heroMetrics[4]);setText('heroMetricThreeLabel',data.heroMetrics[5]);
-  document.querySelectorAll('[data-domain-switch]').forEach(button=>button.classList.toggle('active',button.dataset.domainSwitch===product));
+  document.querySelectorAll('[data-domain-switch]').forEach(button=>{
+    const selected=button.dataset.domainSwitch===product;
+    button.classList.toggle('active',selected);
+    button.setAttribute('aria-pressed',String(selected));
+  });
   document.querySelectorAll('[data-room-card]').forEach(card=>card.classList.toggle('active',card.dataset.roomCard===product));
   document.querySelectorAll('[data-plane]').forEach(plane=>plane.classList.toggle('active',plane.dataset.plane===product));
   document.querySelectorAll('[data-workspace-product]').forEach(button=>button.classList.toggle('active',button.dataset.workspaceProduct===product));
   const intakePersona=document.getElementById('intakePersona');
-  if(intakePersona && product !== 'control')intakePersona.value=product;
+  if(intakePersona && product !== 'control'){
+    intakePersona.value=product;
+    const subsystemInputs=[...document.querySelectorAll('input[name="subsystem"]')];
+    const checked=subsystemInputs.filter(input=>input.checked);
+    subsystemInputs.forEach(input=>{input.checked=checked.length<=1 ? input.value===product : input.checked || input.value===product});
+  }
+  setText('domainSummary',data.summary || data.heroCopy);
+  const domainLink=document.getElementById('domainLink');
+  if(domainLink && data.route){domainLink.href=data.route;domainLink.innerHTML='Explore '+data.label+' <span aria-hidden="true">→</span>'}
   renderWorkspace(product);
   updateIntake();
 }
@@ -150,8 +168,8 @@ function updateIntake(){
   const briefList=document.getElementById('briefList');
   if(briefList){
     briefList.innerHTML=[
-      'First proof room: '+(productData[persona] || productData.capital).label,
-      'Rooms sharing receipts: '+subs.map(s=>(productData[s] || productData.capital).label).join(', '),
+      'Starting product: '+(productData[persona] || productData.capital).label,
+      'Products sharing context: '+subs.map(s=>(productData[s] || productData.capital).label).join(', '),
       'Monthly routed volume: '+dollars(volume),
       'Current system: '+currentStack.value,
       'Recommended tier: '+tier.name+' at '+tier.price+' / mo launch'
@@ -190,8 +208,8 @@ function prepareBrief(){
     'I built a BunManage access brief from the public intake.',
     '',
     'Email: '+(email ? email.value : ''),
-    'First proof room: '+(productData[intakePersona.value] || productData.capital).label,
-    'Rooms sharing receipts: '+subs.map(s=>(productData[s] || productData.capital).label).join(', '),
+    'Starting product: '+(productData[intakePersona.value] || productData.capital).label,
+    'Products sharing context: '+subs.map(s=>(productData[s] || productData.capital).label).join(', '),
     'Monthly routed volume: '+dollars(volume),
     'Current system: '+currentStack.value,
     'Recommended tier: '+tier.name+' at '+tier.price+' / mo launch',

@@ -10,6 +10,7 @@
     { "src": "intake.html", "use": "@vercel/static" },
     { "src": "styles.css", "use": "@vercel/static" },
     { "src": "app.js", "use": "@vercel/static" },
+    { "src": "assets/**", "use": "@vercel/static" },
     { "src": "robots.txt", "use": "@vercel/static" },
     { "src": "sitemap.xml", "use": "@vercel/static" },
     { "src": "og.svg", "use": "@vercel/static" }
@@ -20,6 +21,7 @@
     { "src": "/og.svg", "dest": "/og.svg" },
     { "src": "/styles.css", "dest": "/styles.css" },
     { "src": "/app.js", "dest": "/app.js" },
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
     { "src": "/capital-operations", "dest": "/capital-operations.html" },
     { "src": "/logistics-fleet", "dest": "/logistics-fleet.html" },
     { "src": "/specialist-work", "dest": "/specialist-work.html" },
