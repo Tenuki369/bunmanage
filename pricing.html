@@ -1,82 +1,133 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Pricing - BunManage</title>
-<meta name="description" content="Model BunManage launch pricing by active proof rooms and monthly routed volume.">
-<meta name="theme-color" content="#080a0d">
-<meta name="robots" content="index,follow">
-<meta property="og:title" content="Pricing - BunManage">
-<meta property="og:description" content="Launch pricing based on proof rooms, routed volume, and ledger responsibility.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.bunmanage.com/pricing">
-<meta property="og:image" content="https://www.bunmanage.com/og.svg">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://www.bunmanage.com/pricing">
-<link rel="stylesheet" href="/styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing — BUNMANAGE</title>
+  <meta name="description" content="Model BUNManage launch pricing by active product families and monthly routed volume.">
+  <link rel="canonical" href="https://www.bunmanage.com/pricing">
+  <meta property="og:title" content="Pricing — BUNMANAGE">
+  <meta property="og:description" content="Transparent launch pricing for your Business Utility Network.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.bunmanage.com/pricing">
+  <meta property="og:image" content="https://www.bunmanage.com/assets/business-utility-network.png">
+  <link rel="icon" href="/assets/bun-ligature.png">
+  <link rel="stylesheet" href="/styles.css">
 </head>
-<body>
+<body class="brand-home pricing-page">
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-nav">
-  <a class="brand" href="/" aria-label="BunManage home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand-copy"><span class="brand-name">BunManage</span><span class="brand-line">Audit-grade ledger</span></span></a>
-  <nav class="nav-links" aria-label="Primary">
-    <a href="/">Proof Layer</a><a href="/capital-operations">Capital</a><a href="/logistics-fleet">Logistics</a><a href="/specialist-work">Specialist Work</a><a class="active" href="/pricing">Pricing</a>
+
+<header class="bm-header">
+  <a class="bm-brand" href="/" aria-label="BUNManage home">
+    <img src="/assets/bun-ligature.png" alt="" width="104" height="42">
+    <span class="bm-brand-word">MANAGE</span>
+  </a>
+  <nav class="bm-nav" aria-label="Primary navigation">
+    <a href="/#products">Product</a>
+    <a href="/#platform">Platform</a>
+    <a class="active" href="/pricing" aria-current="page">Pricing</a>
+    <a href="/#company">Company</a>
   </nav>
-  <div class="nav-cta"><span class="status">20% launch discount</span><a class="btn primary" href="/intake">Build brief</a></div>
+  <div class="bm-header-actions">
+    <a class="bm-sign-in" href="/">Home</a>
+    <a class="bm-button bm-button-small" href="/#intake">Build your network <span aria-hidden="true">→</span></a>
+  </div>
 </header>
+
 <main id="main">
-  <section class="section hero">
-    <div class="container pricing-layout">
-      <div>
-        <div class="eyebrow">Dynamic pricing</div>
-        <h1>Price the number of rooms BunManage must keep honest.</h1>
-        <p class="lede">The bill should map to the mess: one room when the pain is focused, two when work crosses teams, Atlas when money, movement, and specialist delivery all need the same proof spine.</p>
-        <div class="metric-row">
-          <div class="metric"><b>$399</b><span>One proof room, cleanly owned</span></div>
-          <div class="metric"><b>$999</b><span>Two rooms sharing ledger receipts</span></div>
-          <div class="metric"><b>$1,999</b><span>Full proof spine across the company</span></div>
-        </div>
+  <section class="pricing-hero-v2">
+    <div class="pricing-hero-copy">
+      <p class="bm-kicker">Founding customer pricing</p>
+      <h1>Price the network you need now<span aria-hidden="true">.</span></h1>
+      <p>Start with one product family. Add capacity when more operational handoffs need the same accountable record.</p>
+      <div class="discount-line"><b>20% launch discount</b><span>Standard pricing shown beside every estimate.</span></div>
+    </div>
+
+    <div class="pricing-calculator-v2" aria-label="BUNManage pricing calculator">
+      <div class="calculator-heading">
+        <span>Live estimate</span>
+        <small>Adjust either input</small>
       </div>
-      <article class="pricing-card">
-        <small>Pricing forge</small>
-        <h3 style="margin-top:12px">Size the proof layer</h3>
-        <div class="calc-row" style="margin-top:22px">
-          <label for="priceVerticals">Active proof rooms: <span id="priceVerticalsValue">1</span></label>
-          <input id="priceVerticals" type="range" min="1" max="3" value="1">
-          <div class="range-labels"><span>One</span><span>Two</span><span>Three</span></div>
-        </div>
-        <div class="calc-row">
-          <label for="priceVolume">Monthly routed volume: <span id="priceVolumeValue">$8M</span></label>
-          <input id="priceVolume" type="range" min="1" max="100" value="8">
-          <div class="range-labels"><span>$1M</span><span>$50M</span><span>$100M+</span></div>
-        </div>
-        <div>
-          <div class="tier-name" id="tierName">Growth</div>
-          <div class="tier-price"><b id="tierPrice">$999</b><s id="tierStandard">$1,249</s><span>/ mo launch</span></div>
-          <div class="unlock-grid">
-            <div class="unlock active" id="unlockOne">One room with its own rails, queues, and receipts</div>
-            <div class="unlock" id="unlockTwo">Cross-room ledger receipts and handoff proof</div>
-            <div class="unlock" id="unlockThree">Full proof-spine rollout and implementation support</div>
-          </div>
-          <p class="note" id="tierNote">Growth fits two active rooms or routed volume above $5M, with cross-room receipts and priority room mapping.</p>
-        </div>
-        <div class="action-row"><a class="btn primary" href="/intake">Build access brief</a></div>
-      </article>
+      <div class="price-control">
+        <label for="priceVerticals">Active product families <b id="priceVerticalsValue">1</b></label>
+        <input id="priceVerticals" type="range" min="1" max="3" value="1">
+        <div class="range-ends"><span>One</span><span>Two</span><span>Three</span></div>
+      </div>
+      <div class="price-control">
+        <label for="priceVolume">Monthly routed volume <b id="priceVolumeValue">$8M</b></label>
+        <input id="priceVolume" type="range" min="1" max="100" value="8">
+        <div class="range-ends"><span>$1M</span><span>$50M</span><span>$100M+</span></div>
+      </div>
+      <div class="price-result">
+        <span id="tierName">Growth</span>
+        <div><strong id="tierPrice">$999</strong><s id="tierStandard">$1,249</s><small>/ month at launch</small></div>
+        <p id="tierNote">Growth fits two active product families or routed volume above $5M, with cross-product records and priority mapping.</p>
+      </div>
+      <div class="price-unlocks" aria-label="Pricing capabilities">
+        <span class="active" id="unlockOne">One product family</span>
+        <span id="unlockTwo">Cross-product records</span>
+        <span id="unlockThree">Network rollout support</span>
+      </div>
+      <a class="bm-button calculator-cta" href="/#intake">Build this network <span aria-hidden="true">→</span></a>
     </div>
   </section>
-  <section class="section deep-band">
-    <div class="container">
-      <div class="section-head"><div><div class="eyebrow">Packaging logic</div><h2>No mystery jump when the second room turns on.</h2></div><p>Pricing is framed around proof responsibility, not arbitrary plan theater. The more rooms BunManage must keep synchronized, the more routing, evidence, and implementation work the platform carries.</p></div>
-      <div class="module-grid">
-        <article class="module-card"><small>Starter</small><h3>$399 / mo launch</h3><p>One room, one operating rail, up to $5M routed monthly volume. Standard reference price: $499.</p></article>
-        <article class="module-card"><small>Growth</small><h3>$999 / mo launch</h3><p>Two rooms or volume above $5M, with shared receipts where work crosses teams. Standard reference price: $1,249.</p></article>
-        <article class="module-card"><small>Atlas</small><h3>$1,999 / mo launch</h3><p>Money, movement, and specialist delivery on the same proof spine. Standard reference price: $2,499.</p></article>
+
+  <section class="bm-section tier-section" aria-labelledby="tiersTitle">
+    <div class="bm-section-heading compact pricing-heading">
+      <p class="bm-kicker">Three starting points</p>
+      <h2 id="tiersTitle">The price changes when the responsibility changes.</h2>
+    </div>
+    <div class="tier-table" role="table" aria-label="BUNManage plan comparison">
+      <div class="tier-table-head" role="row">
+        <span role="columnheader">Plan</span><span role="columnheader">Launch price</span><span role="columnheader">Network scope</span><span role="columnheader">Best fit</span>
+      </div>
+      <div class="tier-table-row" role="row">
+        <div role="cell"><b>Starter</b><small>Standard $499</small></div>
+        <div role="cell"><strong>$399</strong><small>/ month</small></div>
+        <div role="cell">One product family<br>Up to $5M monthly routed volume</div>
+        <div role="cell">A focused workflow with one accountable operating record.</div>
+      </div>
+      <div class="tier-table-row featured" role="row">
+        <div role="cell"><b>Growth</b><small>Standard $1,249</small></div>
+        <div role="cell"><strong>$999</strong><small>/ month</small></div>
+        <div role="cell">Two product families<br>Up to $50M monthly routed volume</div>
+        <div role="cell">Work crossing teams, systems, or financial responsibility.</div>
+      </div>
+      <div class="tier-table-row" role="row">
+        <div role="cell"><b>Network</b><small>Standard $2,499</small></div>
+        <div role="cell"><strong>$1,999</strong><small>/ month</small></div>
+        <div role="cell">Three product families<br>More than $50M monthly routed volume</div>
+        <div role="cell">A coordinated rollout across capital, logistics, and specialist work.</div>
       </div>
     </div>
+  </section>
+
+  <section class="bm-section pricing-includes" aria-labelledby="includesTitle">
+    <div>
+      <p class="bm-kicker">What pricing follows</p>
+      <h2 id="includesTitle">Scope is visible before the sales call.</h2>
+    </div>
+    <div class="include-list">
+      <div><span>01</span><h3>Product families</h3><p>Capital Operations, Logistics &amp; Fleet, or Specialist Work. Each family has its own records and operating views.</p></div>
+      <div><span>02</span><h3>Routed volume</h3><p>The monthly value whose approvals, evidence, exceptions, or settlement state BUNManage must retain.</p></div>
+      <div><span>03</span><h3>Implementation</h3><p>Workflow mapping is scoped from your brief. Network plans include coordinated rollout support across all three families.</p></div>
+    </div>
+  </section>
+
+  <section class="pricing-final-cta">
+    <p class="bm-kicker">Build the starting point</p>
+    <h2>Map the first handoff in four answers.</h2>
+    <p>Choose the product family, connected work, routed volume, and current operating system. We will prepare the recommended configuration before asking for a call.</p>
+    <a class="bm-button" href="/#intake">Build your network <span aria-hidden="true">→</span></a>
   </section>
 </main>
-<footer class="footer"><span>Bains Fund Management LLC - Private beta 2026</span><span>The middle, managed.</span></footer>
+
+<footer class="bm-footer" id="company">
+  <div><span class="footer-brand">BUNMANAGE</span><span>Business Utility Network Management</span></div>
+  <div><a href="/#products">Products</a><a href="/#platform">Platform</a><a href="/pricing">Pricing</a></div>
+  <span>Bains Fund Management LLC · Private beta 2026</span>
+</footer>
+
 <script src="/app.js"></script>
 </body>
 </html>
